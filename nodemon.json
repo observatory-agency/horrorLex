@@ -1,0 +1,6 @@
+{
+  "verbose": false,
+  "ignore": ["public", "utils"],
+  "ext": "hbs",
+  "exec": ["npm run client & npm run server"]
+}
