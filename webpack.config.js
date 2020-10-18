@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: {
     client: './src/scripts/index.js',
   },
@@ -8,12 +9,12 @@ module.exports = {
     path: path.resolve(__dirname, 'public/scripts/'),
     filename: '[name].js',
     chunkFilename: '[name].js',
-    publicPath: '/public/scripts/',
+    publicPath: '/public',
   },
   module: {
     rules: [
       {
-        test: /\.mjs$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -23,5 +24,13 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    publicPath: '/public/scripts',
+    liveReload: true,
   },
 };
