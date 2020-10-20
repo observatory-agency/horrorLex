@@ -1,3 +1,6 @@
+// TODO - production-ify this
+import '../styles/main.css';
+
 (() => {
-  console.log('yo dawg');
+  console.log('yo dawggg');
 })();

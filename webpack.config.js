@@ -1,12 +1,14 @@
 const path = require('path');
 
+// TODO we'll need to chunk the CSS to its own file for production
 module.exports = {
   mode: 'development',
   entry: {
-    client: './src/scripts/index.js',
+    bundle: './src/scripts/index.js',
+    // styles: './src/styles/index.js',
   },
   output: {
-    path: path.resolve(__dirname, 'public/scripts/'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].js',
     chunkFilename: '[name].js',
     publicPath: '/public',
@@ -22,15 +24,29 @@ module.exports = {
             presets: ['@babel/preset-env'],
           },
         },
+      }, {
+        test: /\.css$/,
+        use: [
+          'style-loader', {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+            },
+          },
+          'postcss-loader',
+        ],
       },
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.css', '.js', '.jsx'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
-    publicPath: '/public/scripts',
+    publicPath: '/public',
     liveReload: true,
+    proxy: {
+      '**': 'http://localhost:3000',
+    },
   },
 };

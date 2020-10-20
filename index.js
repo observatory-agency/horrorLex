@@ -1,6 +1,6 @@
 const express = require('express');
 const { MongoClient } = require('mongodb');
-const { home } = require('./routes');
+const { home, results } = require('./routes');
 const schema = require('./models');
 const registerHelpers = require('./views/helpers');
 const registerPartials = require('./views/partials');
@@ -21,6 +21,7 @@ registerPartials();
 app.set('view engine', 'hbs');
 app.use(express.json());
 app.use('/', home);
+app.use('/results', results);
 app.use('/public', express.static('public'));
 
 mongoClient.connect(async (connectionError, client) => {
