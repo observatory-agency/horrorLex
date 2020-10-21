@@ -1,16 +1,11 @@
 const path = require('path');
 
-// TODO we'll need to chunk the CSS to its own file for production
 module.exports = {
   mode: 'development',
-  entry: {
-    bundle: './src/scripts/index.js',
-    // styles: './src/styles/index.js',
-  },
+  entry: './src/scripts/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    filename: 'app.js',
     publicPath: '/public',
   },
   module: {
@@ -25,15 +20,24 @@ module.exports = {
           },
         },
       }, {
-        test: /\.css$/,
+        test: /\.css$/i,
+        include: path.resolve('src'),
         use: [
-          'style-loader', {
+          'style-loader',
+          {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
             },
           },
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: ['tailwindcss'],
+              },
+            },
+          },
         ],
       },
     ],
