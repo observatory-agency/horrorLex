@@ -8,4 +8,5 @@ Requirements:
 Getting Started
 
 - `npm i`
-- `npm start` or VS Code Debugger (F5) for server-side debugging
+- development: `npm run start:dev`
+- production: `npm run start:prod`
