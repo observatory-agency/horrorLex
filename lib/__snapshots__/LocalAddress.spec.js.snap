@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LocalAddress #ip should return a local IP address 1`] = `"10.0.1.5"`;
