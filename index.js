@@ -2,6 +2,8 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const { home, results } = require('./routes');
 const schema = require('./models');
+const ClearModuleCache = require('./lib/ClearModuleCache');
+const Env = require('./lib/Env');
 const registerHelpers = require('./views/helpers');
 const registerPartials = require('./views/partials');
 
@@ -23,6 +25,13 @@ app.use(express.json());
 app.use('/', home);
 app.use('/results', results);
 app.use('/public', express.static('public'));
+
+// if (Env.is('development')) {
+//   // register our node module cache clearer
+//   ClearModuleCache.watch([
+//     './routes',
+//   ]);
+// }
 
 mongoClient.connect(async (connectionError, client) => {
   if (connectionError) {

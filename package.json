@@ -33,7 +33,7 @@
   "scripts": {
     "db:drop": "node utils/drop",
     "db:seed": "node utils/seed",
-    "server:dev": "nodemon index --ext hbs,js --ignore public --ignore src --ignore utils",
+    "server:dev": "nodemon index --ext js --ignore public --ignore src --ignore utils --ignore views",
     "server:prod": "node index",
     "client:dev": "webpack serve --config webpack.dev.js",
     "client:prod": "webpack --config webpack.prod.js",
