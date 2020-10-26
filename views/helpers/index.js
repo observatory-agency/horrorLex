@@ -1,9 +1,10 @@
 const hbs = require('hbs');
+const Env = require('../../lib/Env');
 
 /** Registers Handlebars helper functions */
 const registerHelpers = () => {
   // Add functions here
-  hbs.registerHelper('production', () => process.env.NODE_ENV === 'production');
+  hbs.registerHelper('production', () => Env.is('production'));
 };
 
 module.exports = registerHelpers;

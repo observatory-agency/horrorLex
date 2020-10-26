@@ -1,4 +1,5 @@
 const path = require('path');
+const WatchNonWebpackFiles = require('./lib/WatchNonWebpackFiles');
 
 module.exports = {
   mode: 'development',
@@ -45,12 +46,21 @@ module.exports = {
   resolve: {
     extensions: ['*', '.css', '.js', '.jsx'],
   },
+  plugins: [
+    new WatchNonWebpackFiles(),
+  ],
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname),
     publicPath: '/public',
     liveReload: true,
     proxy: {
-      '**': 'http://localhost:3000',
+      '**': {
+        target: 'http://localhost:3000',
+        headers: {
+          Connection: 'keep-alive',
+        },
+      },
     },
+    watchContentBase: true,
   },
 };
