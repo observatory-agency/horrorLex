@@ -1,7 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const { MongoClient } = require('mongodb');
-const { home, results } = require('./routes');
+const {
+  about,
+  advancedSearch,
+  browse,
+  contact,
+  home,
+  individualResult,
+  results,
+} = require('./routes');
 const schema = require('./models');
 const collections = require('./constants/collections');
 const Env = require('./lib/Env');
@@ -26,6 +34,11 @@ registerPartials();
 app.set('view engine', 'hbs');
 app.use(express.json());
 app.use('/', home);
+app.use('/about', about);
+app.use('/advanced-search', advancedSearch);
+app.use('/browse', browse);
+app.use('/contact', contact);
+app.use('/individual-result', individualResult);
 app.use('/results', results);
 app.use('/public', express.static('public'));
 
