@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  {{> head }}
+  <body>
+    {{> global/mainNavigation }}
+
+    <main>
+      <section class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="grid grid-cols-12 gap-6">
+          <div class="col-span-7 prose-lg text-gray-300">
+            <h1
+              class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-gray-100 sm:text-4xl sm:leading-10"
+            >
+              Contact Professor Lex
+            </h1>
+            <p>
+              Reach out to Professor Lex for comments and questions about the site, to suggest additions to the
+              database, or if you’ve spotted an error.
+            </p>
+            <p>
+              In addition, Professor Lex is happy to chat with you about your research on horror and horror-adjacent
+              films and get you heading in the right direction.
+            </p>
+            <p>Email: professorlupelex@gmail.com</p>
+          </div>
+          <div class="col-span-5">
+            <figure>
+              <div class="relative pb-7/12 lg:pb-0">
+                <img
+                  src="/public/img/contact.png"
+                  alt="Professor Lupe Lex writing with his quill and paper"
+                  width="1184"
+                  height="1376"
+                  class="absolute inset-0 object-cover object-center w-full h-full rounded-lg lg:static lg:h-auto"
+                />
+              </div>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {{> global/mainFooter }}
+
+    {{> script }}
+  </body>
+</html>

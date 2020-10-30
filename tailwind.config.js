@@ -1,10 +1,25 @@
 // tailwind.config.js
 module.exports = {
   future: {},
-  purge: [],
+  purge: {
+    mode: 'all',
+    content: ['./views/partials/**/*.hbs'],
+  },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        blackDark: '#171717',
+        blackMedium: '#1E1E1E',
+        blackLight: '#222222',
+        primaryRed: '#950A10',
+        primaryOrange: '#A0410D',
+        primaryOrangeDark: '#772C03',
+      },
+      maxWidth: {
+        full: '1440px',
+      },
+    },
   },
   variants: {},
-  plugins: [],
+  plugins: [require('@tailwindcss/ui')],
 };
