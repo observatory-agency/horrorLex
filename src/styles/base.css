@@ -1,0 +1,36 @@
+body {
+    background-color: #171717;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Fira Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+}
+
+main {
+    overflow: hidden;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hasChillUnderline {
+    display: inline-flex;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.2);
+}
+.hasChillUnderline::after {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: -6px;
+    right: -6px;
+    height: 10px;
+    background-color: #950A10;
+    opacity: .8;
+    z-index: -1;
+}

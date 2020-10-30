@@ -1,0 +1,146 @@
+<nav id="mainNav" class="flex-shrink-0 bg-transparent">
+  <div class="max-w-full px-2 py-2 mx-auto shadow-md">
+    <div class="relative flex items-center justify-between h-16">
+      <!-- Logo section -->
+      <div class="flex items-center px-2 lg:px-0 xl:w-48">
+        <div class="flex-shrink-0">
+          <a href="/">
+            <img class="w-auto h-10" src="/public/img/logo/logo-horizontal.png" alt="Horror Lex logo" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Search section -->
+      <div class="flex justify-center flex-1 lg:justify-end">
+        <div class="w-full px-2 lg:px-6">
+          <label for="search" class="sr-only">Quick Search</label>
+          <div class="relative text-gray-300 focus-within:text-gray-400">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </div>
+            <input
+              id="search"
+              class="block w-full py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-300 transition duration-150 ease-in-out bg-gray-400 bg-opacity-25 border border-transparent rounded-md focus:outline-none focus:bg-white focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm"
+              placeholder="Quick Search"
+              type="search"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex lg:hidden">
+        <!-- Mobile menu button -->
+        <button
+          class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-white hover:bg-gray-600 focus:outline-none focus:bg-gray-600 focus:text-white"
+          aria-label="Main menu"
+          aria-expanded="false"
+        >
+          <!-- Icon when menu is closed. -->
+          <!--
+              Heroicon name: menu-alt-1
+
+              Menu open: "hidden", Menu closed: "block"
+            -->
+          <svg
+            class="block w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+          </svg>
+          <!-- Icon when menu is open. -->
+          <!--
+              Heroicon name: x
+
+              Menu open: "block", Menu closed: "hidden"
+            -->
+          <svg
+            class="hidden w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <!-- Links section -->
+      <div class="hidden lg:block lg:w-96">
+        <div class="flex items-center justify-end">
+          <div class="flex">
+            <span class="rounded-md shadow-sm">
+              <button
+                type="button"
+                class="inline-flex items-center px-4 py-2 text-sm font-medium leading-5 text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primaryOrange hover:bg-primaryOrangeDark focus:outline-none focus:shadow-outline-teal focus:border-primaryOrangeDark active:bg-primaryOrangeDark"
+              >
+                Advanced Search
+              </button>
+            </span>
+            <a
+              href="/browse"
+              class="px-3 py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-white focus:outline-none focus:text-white focus:bg-orange-600"
+              >Browse</a
+            >
+            <a
+              href="/about"
+              class="px-3 py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-white focus:outline-none focus:text-white focus:bg-orange-600"
+              >About</a
+            >
+            <a
+              href="/contact"
+              class="px-3 py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out rounded-md hover:text-white focus:outline-none focus:text-white focus:bg-orange-600"
+              >Contact</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+      Mobile menu, toggle classes based on menu state.
+
+      Menu open: "block", Menu closed: "hidden"
+    -->
+  <div class="hidden lg:hidden">
+    <div class="px-2 pt-2 pb-3">
+      <a
+        href="#"
+        class="block px-3 py-2 text-base font-medium text-white transition duration-150 ease-in-out bg-gray-800 rounded-md focus:outline-none focus:text-gray-100 focus:bg-gray-600"
+        >Browse</a
+      >
+      <a
+        href="#"
+        class="block px-3 py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+        >About</a
+      >
+    </div>
+    <div class="pt-4 pb-3 border-t border-gray-800">
+      <div class="px-2">
+        <a
+          href="#"
+          class="block px-3 py-2 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+          >Your Profile</a
+        >
+        <a
+          href="#"
+          class="block px-3 py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+          >Settings</a
+        >
+        <a
+          href="#"
+          class="block px-3 py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+          >Sign out</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
