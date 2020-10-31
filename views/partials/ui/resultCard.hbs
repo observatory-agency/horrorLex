@@ -1,22 +1,21 @@
-<aside class="p-8">
-    <h3>"Evil" Arabs in American Popular Film: Orientalist Fear</h3>
-    <p>Semmerline, Tim Jon</p>
-    <div class="grid gap-4 grid-cols-12">
+<aside class="p-6 bg-blackLight rounded-md shadow">
+    <h3 class="text-gray-100 text-xl font-bold">{{ this.title }}</h3>
+    <p class="text-gray-400 font-medium">{{ this.author }}</p>
+    <div class="grid gap-4 grid-cols-12 mt-4 mb-8">
         <div class="col-span-4 flex flex-col items-start">
-            <h4>Year</h4>
-            <p></p>
+            <p class="text-base font-medium text-gray-600">Year</p>
+            <p class="text-gray-300 text-lg">{{ this.year }}</p>
         </div>
         <div class="col-span-4 flex flex-col items-start">
-            <h4>Original Publisher</h4>
-            <p>University of Texas Press</p>
+            <p class="text-base font-medium text-gray-600">Original Publisher</p>
+            <p class="text-gray-300 text-lg">{{ this.originalPublisher }}</p>
         </div>
         <div class="col-span-4 flex flex-col items-start">
-            <h4>Updated Edition</h4>
-            <p>University of Texas Press</p>
+            <p class="text-base font-medium text-gray-600">Updated Edition</p>
+            <p class="text-gray-300 text-lg">{{ this.updatedEdition }}</p>
         </div>
     </div>
-    <hr>
-    <footer>
-        <a href="#" class="block pt-4">Full Details</a>
+    <footer class="flex justify-end border-t border-gray-800 pt-6">
+        <a href="#" class="text-lg block text-primaryOrange">Full Details</a>
     </footer>
 </aside>

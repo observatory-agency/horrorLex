@@ -17,17 +17,26 @@ const filter = {
   Tags: ', ',
 };
 
+
 const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, { useUnifiedTopology: true });
 
 const reformatData = (filterKeys, jsonArr) => {
   const filteredJsonArr = jsonArr.map((item) => {
-    const keys = Object.keys(filterKeys);
-    keys.forEach((key) => {
-      if (item[key]) {
-        item[key] = item[key].split(filterKeys[key]);
+    const updateObject = {};
+    const objectKeys = Object.keys(item);
+    objectKeys.forEach((key) => {
+      const updateKey = key.toLowerCase();
+      const camelKey = updateKey.split(' ').map((a, i) => (i > 0 ? `${a.charAt(0).toUpperCase()}${a.slice(1)}` : a)).join('');
+      updateObject[camelKey] = item[key];
+    });
+
+    const keysToFilter = Object.keys(filterKeys);
+    keysToFilter.forEach((key) => {
+      if (updateObject[key]) {
+        updateObject[key] = updateObject[key].split(filterKeys[key]);
       }
     });
-    return item;
+    return updateObject;
   });
 
   mongoClient.connect(async (connectionError, client) => {
