@@ -1,8 +1,40 @@
 <!DOCTYPE html>
 <html>
-{{> head }}
-<body>
-  <h1>Results</h1>
-  {{> script }}
-</body>
+  {{> head }}
+  <body>
+    {{> global/mainNavigation }}
+
+    <main>
+      <section class="mt-24 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between">
+          <h2 class="text-white font-bold text-2xl">Displaying <span class="text-primaryRed">100</span> Search Results for “Evil”:</h2>
+          <div>
+            <div class="flex">
+              <div class="mr-4">
+                <label for="location" class="sr-only">Location</label>
+                <select id="location" class="form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                  <option selected>Sort by</option>
+                  <option>Title</option>
+                  <option>Year</option>
+                  <option>Author</option>
+                </select>
+              </div>
+              {{> ui/ctaBtn link='/contact' text='Revise Search' }}
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 gap-6">
+          {{#each documents }}
+            {{> ui/resultCard this }}
+          {{/each}}
+        </div>
+      </section>
+    </main>
+
+    {{> global/mainFooter }}
+
+    {{> script }}
+  </body>
 </html>

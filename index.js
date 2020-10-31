@@ -35,8 +35,8 @@ mongoClient.connect(async (connectionError, client) => {
   try {
     const db = client.db(DB_NAME);
     collections.forEach(async (collection) => {
-      app.locals[collection] =
-        db.collection(collection, schema[collection]) || (await db.createCollection(collection, schema[collection]));
+      app.locals[collection] = db.collection(collection)
+      || await db.createCollection(collection);
     });
     return app.listen(EXPRESS_PORT, () => {
       if (Env.is('development')) {
