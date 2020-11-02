@@ -1,7 +1,11 @@
 require('dotenv').config();
-const { MongoClient } = require('mongodb');
 const csv = require('csvtojson');
-// const collections = require('../constants/collections');
+const { MongoClient } = require('mongodb');
+const collections = require('../constants/collections');
+const {
+  propToArray,
+  specialCharFilter,
+} = require('../constants/dataFilters');
 
 const file = './data/books_.csv';
 
@@ -11,14 +15,55 @@ const {
   DB_PORT,
 } = process.env;
 
-const filter = {
-  'ISBN-13': '\n',
-  'Films Discussed': '\n',
-  Tags: ', ',
-};
+const convertToCamelCase = (key) => key
+  .replace(/[^a-zA-Z ]/g, ' ')
+  .split(' ')
+  .map((s, i) => (
+    (i > 0 ? `${s.charAt(0).toUpperCase()}${s.slice(1)}` : s)
+  ))
+  .join('');
+
+const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, {
+  useUnifiedTopology: true,
+});
+
+mongoClient.connect(async (connectionError, client) => {
+  if (connectionError) {
+    return console.error(connectionError);
+  }
+
+  try {
+    const json = await csv().fromFile(file);
+
+    const filteredJson = json.map((document) => {
+      const filteredObj = {};
+      const docKeys = Object.keys(document);
+      docKeys.forEach((key) => {
+        // const camelKey = convertToCamelCase(key);
+        if (propToArray[key]) {
+          filteredObj[key] = document[key].split(propToArray[key]);
+        } else {
+          filteredObj[key] = document[key];
+        }
+      });
+      return filteredObj;
+    });
+
+    // console.log(filteredJson);
+
+  //   const db = client.db(DB_NAME);
+  //   const books = db.collection('books') || await db.createCollection('books');
+  //   const { result: { ok, n } } = await books.insertMany();
+  //   if (ok) {
+  //     console.log(`Inserted ${n} documents`);
+  //   }
+    return mongoClient.close();
+  } catch (error) {
+    return console.error(error);
+  }
+});
 
 
-const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, { useUnifiedTopology: true });
 
 const reformatData = (filterKeys, jsonArr) => {
   const filteredJsonArr = jsonArr.map((item) => {
@@ -39,22 +84,5 @@ const reformatData = (filterKeys, jsonArr) => {
     return updateObject;
   });
 
-  mongoClient.connect(async (connectionError, client) => {
-    if (connectionError) {
-      return console.error(connectionError);
-    }
-    try {
-      const db = client.db(DB_NAME);
-      const books = db.collection('books') || await db.createCollection('books');
-      const { result: { ok, n } } = await books.insertMany(filteredJsonArr);
-      if (ok) {
-        console.log(`Inserted ${n} documents`);
-      }
-      mongoClient.close();
-    } catch (error) {
-      return console.error(error);
-    }
-  });
 };
 
-csv().fromFile(file).then((jsonObj) => reformatData(filter, jsonObj));
