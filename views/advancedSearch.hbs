@@ -4,8 +4,334 @@
   <body>
     {{> global/mainNavigation }}
 
-    <main>
-      <h1>Hi</h1>
+    <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+      <section class="flex justify-between">
+        <div class="flex flex-col">
+          <h1 class="text-3xl font-bold text-white">Advanced Search</h1>
+        </div>
+      </section>
+      <section class="px-6 py-6 rounded shadow-md bg-blackLight">
+        <form>
+          <div>
+            <div class="pt-8 mt-8 sm:mt-5 sm:pt-2">
+              <div>
+                <h3 class="text-2xl font-bold leading-6 text-gray-400">Search Criteria</h3>
+              </div>
+              <div class="mt-6 sm:mt-5">
+                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+                  <label for="title" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Title
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="title"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        placeholder="Title of book or article"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label for="author" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Author
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="author"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        placeholder="Primary Author"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label for="issn" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    ISSN or ISSB-13
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="issn"
+                        type="number"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label for="publication-year" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Publication Year
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="publication-year"
+                        type="number"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label
+                    for="journal"
+                    class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
+                  >
+                  Journal
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="journal"
+                        type="text"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        placeholder="Search through available journals"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label for="keywords" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Keywords
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="keywords"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        placeholder="Comma seperated tag list"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
+                >
+                  <label for="film" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Film
+                  </label>
+                  <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <div class="max-w-lg rounded-md shadow-sm">
+                      <input
+                        id="film"
+                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        placeholder="Films used for reference"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-8 mt-8 sm:mt-5 sm:pt-10">
+              <div>
+                <h3 class="text-2xl font-bold leading-6 text-gray-400">Limit Your Search</h3>
+              </div>
+              <div class="mt-6 sm:mt-5">
+                <div class= sm:pt-5">
+                  <div role="group" aria-labelledby="label-email">
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                      <div>
+                        <div
+                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
+                          id="label-email"
+                        >
+                         Type of Publication
+                        </div>
+                      </div>
+                      <div class="mt-4 sm:mt-0 sm:col-span-2">
+                        <div class="max-w-lg">
+                          <div class="relative flex items-start">
+                            <div class="flex items-center h-5">
+                              <input
+                                id="books"
+                                type="checkbox"
+                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                              />
+                            </div>
+                            <div class="ml-3 text-sm leading-5">
+                              <label for="books" class="text-lg font-medium text-gray-500">Books</label>                            </div>
+                          </div>
+                          <div class="mt-4">
+                            <div class="relative flex items-start">
+                              <div class="flex items-center h-5">
+                                <input
+                                  id="articles"
+                                  type="checkbox"
+                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                />
+                              </div>
+                              <div class="ml-3 text-sm leading-5">
+                                <label for="articles" class="text-lg font-medium text-gray-500">Articles</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 sm:mt-5">
+                <div class= sm:pt-5">
+                  <div role="group" aria-labelledby="label-email">
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                      <div>
+                        <div
+                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
+                          id="label-email"
+                        >
+                         Availability
+                        </div>
+                      </div>
+                      <div class="mt-4 sm:mt-0 sm:col-span-2">
+                        <div class="max-w-lg">
+                          <div class="relative flex items-start">
+                            <div class="flex items-center h-5">
+                              <input
+                                id="free-online-copy"
+                                type="checkbox"
+                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                              />
+                            </div>
+                            <div class="ml-3 text-sm leading-5">
+                              <label for="free-online-copy" class="text-lg font-medium text-gray-500">Free Online Copy</label>                            </div>
+                          </div>
+                          <div class="mt-4">
+                            <div class="relative flex items-start">
+                              <div class="flex items-center h-5">
+                                <input
+                                  id="jstor"
+                                  type="checkbox"
+                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                />
+                              </div>
+                              <div class="ml-3 text-sm leading-5">
+                                <label for="jstor" class="text-lg font-medium text-gray-500">JSTOR</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mt-4">
+                            <div class="relative flex items-start">
+                              <div class="flex items-center h-5">
+                                <input
+                                  id="academia-edu"
+                                  type="checkbox"
+                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                />
+                              </div>
+                              <div class="ml-3 text-sm leading-5">
+                                <label for="academia-edu" class="text-lg font-medium text-gray-500">Academia.edu</label>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mt-4">
+                            <div class="relative flex items-start">
+                              <div class="flex items-center h-5">
+                                <input
+                                  id="project-muse"
+                                  type="checkbox"
+                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                />
+                              </div>
+                              <div class="ml-3 text-sm leading-5">
+                                <label for="project-muse" class="text-lg font-medium text-gray-500">Project Muse</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-6 sm:mt-5">
+                <div class= sm:pt-5">
+                  <div role="group" aria-labelledby="label-email">
+                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+                      <div>
+                        <div
+                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
+                          id="label-email"
+                        >
+                        Professor Lex Wisdom
+                        </div>
+                      </div>
+                      <div class="mt-4 sm:mt-0 sm:col-span-2">
+                        <div class="max-w-lg">
+                          <div class="relative flex items-start">
+                            <div class="flex items-center h-5">
+                              <input
+                                id="summary"
+                                type="checkbox"
+                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                              />
+                            </div>
+                            <div class="ml-3 text-sm leading-5">
+                              <label for="summary" class="text-lg font-medium text-gray-500">Horror Lex Summary available</label>
+                            </div>
+                          </div>
+                          <div class="mt-4">
+                            <div class="relative flex items-start">
+                              <div class="flex items-center h-5">
+                                <input
+                                  id="recommended"
+                                  type="checkbox"
+                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                />
+                              </div>
+                              <div class="ml-3 text-sm leading-5">
+                                <label for="recommended" class="text-lg font-medium text-gray-500">Horror Lex Recommended</label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pt-5 mt-8">
+            <div class="flex justify-end">
+              <span class="inline-flex rounded-md shadow-sm">
+                <button
+                  type="button"
+                  class="px-4 py-2 text-lg font-medium text-gray-600 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+                >
+                  Reset
+                </button>
+              </span>
+              <span class="inline-flex ml-3 rounded-md shadow-sm">
+                <button
+                  type="submit"
+                  class="inline-flex justify-center px-8 py-2 text-lg font-medium text-white transition duration-150 ease-in-out border border-transparent rounded-md bg-primaryOrange hover:bg-primaryOrangeDark focus:outline-none focus:border-primaryOrange focus:shadow-outline-indigo active:bg-primaryOrange"
+                >
+                  Search
+                </button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </section>
     </main>
 
     {{> global/mainFooter }}
