@@ -4,19 +4,109 @@
   <body>
     {{> global/mainNavigation }}
 
-    <main>
-      <section class="mt-24 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between">
-          <h1 class="text-white font-bold text-2xl">{{ document.title }}</h1>
-          <p>{{ document.author }}</p>
-          <p>{{ document.horrorLexSummary }}</p>
+    <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+      <section class="flex justify-between">
+        <div class="flex flex-col">
+          <h1 class="text-3xl italic font-bold text-white">{{ document.title }}</h1>
+          <p class="text-lg font-medium text-gray-300">{{ document.author }}</p>
         </div>
+        {{> ui/ctaBtn link='/advanced-search' text='Revise Search' }}
       </section>
-      <section class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-6">
-          {{#each documents }}
-            {{> ui/resultCard this }}
-          {{/each}}
+      <section class="px-6 py-10 rounded shadow-md bg-blackLight">
+        <!-- Top Half-->
+        <div class="grid grid-cols-12 gap-8">
+          <div class="grid grid-flow-row col-span-7 auto-rows-auto">
+            <div class="space-y-2">
+              {{> ui/resultKey text='ISBN-13' }}
+              <p class="text-lg font-medium text-gray-300">{{ document.[isbn-13] }}</p>
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='Year' }}
+              <p class="text-lg font-medium text-gray-300">{{ document.year }}</p>
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='Original Publisher' }}
+              <p class="text-lg font-medium text-gray-300">{{ document.originalPublisher }}</p>
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='Updated Edition' }}
+              {{#if document.updatedEdition }}
+              <p class="text-lg font-medium text-gray-300">{{ document.updatedEdition }}</p>
+              {{else}}
+              <p class="text-lg font-medium text-gray-800">Not available</p>
+              {{/if}}
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='Free Online Copy' }}
+              {{#if document.freeOnlineCopy }}
+              <p class="text-lg font-medium text-gray-300">{{ document.freeOnlineCopy }}</p>
+              {{else}}
+              <p class="text-lg font-medium text-gray-800">Not available</p>
+              {{/if}}
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='Publisher/Stable URL' }}
+              <a
+                href="{{ document.[publisher/stableUrl] }}"
+                target="_blank"
+                rel="noopener"
+                class="text-lg font-medium text-primaryOrange"
+                >{{ document.[publisher/stableUrl] }}</a
+              >
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='MLA 8 Citation' }}
+              <p class="text-lg font-medium text-gray-300">{{ document.mla8Citation }}</p>
+            </div>
+            <div class="space-y-2">
+              {{> ui/resultKey text='For More Information' }}
+              <div class="flex justify-between">
+                <a href="{{ document.googleBooks }}" target="_blank" rel="noopener" class="inline-block">
+                  <img src="/public/img/logo/gb.png" alt="Google Books logo" class="h-10" />
+                </a>
+                <a href="{{ document.goodreads }}" target="_blank" rel="noopener" class="inline-block">
+                  <img src="/public/img/logo/gr.png" alt="Good Reads Logo" class="h-10" />
+                </a>
+                <a href="{{ document.worldcat }}" target="_blank" rel="noopener" class="inline-block">
+                  <img src="/public/img/logo/wc.png" alt="World Cat Logo" class="h-10" />
+                </a>
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div class="col-span-5">
+            <img src="/public/img/result-book-cover.jpg" alt="" />
+          </div>
+        </div>
+        <hr class="my-16" />
+        <!-- Bottom Half-->
+        <div class="space-y-8">
+          <div class="max-w-3xl space-y-2">
+            {{> ui/resultKey text='Horror Lex Summary' }}
+            <p class="text-lg text-gray-300">{{ document.horrorLexSummary }}</p>
+          </div>
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-5 space-y-2">
+              {{> ui/resultKey text='Films Discussed' }}
+              {{#each document.filmsDiscussed}}
+              <li class="text-base font-normal text-gray-400">{{ this }}</li>
+              {{else}}
+              <p class="text-lg font-medium text-gray-800">Not available</p>
+              {{/each}}
+            </div>
+            <div class="col-span-7 space-y-2">
+              {{> ui/resultKey text='Tags' }}
+              {{#each document.tags}}
+              <span
+                class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-gray-800"
+                >{{ this }}
+              </span>
+              {{else}}
+              <p class="text-lg font-medium text-gray-800">Not available</p>
+              {{/each}}
+            </div>
+          </div>
         </div>
       </section>
     </main>
