@@ -7,7 +7,7 @@
     <main>
       <section class="mt-24 px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
-          <h2 class="text-white font-bold text-2xl">Displaying <span class="text-primaryRed">100</span> Search Results for “Evil”:</h2>
+          <h2 class="text-white font-bold text-2xl">Displaying <span class="text-primaryRed">{{range}} of {{total}}</span> Search Results for {{param}}:</h2>
           <div>
             <div class="flex">
               <div class="mr-4">
@@ -31,6 +31,12 @@
           {{/each}}
         </div>
       </section>
+      {{#if nextPage }}
+        <a href="/results/?{{type}}={{param}}&page={{nextPage}}&count={{count}}">Next</a>
+      {{/if}}
+      {{#if lastPage }}
+        <a href="/results/?{{type}}={{param}}&page={{lastPage}}&count={{count}}">Last</a>
+      {{/if}}
     </main>
 
     {{> global/mainFooter }}
