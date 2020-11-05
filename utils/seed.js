@@ -10,6 +10,17 @@ const {
   DB_PORT,
 } = process.env;
 
+/** Convert keys to camelCase assuming input is following a case where each
+ * word is capitalized. E.g., "Original Publisher" or "Horror Lex Summary"
+*/
+const camelCase = (key) => {
+  const words = key.split(' ');
+  const converted = words.map((word, i) => (i > 0
+    ? word.replace(/[^a-zA-Z0-9]/g, '')
+    : word.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')));
+  return converted.join('');
+};
+
 const createAndInsertDocs = async (db, name, path) => {
   try {
     const csvToObj = await csv().fromFile(path);
@@ -17,7 +28,7 @@ const createAndInsertDocs = async (db, name, path) => {
       const doc = {};
       const docKeys = Object.keys(document);
       docKeys.forEach((key) => {
-        doc[key] = propToArray[key]
+        doc[camelCase(key)] = propToArray[key]
           ? document[key].split(propToArray[key])
           : document[key];
       });
