@@ -6,9 +6,4 @@ module.exports = {
     'Films Discussed': '\n',
     Tags: ', ',
   },
-  // strips/replaces special characters from keys
-  specialCharFilter: {
-    '/': '',
-    '-': '',
-  },
 };
