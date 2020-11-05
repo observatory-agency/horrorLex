@@ -1,13 +1,21 @@
 # Horror Lex
 
-Requirements:
+## Prerequisites 
 
 - Node >= 14
 - Mongo DB
 
-Getting Started
+## Running the Project
 
+### Install Dependencies
 - `npm i`
-- set up a `.env` file
-- development: `npm run start:dev`
-- production: `npm run start:prod`
+
+### Add a local `.env` file
+- Add `.env` file to the project root, using `.env-sample` as a template
+
+### Seed the local database
+- Add the `books.csv` file to `./data`
+- `npm run db:seed`
+
+### Development Builds
+- `npm run start:dev`
