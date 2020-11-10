@@ -24,7 +24,7 @@ async function getAll(req, res, next) {
     } = req;
 
     const pageNumber = parseInt(page, 10) || 1;
-    const skip = (pageNumber - 1) * DOCS_PER_PAGE;
+    const skip = (pageNumber - 1) * count;
 
     const query = [];
     const text = { $match: { $text: { $search: search } } };
@@ -61,17 +61,20 @@ async function getAll(req, res, next) {
 
     const total = results.total[0].count;
     const range = (documents.length + skip);
-    const nextPage = (range < total) ? (pageNumber + 1) : null;
-    const lastPage = (pageNumber !== 1) ? (pageNumber - 1) : null;
+    const nextPage = (range < total) ? (pageNumber + 1) : 0;
+    const lastPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
+    const pageCount = Math.ceil(total / count);
+    const pages = Array.from({ length: pageCount }, (a, i) => i + 1);
 
     return res.render('results', {
+      count, // query param for count (number per page)
       documents,
-      count,
       lastPage,
       nextPage,
-      range,
-      total,
-      param: tag || search,
+      pages, // an array of page numbers
+      range, // chunk of documents for the page
+      total, // documents total count
+      param: tag || search, // query param for action
       type: (tag && 'tag') || (search && 'search'),
     });
   } catch (error) {

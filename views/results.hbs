@@ -65,47 +65,29 @@
           <div class="flex flex-1 w-0"></div>
           {{/if}}
           <div class="hidden md:flex">
-            <a
-              href="/results/?{{ type }}={{ param }}&page={{ 1 }}&count={{ count }}"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
-            >
-              1
-            </a>
-            <a
-              href="/results/?{{ type }}={{ param }}&page={{ 2 }}&count={{ count }}"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-primaryOrangeDark text-primaryOrange focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
-            >
-              2
-            </a>
-            <a
-              href="/results/?{{ type }}={{ param }}&page={{ 3 }}&count={{ count }}"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
-            >
-              3
-            </a>
+            {{#each pages}}
+              {{#pager this }}
+                <a
+                  href="/results/?{{type}}={{param}}&page={{2}}&count={{count}}"
+                  class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-primaryOrangeDark text-primaryOrange focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
+                >
+                  {{this}}
+                </a>
+              {{ else }}
+                <a
+                  href="/results/?{{../type}}={{../param}}&page={{this}}&count={{../count}}"
+                  class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
+                >
+                  {{this}}
+                </a>
+              {{/pager}}
+            {{/each}}
+
             <span
               class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 border-t-2 border-transparent"
             >
               ...
             </span>
-            <a
-              href="#"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
-            >
-              8
-            </a>
-            <a
-              href="#"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
-            >
-              9
-            </a>
-            <a
-              href="#"
-              class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
-            >
-              10
-            </a>
           </div>
           {{#if nextPage }}
           <div class="flex justify-end flex-1 w-0">
