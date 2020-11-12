@@ -1,16 +1,4 @@
-// TODO - this may be controlled in the UI
-const DOCS_PER_PAGE = 10;
-
 async function getAll(req, res, next) {
-  // try {
-  //   const { app: { locals: { books } } } = req;
-  //   const allDocuments = await books.find().toArray();
-  //   // const document = documents[Math.floor(Math.random() * documents.length - 1)];
-  //   const documents = allDocuments.slice(0, 10);
-  //   return documents ? res.render('results', { documents }) : res.sendStatus(500);
-  // } catch (error) {
-  //   return next(error);
-  // }
   try {
     const {
       app: { locals: { books } },
@@ -18,7 +6,7 @@ async function getAll(req, res, next) {
         count,
         page,
         search,
-        sort,
+        // sort,
         tag,
       },
     } = req;
@@ -31,7 +19,7 @@ async function getAll(req, res, next) {
     const match = { $match: { tags: tag } };
     const facet = {
       $facet: {
-        // TODO add sort
+        // TODO add sorting
         documents: [{ $skip: skip }, {
           $limit: parseInt(count, 10) || 10,
         }],
@@ -62,20 +50,27 @@ async function getAll(req, res, next) {
     const total = results.total[0].count;
     const range = (documents.length + skip);
     const nextPage = (range < total) ? (pageNumber + 1) : 0;
-    const lastPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
-    const pageCount = Math.ceil(total / count);
-    const pages = Array.from({ length: pageCount }, (a, i) => i + 1);
+    const prevPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
+    const currPage = pageNumber;
+    const pages = Array.from({ length: Math.ceil(total / count) }, (a, i) => i + 1);
+    const param = tag || search;
+    const type = (tag && 'tag') || (search && 'search');
 
     return res.render('results', {
-      count, // query param for count (number per page)
       documents,
-      lastPage,
-      nextPage,
-      pages, // an array of page numbers
-      range, // chunk of documents for the page
-      total, // documents total count
-      param: tag || search, // query param for action
-      type: (tag && 'tag') || (search && 'search'),
+      page: {
+        count,
+        param,
+        range,
+        total,
+        type,
+      },
+      pagination: {
+        pages,
+        prevPage,
+        currPage,
+        nextPage,
+      },
     });
   } catch (error) {
     return next(error);
