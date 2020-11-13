@@ -1,5 +1,4 @@
 const hbs = require('hbs');
-const { filter } = require('../../constants/navBar');
 const navBar = require('../../constants/navBar');
 const Env = require('../../lib/Env');
 
@@ -13,21 +12,39 @@ const registerHelpers = () => {
     const BUFFER = 5;
     const { currPage } = options.data.root.pagination;
     // recurse to extract a chunk with a buffer that won't overflow
-    const getSlice = (left, middle, right) => {
-      const overflowLeft = left >= 0 && right >= pages.length;
-      const overflowRight = left <= 0 && right <= pages.length;
-      if (overflowLeft) return getSlice(left - 1, middle, right - 1);
-      if (overflowRight) return getSlice(left + 1, middle, right + 1);
-      return pages.slice(left, right);
+    const getSlice = (start, stop) => {
+      const leftSkip = start > 1;
+      const rightSkip = stop < pages.length - 1;
+      const overflowLeft = start >= 0 && stop >= pages.length;
+      const overflowRight = start <= 0 && stop <= pages.length;
+      if (overflowLeft) {
+        return getSlice(start - 1, stop - 1);
+      }
+      if (overflowRight) {
+        return getSlice(start + 1, stop + 1);
+      }
+
+      const slice = pages.slice(start, stop);
+
+      if (leftSkip && rightSkip) {
+        return ['...', ...slice, '...'];
+      }
+      if (rightSkip) {
+        return [...slice, '...'];
+      }
+      if (leftSkip) {
+        return ['...', ...slice];
+      }
+      return slice;
     };
+
     const first = pages[0];
     const last = pages[pages.length - 1];
-    // current page starts at the "middle" of the buffer
     const middle = Math.ceil(BUFFER / 2);
-    const left = (currPage - middle);
-    const right = ((currPage + middle) - 1);
-    const filteredPages = [first, ...getSlice(left, middle, right), last];
-    return filteredPages.map((index) => options.fn(pages[index - 1])).join('');
+    const start = pages.length < BUFFER ? 1 : (currPage - middle);
+    const stop = pages.length < BUFFER ? pages.length - 1 : ((currPage + middle) - 1);
+    const filteredPages = [first, ...getSlice(start, stop), last];
+    return filteredPages.map((page) => options.fn({ page: pages[page - 1] })).join('');
   });
   // for pageActove, we need the correct 'this', so use a regular function
   hbs.registerHelper('pageActive', function callback(page, options) {

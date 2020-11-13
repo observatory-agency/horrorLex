@@ -68,7 +68,7 @@
             {{!-- pageNumber iterates the pages array --}}
             {{#pageNumber pagination.pages}}    
               {{!-- pageSkip determines if we are showing a slice of pages --}}
-              {{#pageSkip this}}
+              {{#pageSkip this.page}}
                 <span
                   class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 border-t-2 border-transparent"
                 >
@@ -76,23 +76,23 @@
                 </span>
               {{/pageSkip}}      
               {{!-- pageActive determines if the page is the active page --}}
-              {{#pageActive this}}
+              {{#pageActive this.page}}
                 <a
-                  href="/results/?{{../page.type}}={{../page.param}}&page={{this}}&count={{../page.count}}"
+                  href="/results/?{{../page.type}}={{../page.param}}&page={{this.page}}&count={{../page.count}}"
                   class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-primaryOrangeDark text-primaryOrange focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
                 >
-                  {{this}}
+                  {{this.page}}
                 </a>
               {{ else }}
                 <a
-                  href="/results/?{{../page.type}}={{../page.param}}&page={{this}}&count={{../page.count}}"
+                  href="/results/?{{../page.type}}={{../page.param}}&page={{this.page}}&count={{../page.count}}"
                   class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
                 >
-                  {{this}}
+                  {{this.page}}
                 </a>
               {{/pageActive}}
               {{!-- pageSkip determines if we are showing a slice of pages --}}
-              {{#pageSkip this}}
+              {{#pageSkip this.page}}
                 <span
                   class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 border-t-2 border-transparent"
                 >
