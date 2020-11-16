@@ -11,50 +11,52 @@ async function getAll(req, res, next) {
       },
     } = req;
 
+    const countNumber = parseInt(count, 10) || 10;
     const pageNumber = parseInt(page, 10) || 1;
-    const skip = (pageNumber - 1) * count;
+    const skip = (pageNumber - 1) * countNumber;
 
     const query = [];
-    const text = { $match: { $text: { $search: search } } };
-    const match = { $match: { tags: tag } };
-    const facet = {
+    const textQuery = { $match: { $text: { $search: search } } };
+    const tagQuery = { $match: { tags: tag } };
+    const facetQuery = {
       $facet: {
         // TODO add sorting
         documents: [{ $skip: skip }, {
-          $limit: parseInt(count, 10) || 10,
+          $limit: countNumber,
         }],
         total: [{ $count: 'count' }],
       },
     };
 
     if (tag) {
-      query.push(match);
+      query.push(tagQuery);
     }
 
     if (search) {
-      query.push(text);
+      query.push(textQuery);
     }
 
-    query.push(facet);
+    query.push(facetQuery);
 
     const [results] = await books.aggregate(query).toArray();
     const { documents } = results;
-
-    if (!documents.length > 0) {
-      return res.render('results', {
-        noResults: true,
-        param: search,
-      });
-    }
-
     const total = results.total[0].count;
     const range = (documents.length + skip);
     const nextPage = (range < total) ? (pageNumber + 1) : 0;
     const prevPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
     const currPage = pageNumber;
-    const pages = Array.from({ length: Math.ceil(total / count) }, (a, i) => i + 1);
+    const pages = Array.from({ length: Math.ceil(total / countNumber) }, (a, i) => i + 1);
     const param = tag || search;
     const type = (tag && 'tag') || (search && 'search');
+
+    // TODO handle queries with no results
+    if (!documents.length > 0) {
+      return res.sendStatus(400);
+      // return res.render('results', {
+      //   noResults: true,
+      //   param: search,
+      // });
+    }
 
     return res.render('results', {
       documents,
