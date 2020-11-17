@@ -44,8 +44,8 @@
     "client:prod": "webpack --config webpack.prod.js",
     "start:dev": "NODE_ENV=development npm run server:dev & npm run client:dev",
     "start:prod": "NODE_ENV=production npm run client:prod && npm server:prod",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "NODE_ENV=development jest",
+    "test:watch": "NODE_ENV=development jest --watch"
   },
   "author": "Observatory Agency",
   "license": "UNLICENSED"
