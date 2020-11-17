@@ -2,6 +2,9 @@
 import '../styles/base.css';
 import '../styles/main.css';
 
-(() => {
-  console.log('yo dawggg');
-})();
+import Search from './search';
+
+const quickSearchElement = document.getElementById('quick-search');
+const quickSearchBar = new Search(quickSearchElement);
+
+quickSearchBar.quickSearch();

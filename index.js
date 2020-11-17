@@ -34,6 +34,7 @@ registerPartials();
 
 app.set('view engine', 'hbs');
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/', home);
 app.use('/about', about);
 app.use('/advanced-search', advancedSearch);

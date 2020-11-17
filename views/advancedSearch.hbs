@@ -11,7 +11,7 @@
         </div>
       </section>
       <section class="px-6 py-6 rounded shadow-md bg-blackLight">
-        <form>
+        <form method="POST" id="advanced-search" action="/advanced-search">
           <div>
             <div class="pt-8 mt-8 sm:mt-5 sm:pt-2">
               <div>
@@ -26,6 +26,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="title"
+                        name="title"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                         placeholder="Title of book or article"
                       />
@@ -43,6 +44,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="author"
+                        name="author"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                         placeholder="Primary Author"
                       />
@@ -60,6 +62,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="issn"
+                        name="issn"
                         type="number"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                       />
@@ -77,6 +80,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="publication-year"
+                        name="publication-year"
                         type="number"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                       />
@@ -97,6 +101,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="journal"
+                        name="journal"
                         type="text"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                         placeholder="Search through available journals"
@@ -115,6 +120,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="keywords"
+                        na="keywords"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                         placeholder="Comma seperated tag list"
                       />
@@ -132,6 +138,7 @@
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="film"
+                        name="film"
                         class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
                         placeholder="Films used for reference"
                       />
@@ -162,6 +169,7 @@
                             <div class="flex items-center h-5">
                               <input
                                 id="books"
+                                name="books"
                                 type="checkbox"
                                 class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                               />
@@ -174,6 +182,7 @@
                               <div class="flex items-center h-5">
                                 <input
                                   id="articles"
+                                  name="articles"
                                   type="checkbox"
                                   class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                                 />
@@ -207,6 +216,7 @@
                             <div class="flex items-center h-5">
                               <input
                                 id="free-online-copy"
+                                name="free-online-copy"
                                 type="checkbox"
                                 class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                               />
@@ -219,6 +229,7 @@
                               <div class="flex items-center h-5">
                                 <input
                                   id="jstor"
+                                  name="jstor"
                                   type="checkbox"
                                   class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                                 />
@@ -233,6 +244,7 @@
                               <div class="flex items-center h-5">
                                 <input
                                   id="academia-edu"
+                                  name="academia-edu"
                                   type="checkbox"
                                   class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                                 />
@@ -248,6 +260,7 @@
                                 <input
                                   id="project-muse"
                                   type="checkbox"
+                                  name="project-muse"
                                   class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                                 />
                               </div>
@@ -280,6 +293,7 @@
                             <div class="flex items-center h-5">
                               <input
                                 id="summary"
+                                name="summary"
                                 type="checkbox"
                                 class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                               />
@@ -293,6 +307,7 @@
                               <div class="flex items-center h-5">
                                 <input
                                   id="recommended"
+                                  name="recommended"
                                   type="checkbox"
                                   class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
                                 />
@@ -313,12 +328,14 @@
           <div class="pt-5 mt-8">
             <div class="flex justify-end">
               <span class="inline-flex rounded-md shadow-sm">
-                <button
+                <a href="/advanced-search">
+                  <button
                   type="button"
                   class="px-4 py-2 text-lg font-medium text-gray-600 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
                 >
                   Reset
                 </button>
+                </a>
               </span>
               <span class="inline-flex ml-3 rounded-md shadow-sm">
                 <button

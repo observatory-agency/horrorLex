@@ -1,3 +1,16 @@
+async function advancedSearch(req, res, next) {
+  try {
+    const {
+      app: { locals: { books } },
+      body,
+    } = req;
+    console.log({ body });
+    return res.json(body);
+  } catch (error) {
+    return next(error);
+  }
+}
+
 async function getAll(req, res, next) {
   try {
     const {
@@ -91,6 +104,7 @@ async function getOne(req, res, next) {
 }
 
 module.exports = {
+  advancedSearch,
   getAll,
   getOne,
 };
