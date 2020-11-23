@@ -94,10 +94,12 @@ async function getAll(req, res, next) {
 
 async function getOne(req, res, next) {
   try {
-    const { app: { locals: { books } } } = req;
-    const documents = await books.find().toArray();
-    const document = documents[Math.floor(Math.random() * documents.length - 1)];
-    return document ? res.render('individualResult', { document }) : res.sendStatus(500);
+    const {
+      app: { locals: { books } },
+      params: { book },
+    } = req;
+    const document = await books.findOne({ href: book });
+    return document ? res.render('book', { document }) : res.sendStatus(404);
   } catch (error) {
     return next(error);
   }

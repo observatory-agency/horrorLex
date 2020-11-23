@@ -4,10 +4,10 @@ const { MongoClient } = require('mongodb');
 const {
   about,
   advancedSearch,
+  book,
   browse,
   contact,
   home,
-  individualResult,
   results,
 } = require('./routes');
 // TODO apply schema when our data model is finalized
@@ -40,9 +40,10 @@ app.use('/about', about);
 app.use('/advanced-search', advancedSearch);
 app.use('/browse', browse);
 app.use('/contact', contact);
-app.use('/individual-result', individualResult);
 app.use('/results', results);
 app.use('/public', express.static('public'));
+// book is last, as we want all other routes attempted first
+app.use('/', book);
 
 mongoClient.connect(async (connectionError, client) => {
   if (connectionError) {
