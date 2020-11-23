@@ -5,7 +5,7 @@ class Search {
   }
 
   browse() {
-    
+
   }
 
   quickSearch() {
