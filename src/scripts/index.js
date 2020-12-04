@@ -5,6 +5,12 @@ import '../styles/main.css';
 import Search from './search';
 
 const quickSearchElement = document.getElementById('quick-search');
-const quickSearchBar = new Search(quickSearchElement);
+const sortByDropDownElement = document.getElementById('sort-results');
 
-quickSearchBar.quickSearch();
+if (quickSearchElement) {
+  new Search(quickSearchElement).quickSearch();
+}
+
+if (sortByDropDownElement) {
+  new Search(sortByDropDownElement).sortBy();
+} 

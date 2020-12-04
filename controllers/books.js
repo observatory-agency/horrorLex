@@ -19,7 +19,7 @@ async function getAll(req, res, next) {
         count,
         page,
         search,
-        // sort,
+        sort,
         tag,
       },
     } = req;
@@ -29,6 +29,7 @@ async function getAll(req, res, next) {
     const skip = (pageNumber - 1) * countNumber;
 
     const query = [];
+    const sortQuery = { $sort: { [sort]: 1 } };
     const textQuery = { $match: { $text: { $search: search } } };
     const tagQuery = { $match: { tags: tag } };
     const facetQuery = {
@@ -47,6 +48,10 @@ async function getAll(req, res, next) {
 
     if (search) {
       query.push(textQuery);
+    }
+    
+    if (sort) {
+      query.push(sortQuery);
     }
 
     query.push(facetQuery);
@@ -77,6 +82,7 @@ async function getAll(req, res, next) {
         count,
         param,
         range,
+        sort,
         total,
         type,
       },
