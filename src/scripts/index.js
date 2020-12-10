@@ -2,15 +2,16 @@
 import '../styles/base.css';
 import '../styles/main.css';
 
-import Search from './search';
+import Books from './Books';
 
-const quickSearchElement = document.getElementById('quick-search');
-const sortByDropDownElement = document.getElementById('sort-results');
+document.addEventListener('change', (event) => {
+  Books.sortHandler(event);
+});
 
-if (quickSearchElement) {
-  new Search(quickSearchElement).quickSearch();
-}
+document.addEventListener('click', (event) => {
+  Books.tagHandler(event);
+});
 
-if (sortByDropDownElement) {
-  new Search(sortByDropDownElement).sortBy();
-} 
+document.addEventListener('keydown', (event) => {
+  Books.quickSearchHandler(event);
+});

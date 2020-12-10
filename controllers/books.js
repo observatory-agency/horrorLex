@@ -11,10 +11,14 @@ async function advancedSearch(req, res, next) {
   }
 }
 
-async function getAll(req, res, next) {
+async function quickSearch(req, res, next) {
   try {
     const {
-      app: { locals: { books } },
+      app: {
+        locals: {
+          books,
+        },
+      },
       query: {
         count,
         page,
@@ -26,48 +30,40 @@ async function getAll(req, res, next) {
 
     const countNumber = parseInt(count, 10) || 10;
     const pageNumber = parseInt(page, 10) || 1;
-    const skip = (pageNumber - 1) * countNumber;
+    const skipNumber = (pageNumber - 1) * countNumber;
 
     const query = [];
-    const sortQuery = { $sort: { [sort]: 1 } };
-    const textQuery = { $match: { $text: { $search: search } } };
-    const tagQuery = { $match: { tags: tag } };
+    const sortQuery = { $sort: { [sort || 'title']: 1 } };
+    const textQuery = { $match: { $text: { $search: decodeURIComponent(search) } } };
+    const tagQuery = { $match: { tags: decodeURIComponent(tag) } };
     const facetQuery = {
       $facet: {
         // TODO add sorting
-        documents: [{ $skip: skip }, {
+        documents: [{ $skip: skipNumber }, {
           $limit: countNumber,
         }],
         total: [{ $count: 'count' }],
       },
     };
 
-    if (tag) {
-      query.push(tagQuery);
-    }
-
     if (search) {
       query.push(textQuery);
     }
-    
+
     if (sort) {
       query.push(sortQuery);
+    }
+
+    if (tag) {
+      query.push(tagQuery);
     }
 
     query.push(facetQuery);
 
     const [results] = await books.aggregate(query).toArray();
     const { documents } = results;
-    const total = results.total[0].count;
-    const range = (documents.length + skip);
-    const nextPage = (range < total) ? (pageNumber + 1) : 0;
-    const prevPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
-    const currPage = pageNumber;
-    const pages = Array.from({ length: Math.ceil(total / countNumber) }, (a, i) => i + 1);
-    const param = tag || search;
-    const type = (tag && 'tag') || (search && 'search');
 
-    // TODO handle queries with no results
+    // TODO handle queries with no results, show something in the UI
     if (!documents.length > 0) {
       return res.sendStatus(400);
       // return res.render('results', {
@@ -75,6 +71,18 @@ async function getAll(req, res, next) {
       //   param: search,
       // });
     }
+
+    const total = results.total[0].count;
+    const range = (documents.length + skipNumber);
+    const nextPage = (range < total) ? (pageNumber + 1) : 0;
+    const prevPage = (pageNumber !== 1) ? (pageNumber - 1) : 0;
+    const currPage = pageNumber;
+    const pages = Array.from({
+      length: Math.ceil(total / countNumber),
+    }, (a, i) => i + 1);
+    const getParam = tag || search;
+    const param = decodeURI(getParam);
+    const type = (tag && 'tag') || (search && 'search');
 
     return res.render('results', {
       documents,
@@ -113,6 +121,6 @@ async function getOne(req, res, next) {
 
 module.exports = {
   advancedSearch,
-  getAll,
+  quickSearch,
   getOne,
 };

@@ -3,7 +3,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const {
   about,
-  advancedSearch,
+  search,
   book,
   browse,
   contact,
@@ -37,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', home);
 app.use('/about', about);
-app.use('/advanced-search', advancedSearch);
+app.use('/search', search);
 app.use('/browse', browse);
 app.use('/contact', contact);
 app.use('/results', results);
