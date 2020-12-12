@@ -54,8 +54,13 @@ mongoClient.connect(async (connectionError, client) => {
     collections.forEach(async (collection) => {
       app.locals[collection] = db.collection(collection)
       || await db.createCollection(collection);
-      // TODO we may just have a single collection and more indexes
-      app.locals[collection].createIndex({ title: 'text' });
+      // FIXME we may just have a single collection and more indexes
+      app.locals[collection].createIndex({
+        author: 'text',
+        title: 'text',
+        isbn13: 'text',
+        year: 'text',
+      });
     });
     return app.listen(EXPRESS_PORT, () => {
       if (Env.is('development')) {

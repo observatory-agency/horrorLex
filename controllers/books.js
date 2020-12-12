@@ -5,6 +5,25 @@ async function advancedSearch(req, res, next) {
       body,
     } = req;
     console.log({ body });
+
+    // const search = // concat body
+
+    const countNumber = 10;
+    const pageNumber = 1;
+    const skipNumber = (pageNumber - 1) * countNumber;
+
+    const query = [];
+    const textQuery = { $match: { $text: { $search: decodeURIComponent(search) } } };
+    const facetQuery = {
+      $facet: {
+        // TODO add sorting
+        documents: [{ $skip: skipNumber }, {
+          $limit: countNumber,
+        }],
+        total: [{ $count: 'count' }],
+      },
+    };
+
     return res.json(body);
   } catch (error) {
     return next(error);
