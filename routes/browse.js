@@ -1,7 +1,8 @@
 const express = require('express');
-const { quickSearch } = require('../controllers/books');
+const { browse, getMany } = require('../controllers/books');
 
 const router = express.Router();
-router.get('/', quickSearch);
+router.get('/:letter', browse);
+router.post('/', getMany);
 
 module.exports = router;

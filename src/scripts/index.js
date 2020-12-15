@@ -9,6 +9,7 @@ document.addEventListener('change', (event) => {
 });
 
 document.addEventListener('click', (event) => {
+  Books.browseHandler(event);
   Books.tagHandler(event);
 });
 

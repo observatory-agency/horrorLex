@@ -8,8 +8,28 @@ class Books {
     return url.href;
   }
 
-  static browseHandler() {
+  static async browseHandler(event) {
     const name = 'browse';
+    const { dataset } = event.target;
+    if (dataset.handler && dataset.handler === name) {
+      try {
+        const data = await fetch('/browse', {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          redirect: 'follow',
+          referrerPolicy: 'no-referrer',
+          body: JSON.stringify({ documents: dataset.books.split(',') }),
+        });
+        const { books } = await data.json();
+        console.log({ books });
+      } catch (error) {
+        // TODO handle error UI
+        console.error(error);
+      }
+    }
   }
 
   static quickSearchHandler(event) {

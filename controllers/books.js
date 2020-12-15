@@ -1,3 +1,5 @@
+const { ObjectID } = require('mongodb');
+
 async function advancedSearch(req, res, next) {
   try {
     const {
@@ -25,6 +27,46 @@ async function advancedSearch(req, res, next) {
     };
 
     return res.json(body);
+  } catch (error) {
+    return next(error);
+  }
+}
+
+async function browse(req, res, next) {
+  try {
+    const {
+      app: { locals: { books } },
+      params: { letter },
+    } = req;
+    const lower = letter.toLowerCase();
+    const upper = letter.toUpperCase();
+
+    // ensure we have a valid letter
+    const isValid = (x) => (/[a-zA-Z]/).test(x) && x.length === 1;
+
+    if (!isValid(lower) && !isValid(upper)) {
+      return res.sendStatus(400);
+    }
+
+    const results = await books.aggregate([
+      { $unwind: '$filmsDiscussed' },
+      {
+        $match: { filmsDiscussed: { $regex: new RegExp(`^[${upper}${lower}]`) } },
+      }, {
+        $group: {
+          _id: '$filmsDiscussed',
+          documents: { $push: '$$ROOT._id' },
+        },
+      }, {
+        $sort: { _id: 1 },
+      },
+    ]).toArray();
+    res.render('browse.hbs', {
+      results: results.map(({ _id, documents }) => ({
+        title: _id,
+        books: documents,
+      })),
+    });
   } catch (error) {
     return next(error);
   }
@@ -138,8 +180,25 @@ async function getOne(req, res, next) {
   }
 }
 
+async function getMany(req, res, next) {
+  try {
+    const {
+      app: { locals: { books } },
+      body: { documents },
+    } = req;
+    const results = await books.find({
+      _id: { $in: documents.map((document) => ObjectID(document)) },
+    }).toArray();
+    res.json({ books: results });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   advancedSearch,
+  browse,
   quickSearch,
   getOne,
+  getMany,
 };
