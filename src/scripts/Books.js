@@ -59,9 +59,8 @@ class Books {
   }
 
   static quickSearchHandler(event) {
-    const enter = 'Enter';
     const { dataset, value } = event.target;
-    const enterKeyDown = event.key === enter;
+    const enterKeyDown = event.key === Books.enterKey;
     if (enterKeyDown && dataset.handler && dataset.handler === Books.quickSearch) {
       window.location.href = Books.getResultsUtil({
         count: 10,
@@ -102,6 +101,7 @@ class Books {
 Books.browse = 'browse';
 Books.browseEndPoint = '/browse';
 Books.browseSelector = 'div[data-container="browse"]';
+Books.enterKey = 'Enter';
 Books.paramPage = 'page';
 Books.paramSearch = 'search';
 Books.paramTag = 'tag';
