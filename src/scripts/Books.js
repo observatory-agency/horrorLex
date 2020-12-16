@@ -1,4 +1,6 @@
+/** Static class provides functionality for the UI to interface with API backend */
 class Books {
+  /** Private method builds a URL for requesting results */
   static getResultsUtil(params) {
     const url = new URL(`${window.origin}${Books.results}`);
     const keys = Object.keys(params);
@@ -8,6 +10,7 @@ class Books {
     return url.href;
   }
 
+  /** Private method creates DOM nodes with document data */
   static createBrowseItemUtil(book) {
     const root = document.querySelector(Books.browseSelector);
     const browseItem = document.createElement('div');
@@ -26,6 +29,7 @@ class Books {
     root.append(browseItem);
   }
 
+  /** Private method destroys DOM nodes */
   static destroyBrowseItemUtil() {
     const root = document.querySelector(Books.browseSelector);
     while (root.firstChild) {
@@ -33,6 +37,7 @@ class Books {
     }
   }
 
+  /** Public method to handle browse requests for associated documents */
   static async browseHandler(event) {
     const { dataset } = event.target;
     if (dataset.handler && dataset.handler === Books.browse) {
@@ -58,6 +63,7 @@ class Books {
     }
   }
 
+  /** Public method handles quick searches */
   static quickSearchHandler(event) {
     const { dataset, value } = event.target;
     const enterKeyDown = event.key === Books.enterKey;
@@ -70,6 +76,7 @@ class Books {
     }
   }
 
+  /** Public method handles tag clicks */
   static tagHandler(event) {
     const { dataset } = event.target;
     if (dataset.handler && dataset.handler === Books.tag) {
@@ -81,6 +88,7 @@ class Books {
     }
   }
 
+  /** Public method handles sorting results */
   static sortHandler(event) {
     const { dataset } = event.target;
     if (dataset.handler && dataset.handler === Books.sort) {
@@ -98,6 +106,7 @@ class Books {
   }
 }
 
+// Books static class enumerables
 Books.browse = 'browse';
 Books.browseEndPoint = '/browse';
 Books.browseSelector = 'div[data-container="browse"]';
