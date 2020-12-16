@@ -10,7 +10,7 @@ class Books {
     return url.href;
   }
 
-  /** Private method creates DOM nodes with document data */
+  /** Private method creates DOM nodes with Mongo document data */
   static createBrowseItemUtil(book) {
     const root = document.querySelector(Books.browseSelector);
     const browseItem = document.createElement('div');
