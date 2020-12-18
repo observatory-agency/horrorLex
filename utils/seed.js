@@ -21,6 +21,20 @@ const camelCase = (key) => {
   return converted.join('');
 };
 
+/** Create SEO friendly URL */
+// https://stackoverflow.com/questions/14107522/producing-seo-friendly-url-in-javascript
+const generateSeoUrl = (title) => title
+  .toString()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/\s+/g, '-')
+  .toLowerCase()
+  .replace(/&/g, '-and-')
+  .replace(/[^a-z0-9-]/g, '')
+  .replace(/-+/g, '-')
+  .replace(/^-*/, '')
+  .replace(/-*$/, '');
+
 const createAndInsertDocs = async (db, name, path) => {
   try {
     const csvToObj = await csv().fromFile(path);
@@ -32,6 +46,7 @@ const createAndInsertDocs = async (db, name, path) => {
           ? document[key].split(propToArray[key])
           : document[key];
       });
+      doc.href = generateSeoUrl(doc.title);
       return doc;
     });
     const collection = db.collection(name) || await db.createCollection(name);

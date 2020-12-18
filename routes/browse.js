@@ -1,7 +1,8 @@
 const express = require('express');
-const { getAll } = require('../controllers/books');
+const { browse, getMany } = require('../controllers/books');
 
 const router = express.Router();
-router.get('/', getAll);
+router.get('/:letter', browse);
+router.post('/', getMany);
 
 module.exports = router;

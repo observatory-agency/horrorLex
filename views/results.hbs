@@ -8,23 +8,24 @@
       <section class="px-4 mx-auto mt-16 max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-bold text-white">
-            Displaying <span class="text-primaryRed">{{ page.range }} of {{ page.total }}</span> Search Results for {{ page.param }}:
+            Displaying <span class="text-primaryRed">{{ page.range }} of {{ page.total }}</span> Search Results for "{{ page.param }}":
           </h2>
           <div>
             <div class="flex">
               <div class="mr-4">
-                <label for="location" class="sr-only">Location</label>
+                <label for="sort-results" class="sr-only">Sort By</label>
                 <select
-                  id="location"
+                  data-handler="sort"
+                  name="sort-results"
                   class="block w-full py-2 pl-3 pr-10 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                 >
-                  <option selected>Sort by</option>
-                  <option>Title</option>
-                  <option>Year</option>
-                  <option>Author</option>
+                  <option {{ isSelected 'sortBy' }} disabled>Sort by</option>
+                  <option {{ isSelected 'title' }} value="title">Title</option>
+                  <option {{ isSelected 'year' }} value="year">Year</option>
+                  <option {{ isSelected 'author' }} value="author">Author</option>
                 </select>
               </div>
-              {{> ui/ctaBtn link='/advanced-search' text='Revise Search' }}
+              {{> ui/ctaBtn link='/search' text='Revise Search' }}
             </div>
           </div>
         </div>
@@ -41,7 +42,7 @@
           {{#if pagination.prevPage }}
           <div class="flex flex-1 w-0">
             <a
-              href="/results/?{{page.type}}={{page.param}}&page={{pagination.prevPage}}&count={{page.count}}"
+              href="/results/?count={{page.count}}&page={{pagination.prevPage}}&{{page.type}}={{page.param}}&sort={{../../page.sort}}"
               class="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
             >
               <!-- Heroicon name: arrow-narrow-left -->
@@ -78,14 +79,14 @@
                 {{!-- pageActive determines if the page is the active page --}}
                 {{#pageActive ../this.page}}
                   <a
-                    href="/results/?{{../../page.type}}={{../../page.param}}&page={{../this.page}}&count={{../../page.count}}"
+                    href="/results/?count={{../../page.count}}&page={{../this.page}}&{{../../page.type}}={{../../page.param}}&sort={{../../page.sort}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-primaryOrangeDark text-primaryOrange focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
                   >
                     {{../this.page}}
                   </a>
                 {{ else }}
                   <a
-                    href="/results/?{{../../page.type}}={{../../page.param}}&page={{../this.page}}&count={{../../page.count}}"
+                    href="/results/?count={{../../page.count}}&page={{../this.page}}&{{../../page.type}}={{../../page.param}}&sort={{../../page.sort}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
                   >
                     {{../this.page}}
@@ -97,7 +98,7 @@
           {{#if pagination.nextPage }}
           <div class="flex justify-end flex-1 w-0">
             <a
-              href="/results/?{{page.type}}={{page.param}}&page={{pagination.nextPage}}&count={{page.count}}"
+              href="/results/?count={{page.count}}&page={{pagination.nextPage}}&{{page.type}}={{page.param}}&sort={{../../page.sort}}"
               class="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
             >
               Next

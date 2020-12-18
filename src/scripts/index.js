@@ -2,6 +2,17 @@
 import '../styles/base.css';
 import '../styles/main.css';
 
-(() => {
-  console.log('yo dawggg');
-})();
+import Books from './Books';
+
+document.addEventListener('change', (event) => {
+  Books.sortHandler(event);
+});
+
+document.addEventListener('click', (event) => {
+  Books.browseHandler(event);
+  Books.tagHandler(event);
+});
+
+document.addEventListener('keydown', (event) => {
+  Books.quickSearchHandler(event);
+});

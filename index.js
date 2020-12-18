@@ -3,11 +3,11 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const {
   about,
-  advancedSearch,
+  search,
+  book,
   browse,
   contact,
   home,
-  individualResult,
   results,
 } = require('./routes');
 // TODO apply schema when our data model is finalized
@@ -34,14 +34,16 @@ registerPartials();
 
 app.set('view engine', 'hbs');
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/', home);
 app.use('/about', about);
-app.use('/advanced-search', advancedSearch);
+app.use('/search', search);
 app.use('/browse', browse);
 app.use('/contact', contact);
-app.use('/individual-result', individualResult);
 app.use('/results', results);
 app.use('/public', express.static('public'));
+// book is last, as we want all other routes attempted first
+app.use('/', book);
 
 mongoClient.connect(async (connectionError, client) => {
   if (connectionError) {
@@ -52,8 +54,13 @@ mongoClient.connect(async (connectionError, client) => {
     collections.forEach(async (collection) => {
       app.locals[collection] = db.collection(collection)
       || await db.createCollection(collection);
-      // TODO we may just have a single collection and more indexes
-      app.locals[collection].createIndex({ title: 'text' });
+      // FIXME we may just have a single collection and more indexes
+      app.locals[collection].createIndex({
+        author: 'text',
+        title: 'text',
+        isbn13: 'text',
+        year: 'text',
+      });
     });
     return app.listen(EXPRESS_PORT, () => {
       if (Env.is('development')) {
