@@ -4,7 +4,6 @@
   "description": "Horror Lex Web Application",
   "main": "index.js",
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.1",
     "@tailwindcss/ui": "^0.6.2",
     "autoprefixer": "^10.0.1",
@@ -44,9 +43,9 @@
     "client:dev": "webpack serve --config webpack.dev.js --host 0.0.0.0",
     "client:prod": "webpack --config webpack.prod.js",
     "start:dev": "NODE_ENV=development npm run server:dev & npm run client:dev",
-    "start:prod": "NODE_ENV=production npm run client:prod && npm server:prod",
-    "test": "NODE_ENV=development jest",
-    "test:watch": "NODE_ENV=development jest --watch"
+    "start:prod": "NODE_ENV=production npm run client:prod && npm run server:prod",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "author": "Observatory Agency",
   "license": "UNLICENSED"
