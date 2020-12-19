@@ -121,7 +121,8 @@
     </main>
 
     {{> global/mainFooter }}
-
-    {{> script }}
+    {{#env 'production' }}
+      {{> script }}
+    {{/env }}
   </body>
 </html>
