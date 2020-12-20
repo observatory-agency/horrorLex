@@ -1,9 +1,11 @@
+const tailwindsUi = require('@tailwindcss/ui');
+
 // tailwind.config.js
 module.exports = {
   future: {},
   purge: {
     mode: 'all',
-    content: ['./views/partials/**/*.hbs'],
+    content: ['./views/**/*.hbs'],
   },
   theme: {
     extend: {
@@ -36,5 +38,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require('@tailwindcss/ui')],
+  plugins: [tailwindsUi],
 };
