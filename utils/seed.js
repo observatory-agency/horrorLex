@@ -7,7 +7,6 @@ const { propToArray } = require('../constants/dataFilters');
 const {
   DB_CONNECTION,
   DB_NAME,
-  DB_PORT,
 } = process.env;
 
 /** Convert keys to camelCase assuming input is following a case where each
@@ -58,7 +57,7 @@ const createAndInsertDocs = async (db, name, path) => {
   }
 };
 
-const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, {
+const mongoClient = new MongoClient(`${DB_CONNECTION}`, {
   useUnifiedTopology: true,
 });
 

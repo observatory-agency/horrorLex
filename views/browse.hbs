@@ -1,53 +1,51 @@
 <!DOCTYPE html>
 <html>
-{{> head }}
-    <body>
-        {{> global/mainNavigation }}
-        <div class="text-white">
-            <h2 style="font-size: 40px;">Letters</h2>
-            <a href="/browse/a">A</a>
-            <a href="/browse/b">B</a>
-            <a href="/browse/c">C</a>
-            <a href="/browse/d">D</a>
-            <a href="/browse/e">E</a>
-            <a href="/browse/f">F</a>
-            <a href="/browse/g">G</a>
-            <a href="/browse/h">H</a>
-            <a href="/browse/i">I</a>
-            <a href="/browse/j">J</a>
-            <a href="/browse/k">K</a>
-            <a href="/browse/l">L</a>
-            <a href="/browse/m">M</a>
-            <a href="/browse/n">N</a>
-            <a href="/browse/o">O</a>
-            <a href="/browse/p">P</a>
-            <a href="/browse/q">Q</a>
-            <a href="/browse/r">R</a>
-            <a href="/browse/s">S</a>
-            <a href="/browse/t">T</a>
-            <a href="/browse/u">U</a>
-            <a href="/browse/v">V</a>
-            <a href="/browse/w">W</a>
-            <a href="/browse/x">X</a>
-            <a href="/browse/y">Y</a>
-            <a href="/browse/z">Z</a>
-        </div>
-        <div class="text-white">
-            <h2 style="font-size: 40px;">List</h2>
-            <ul>
-            {{#each results}}
-            <li data-handler="browse" data-books="{{this.books}}">{{this.title}}</li>
-            {{/each}}
-            </ul>
-        </div>
-        <div class="text-white">
-            <h2 style="font-size: 40px;">Preview</h2>
-            <div data-container="browse">
-            </div>
-        </div>
-
-        {{> global/mainFooter }}
-
-        {{> script }}
-    </body>
+  {{> global/head }}
+  <body>
+    {{> global/mainNavigation }}
+    <div class="text-white">
+      <h2 style="font-size: 40px;">Letters</h2>
+      <a href="/browse/a">A</a>
+      <a href="/browse/b">B</a>
+      <a href="/browse/c">C</a>
+      <a href="/browse/d">D</a>
+      <a href="/browse/e">E</a>
+      <a href="/browse/f">F</a>
+      <a href="/browse/g">G</a>
+      <a href="/browse/h">H</a>
+      <a href="/browse/i">I</a>
+      <a href="/browse/j">J</a>
+      <a href="/browse/k">K</a>
+      <a href="/browse/l">L</a>
+      <a href="/browse/m">M</a>
+      <a href="/browse/n">N</a>
+      <a href="/browse/o">O</a>
+      <a href="/browse/p">P</a>
+      <a href="/browse/q">Q</a>
+      <a href="/browse/r">R</a>
+      <a href="/browse/s">S</a>
+      <a href="/browse/t">T</a>
+      <a href="/browse/u">U</a>
+      <a href="/browse/v">V</a>
+      <a href="/browse/w">W</a>
+      <a href="/browse/x">X</a>
+      <a href="/browse/y">Y</a>
+      <a href="/browse/z">Z</a>
+    </div>
+    <div class="text-white">
+      <h2 style="font-size: 40px;">List</h2>
+      <ul>
+        {{#each results}}
+        <li data-handler="browse" data-books="{{this.books}}">{{this.title}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="text-white">
+      <h2 style="font-size: 40px;">Preview</h2>
+      <div data-container="browse">
+      </div>
+    </div>
+    {{> global/mainFooter }}
+    {{> global/scripts }}
+  </body>
 </html>

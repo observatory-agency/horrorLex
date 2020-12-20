@@ -5,9 +5,9 @@ module.exports = {
   mode: 'development',
   entry: './src/scripts/index.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public/assets'),
     filename: 'app.js',
-    publicPath: '/public',
+    publicPath: '/public/assets',
   },
   module: {
     rules: [
@@ -52,7 +52,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname),
-    publicPath: '/public',
+    publicPath: '/public/assets',
     liveReload: true,
     proxy: {
       '**': {

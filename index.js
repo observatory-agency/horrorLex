@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const {
@@ -21,13 +22,11 @@ const registerPartials = require('./views/partials');
 const {
   DB_CONNECTION,
   DB_NAME,
-  DB_PORT,
   EXPRESS_PORT,
-  WEBPACK_PORT,
 } = process.env;
 
 const app = express();
-const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, { useUnifiedTopology: true });
+const mongoClient = new MongoClient(`${DB_CONNECTION}`, { useUnifiedTopology: true });
 
 registerHelpers();
 registerPartials();
@@ -41,9 +40,9 @@ app.use('/search', search);
 app.use('/browse', browse);
 app.use('/contact', contact);
 app.use('/results', results);
-app.use('/public', express.static('public'));
 // book is last, as we want all other routes attempted first
 app.use('/', book);
+app.use('/public', express.static(path.join(__dirname, '/public')));
 
 mongoClient.connect(async (connectionError, client) => {
   if (connectionError) {
@@ -66,8 +65,7 @@ mongoClient.connect(async (connectionError, client) => {
       if (Env.is('development')) {
         // output something nice about our local IP address
         console.log(`Express listening at: http://localhost:${EXPRESS_PORT}`);
-        console.log(`Webpack listening at: http://localhost:${WEBPACK_PORT}`);
-        console.log(`Webpack listening at: http://${LocalAddress.ip()}:${WEBPACK_PORT}`);
+        console.log(`Local IP Address: http://${LocalAddress.ip()}`);
       }
     });
   } catch (error) {

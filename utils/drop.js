@@ -5,7 +5,6 @@ const collections = require('../constants/collections');
 const {
   DB_CONNECTION,
   DB_NAME,
-  DB_PORT,
 } = process.env;
 
 const dropCollection = async (db, name) => {
@@ -18,7 +17,7 @@ const dropCollection = async (db, name) => {
   }
 };
 
-const mongoClient = new MongoClient(`${DB_CONNECTION}:${DB_PORT}`, {
+const mongoClient = new MongoClient(`${DB_CONNECTION}`, {
   useUnifiedTopology: true,
 });
 
