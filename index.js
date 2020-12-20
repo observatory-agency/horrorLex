@@ -34,7 +34,6 @@ registerPartials();
 app.set('view engine', 'hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/', home);
 app.use('/about', about);
 app.use('/search', search);
@@ -43,6 +42,7 @@ app.use('/contact', contact);
 app.use('/results', results);
 // book is last, as we want all other routes attempted first
 app.use('/', book);
+app.use('/public', express.static(path.join(__dirname, '/public')));
 
 mongoClient.connect(async (connectionError, client) => {
   if (connectionError) {

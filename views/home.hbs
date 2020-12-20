@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-  {{> head }}
+  {{> global/head }}
   <body>
     {{> global/mainNavigation }}
-
     <main class="space-y-32">
       <!-- Hero -->
       <section class="">
@@ -86,11 +85,7 @@
         </div>
       </section>
     </main>
-
     {{> global/mainFooter }}
-
-    {{#env 'production' }}
-      {{> script }}
-    {{/env }}
+    {{> global/scripts }}
   </body>
 </html>

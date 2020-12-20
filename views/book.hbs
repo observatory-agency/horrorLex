@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  {{> head }}
+  {{> global/head }}
   <body>
     {{> global/mainNavigation }}
 
@@ -110,11 +110,7 @@
         </div>
       </section>
     </main>
-
     {{> global/mainFooter }}
-
-    {{#env 'production' }}
-      {{> script }}
-    {{/env }}
+    {{> global/scripts }}
   </body>
 </html>

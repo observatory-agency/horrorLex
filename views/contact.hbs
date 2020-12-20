@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-  {{> head }}
+  {{> global/head }}
   <body>
     {{> global/mainNavigation }}
-
     <main>
       <section class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="grid grid-cols-12 gap-6">
@@ -39,11 +38,7 @@
         </div>
       </section>
     </main>
-
     {{> global/mainFooter }}
-
-    {{#env 'production' }}
-      {{> script }}
-    {{/env }}
+    {{> global/scripts }}
   </body>
 </html>

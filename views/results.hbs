@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-  {{> head }}
+  {{> global/head }}
   <body>
     {{> global/mainNavigation }}
-
     <main>
       <section class="px-4 mx-auto mt-16 max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
@@ -126,11 +125,7 @@
         </nav>
       </section>
     </main>
-
     {{> global/mainFooter }}
-
-    {{#env 'production' }}
-      {{> script }}
-    {{/env }}
+    {{> global/scripts }}
   </body>
 </html>

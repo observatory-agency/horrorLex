@@ -7,7 +7,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'public/assets'),
     filename: 'app.js',
-    publicPath: '/public',
+    publicPath: '/public/assets',
   },
   module: {
     rules: [
@@ -52,7 +52,7 @@ module.exports = {
   ],
   devServer: {
     contentBase: path.join(__dirname),
-    publicPath: '/public',
+    publicPath: '/public/assets',
     liveReload: true,
     proxy: {
       '**': {
