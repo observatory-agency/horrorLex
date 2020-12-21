@@ -42,7 +42,7 @@
     "db:drop": "node utils/drop",
     "db:seed": "node utils/seed",
     "server:dev": "nodemon index --ext js --ignore public --ignore src --ignore utils --ignore views",
-    "server:prod": "./node_modules/.bin/pm2 start index.js",
+    "server:prod": "export NODE_ENV=production ./node_modules/.bin/pm2 start index.js",
     "client:dev": "webpack serve --config webpack.dev.js --host 0.0.0.0",
     "client:prod": "webpack --config webpack.prod.js",
     "start:dev": "export NODE_ENV=development && npm run server:dev & npm run client:dev",
