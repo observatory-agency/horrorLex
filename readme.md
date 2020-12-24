@@ -18,9 +18,8 @@
 - `npm run db:seed`
 
 ### Development Builds
-- `npm run start:dev`
+- `npm start`
 
 ### Production Builds
-- `npm run start:prod`
-- `pm2` is used to manage the Express process
-- To stop the above process, `./node_modules/.bin/pm2 kill`
+- `npm run client:prod`
+- `npm run server:prod`
