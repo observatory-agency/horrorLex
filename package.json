@@ -44,8 +44,7 @@
     "server:prod": "node index.js",
     "client:dev": "webpack serve --config webpack.dev.js --host 0.0.0.0",
     "client:prod": "webpack --config webpack.prod.js",
-    "start:dev": "export NODE_ENV=development && npm run server:dev & npm run client:dev",
-    "start:prod": "export NODE_ENV=production && npm run client:prod && npm run server:prod",
+    "start": "export NODE_ENV=development && npm run server:dev & npm run client:dev",
     "test": "jest",
     "test:watch": "jest --watch"
   },
