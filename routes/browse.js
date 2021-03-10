@@ -13,12 +13,7 @@ router.get('/:letter', async (req, res, next) => {
       return res.sendStatus(400);
     }
     results = await browse(books, { letter })
-    res.render('browse.hbs', {
-      results: results.map(({ _id, documents }) => ({
-        title: _id,
-        books: documents,
-      })),
-    });
+    res.render('browse.hbs', results);
   } catch (error) {
     return next(error);
   }

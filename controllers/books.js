@@ -22,7 +22,7 @@ async function advancedSearch(model, params) {
 async function browse(model, params) {
   const { letter } = params;
   const regexStr = `^[${letter.toUpperCase()}${letter.toLowerCase()}]`
-  return model.aggregate([
+  const results = await model.aggregate([
     { $unwind: '$filmsDiscussed' },
     {
       $match: { filmsDiscussed: { $regex: new RegExp(regexStr) } },
@@ -35,6 +35,12 @@ async function browse(model, params) {
       $sort: { _id: 1 },
     },
   ]).toArray();
+  return {
+    results: results.map(({ _id, documents }) => ({
+      title: _id,
+       books: documents,
+    })),
+  };
 }
 
 async function quickSearch(model, params) {
