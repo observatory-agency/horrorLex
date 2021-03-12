@@ -1,4 +1,4 @@
-const bookSchema = {
+const book = {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
@@ -23,4 +23,6 @@ const bookSchema = {
   },
 };
 
-module.exports = bookSchema;
+module.exports = {
+  book,
+};

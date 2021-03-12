@@ -1,35 +1,10 @@
 const express = require('express');
-const { browse, getMany } = require('../controllers/books');
+const { BrowseController } = require('../controllers');
 
 const router = express.Router();
+const controller = new BrowseController();
 
-router.get('/:letter', async (req, res, next) => {
-  try {
-    const {
-      app: { locals: { books } },
-      params: { letter },
-    } = req;
-    if (!(/[a-zA-Z]/).test(letter) && !letter.length === 1) {
-      return res.sendStatus(400);
-    }
-    results = await browse(books, { letter })
-    res.render('browse.hbs', results);
-  } catch (error) {
-    return next(error);
-  }
-});
-
-router.post('/', async(req, res, next) => {
-  try {
-    const {
-      app: { locals: { books } },
-      body: { documents },
-    } = req;
-    const results = await getMany(books, { documents })
-    res.json({ books: results });
-  } catch (error) {
-    return next(error);
-  }
-});
+router.get('/:char', controller.get);
+router.post('/', controller.post);
 
 module.exports = router;

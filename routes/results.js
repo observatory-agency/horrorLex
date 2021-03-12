@@ -1,16 +1,9 @@
 const express = require('express');
-const { quickSearch } = require('../controllers/books');
+const { ResultsController } = require('../controllers');
 
 const router = express.Router();
+const controller = new ResultsController();
 
-router.get('/', async (req, res, next) => {
-  try {
-    const { app: { locals: { books } }, query } = req;
-    const results = await quickSearch(books, { query });
-    return results ? res.render('results', results) : res.sendStatus(400);
-  } catch(error) {
-    return next(error);
-  }
-});
+router.get('/', controller.get);
 
 module.exports = router;

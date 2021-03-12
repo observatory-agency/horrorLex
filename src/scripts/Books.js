@@ -49,7 +49,7 @@ class Books {
           headers: { 'Content-Type': 'application/json' },
           redirect: 'follow',
           referrerPolicy: 'no-referrer',
-          body: JSON.stringify({ documents: dataset.books.split(',') }),
+          body: JSON.stringify({ books: dataset.books.split(',') }),
         });
         // FIXME, recieving 'books' as our document collection name can be a bit
         // confusing given the name of this class, maybe change this

@@ -1,4 +1,4 @@
 /** Supported Mongo Collections */
-module.exports = [
-  'books',
-];
+module.exports = {
+  BOOKS: 'books',
+};
