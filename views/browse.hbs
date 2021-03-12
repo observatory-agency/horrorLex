@@ -3,48 +3,72 @@
   {{> global/head }}
   <body>
     {{> global/mainNavigation }}
-    <div class="text-white">
-      <h2 style="font-size: 40px;">Letters</h2>
-      <a href="/browse/a">A</a>
-      <a href="/browse/b">B</a>
-      <a href="/browse/c">C</a>
-      <a href="/browse/d">D</a>
-      <a href="/browse/e">E</a>
-      <a href="/browse/f">F</a>
-      <a href="/browse/g">G</a>
-      <a href="/browse/h">H</a>
-      <a href="/browse/i">I</a>
-      <a href="/browse/j">J</a>
-      <a href="/browse/k">K</a>
-      <a href="/browse/l">L</a>
-      <a href="/browse/m">M</a>
-      <a href="/browse/n">N</a>
-      <a href="/browse/o">O</a>
-      <a href="/browse/p">P</a>
-      <a href="/browse/q">Q</a>
-      <a href="/browse/r">R</a>
-      <a href="/browse/s">S</a>
-      <a href="/browse/t">T</a>
-      <a href="/browse/u">U</a>
-      <a href="/browse/v">V</a>
-      <a href="/browse/w">W</a>
-      <a href="/browse/x">X</a>
-      <a href="/browse/y">Y</a>
-      <a href="/browse/z">Z</a>
-    </div>
-    <div class="text-white">
-      <h2 style="font-size: 40px;">List</h2>
-      <ul>
-        {{#each results}}
-        <li data-handler="browse" data-books="{{this.books}}">{{this.title}}</li>
-        {{/each}}
-      </ul>
-    </div>
-    <div class="text-white">
-      <h2 style="font-size: 40px;">Preview</h2>
-      <div data-container="browse">
-      </div>
-    </div>
+    <main class="px-4 mx-auto mt-12 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+      <section class="flex justify-between">
+        <div class="flex items-center justify-between w-full">
+          <h1 class="text-3xl font-bold text-white">Browse the Horror Lex Database</h1>
+          <a href="#" class="block text-lg text-primaryOrange"> Switch to category view </a>
+        </div>
+      </section>
+      <section class="px-6 py-6 shadow-md rounded-xl bg-blackLight">
+        <div>
+          <h2 class="text-xl font-bold text-white">Browse Films - Alphabetically</h2>
+          <div class="mt-4 space-x-2 text-white lg:space-x-4 xl:space-x-6">
+            <a href="/browse/a" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">A</a>
+            <a href="/browse/b" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">B</a>
+            <a href="/browse/c" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">C</a>
+            <a href="/browse/d" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">D</a>
+            <a href="/browse/e" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">E</a>
+            <a href="/browse/f" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">F</a>
+            <a href="/browse/g" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">G</a>
+            <a href="/browse/h" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">H</a>
+            <a href="/browse/i" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">I</a>
+            <a href="/browse/j" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">J</a>
+            <a href="/browse/k" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">K</a>
+            <a href="/browse/l" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">L</a>
+            <a href="/browse/m" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">M</a>
+            <a href="/browse/n" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">N</a>
+            <a href="/browse/o" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">O</a>
+            <a href="/browse/p" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">P</a>
+            <a href="/browse/q" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Q</a>
+            <a href="/browse/r" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">R</a>
+            <a href="/browse/s" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">S</a>
+            <a href="/browse/t" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">T</a>
+            <a href="/browse/u" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">U</a>
+            <a href="/browse/v" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">V</a>
+            <a href="/browse/w" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">W</a>
+            <a href="/browse/x" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">X</a>
+            <a href="/browse/y" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Y</a>
+            <a href="/browse/z" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Z</a>
+          </div>
+        </div>
+        <!-- Gotta hook this bad boi up -->
+        <p class="mt-8 mb-2 text-sm text-gray-600">Showing 200 entries</p>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-6 rounded-lg bg-blackMedium">
+            <ul class="space-y-2.5">
+              {{#each results}}
+              <a href="#browse-result" class="block">
+                <li
+                  data-handler="browse"
+                  data-books="{{ this.books }}"
+                  class="text-lg font-medium text-gray-500 cursor-pointer hover:text-primaryOrangeDark"
+                >
+                  {{ this.title }}
+                </li>
+              </a>
+              {{/each}}
+            </ul>
+          </div>
+          <div id="browse-result" class="p-6 prose rounded-lg bg-blackMedium" data-container="browse">
+            <h2 class="max-w-xs mx-auto text-3xl font-bold text-center text-gray-500">
+              Choose a film to see books &amp; articles that reference it
+            </h2>
+          </div>
+        </div>
+      </section>
+    </main>
     {{> global/mainFooter }}
     {{> global/scripts }}
   </body>

@@ -5,12 +5,14 @@
     {{> global/mainNavigation }}
 
     <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
-      <section class="flex justify-between">
-        <div class="flex flex-col">
+      <section class="grid grid-cols-12 gap-8">
+        <div class="flex flex-col col-span-9">
           <h1 class="text-3xl italic font-bold text-white">{{ document.title }}</h1>
-          <p class="text-lg font-medium text-gray-300">{{ document.author }}</p>
+          <p class="text-lg font-medium text-gray-400">{{ document.author }}</p>
         </div>
-        {{> ui/ctaBtn link='/search' text='Revise Search' }}
+        <div class="col-span-3 justify-self-end">
+          {{> ui/ctaBtn link='/search' text='Revise Search' }}
+        </div>
       </section>
       <section class="px-6 py-10 rounded shadow-md bg-blackLight">
         <!-- Top Half-->
@@ -99,8 +101,11 @@
               {{> ui/resultKey text='Tags' }}
               {{#each document.tags}}
               <button
-                data-handler="tag" data-tag="{{this}}" class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-gray-800"
-                >{{ this }}
+                data-handler="tag"
+                data-tag="{{ this }}"
+                class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-gray-800"
+              >
+                {{ this }}
               </button>
               {{else}}
               <p class="text-lg font-medium text-gray-800">Not available</p>
