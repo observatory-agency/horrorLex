@@ -1,12 +1,10 @@
-const tailwindsUi = require('@tailwindcss/ui');
-
 // tailwind.config.js
 module.exports = {
-  future: {},
   purge: {
     mode: 'all',
     content: ['./views/**/*.hbs'],
   },
+  darkMode: false,
   theme: {
     extend: {
       fontFamily: {
@@ -32,11 +30,21 @@ module.exports = {
         primaryOrange: '#A0410D',
         primaryOrangeDark: '#772C03',
       },
-      maxWidth: {
-        full: '1440px',
+      typography: {
+        DEFAULT: {
+          css: {
+            color: '#B1B1B1',
+            h3: {
+              color: '#E1E1E1',
+            },
+            a: {
+              color: '#A0410D',
+            },
+          },
+        },
       },
     },
   },
   variants: {},
-  plugins: [tailwindsUi],
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
 };

@@ -3,13 +3,13 @@
   {{> global/head }}
   <body>
     {{> global/mainNavigation }}
-    <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
-      <section class="flex justify-between">
+    <main class="mx-auto mt-24 space-y-6 wrapper">
+      <section class="flex justify-between max-w-5xl mx-auto">
         <div class="flex flex-col">
           <h1 class="text-3xl font-bold text-white">Advanced Search</h1>
         </div>
       </section>
-      <section class="px-6 py-6 rounded shadow-md bg-blackLight">
+      <section class="max-w-5xl px-6 py-6 mx-auto rounded shadow-md bg-blackLight">
         <form method="POST" id="advanced-search" action="/search">
           <div>
             <div class="pt-8 mt-8 sm:mt-5 sm:pt-2">
@@ -18,42 +18,36 @@
               </div>
               <div class="mt-6 sm:mt-5">
                 <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
-                  <label for="title" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
-                    Title
-                  </label>
+                  <label for="title" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"> Title </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="title"
                         name="title"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        type="text"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                         placeholder="Title of book or article"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
-                  <label for="author" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
-                    Author
-                  </label>
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+                  <label for="author" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"> Author </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="author"
                         name="author"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        type="text"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                         placeholder="Primary Author"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
                   <label for="isbn13" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
                     ISSN or ISSB-13
                   </label>
@@ -62,16 +56,15 @@
                       <input
                         id="isbn13"
                         name="isbn13"
+                        type="text"
                         type="number"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
                   <label for="year" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
                     Publication Year
                   </label>
@@ -81,20 +74,15 @@
                         id="year"
                         name="year"
                         type="number"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
-                  <label
-                    for="journal"
-                    class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
-                  >
-                  Journal
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+                  <label for="journal" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
+                    Journal
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm">
@@ -102,34 +90,29 @@
                         id="journal"
                         name="journal"
                         type="text"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                         placeholder="Search through available journals"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
-                  <label for="tags" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
-                    Keywords
-                  </label>
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
+                  <label for="tags" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"> Keywords </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="max-w-lg rounded-md shadow-sm">
                       <input
                         id="tags"
                         name="tags"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        type="text"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                         placeholder="Comma seperated tag list"
                       />
                     </div>
                   </div>
                 </div>
 
-                <div
-                  class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5"
-                >
+                <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:pt-5">
                   <label for="filmsDiscussed" class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2">
                     Film
                   </label>
@@ -138,7 +121,8 @@
                       <input
                         id="filmsDiscussed"
                         name="filmsDiscussed"
-                        class="block w-full transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5"
+                        type="text"
+                        class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primaryOrange focus:border-primaryOrange sm:text-sm"
                         placeholder="Films used for reference"
                       />
                     </div>
@@ -151,39 +135,37 @@
                 <h3 class="text-2xl font-bold leading-6 text-gray-400">Limit Your Search</h3>
               </div>
               <div class="mt-6 sm:mt-5">
-                <div class= "sm:pt-5">
+                <div class="sm:pt-5">
                   <div role="group" aria-labelledby="label-email">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
                       <div>
-                        <div
-                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
-                          id="label-email"
-                        >
-                         Type of Publication
+                        <div class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2" id="label-email">
+                          Type of Publication
                         </div>
                       </div>
                       <div class="mt-4 sm:mt-0 sm:col-span-2">
                         <div class="max-w-lg">
-                          <div class="relative flex items-start">
-                            <div class="flex items-center h-5">
+                          <div class="relative flex items-center">
+                            <div class="flex items-center h-4">
                               <input
                                 id="books"
                                 name="books"
                                 type="checkbox"
-                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                               />
                             </div>
                             <div class="ml-3 text-sm leading-5">
-                              <label for="books" class="text-lg font-medium text-gray-500">Books</label>                            </div>
+                              <label for="books" class="text-lg font-medium text-gray-500">Books</label>
+                            </div>
                           </div>
                           <div class="mt-4">
-                            <div class="relative flex items-start">
+                            <div class="relative flex items-center">
                               <div class="flex items-center h-5">
                                 <input
                                   id="articles"
                                   name="articles"
                                   type="checkbox"
-                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                  class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                                 />
                               </div>
                               <div class="ml-3 text-sm leading-5">
@@ -202,35 +184,35 @@
                   <div role="group" aria-labelledby="label-email">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
                       <div>
-                        <div
-                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
-                          id="label-email"
-                        >
-                         Availability
+                        <div class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2" id="label-email">
+                          Availability
                         </div>
                       </div>
                       <div class="mt-4 sm:mt-0 sm:col-span-2">
                         <div class="max-w-lg">
-                          <div class="relative flex items-start">
+                          <div class="relative flex items-center">
                             <div class="flex items-center h-5">
                               <input
                                 id="freeOnlineCopy"
                                 name="freeOnlineCopy"
                                 type="checkbox"
-                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                               />
                             </div>
                             <div class="ml-3 text-sm leading-5">
-                              <label for="freeOnlineCopy" class="text-lg font-medium text-gray-500">Free Online Copy</label>                            </div>
+                              <label for="freeOnlineCopy" class="text-lg font-medium text-gray-500"
+                                >Free Online Copy</label
+                              >
+                            </div>
                           </div>
                           <div class="mt-4">
-                            <div class="relative flex items-start">
+                            <div class="relative flex items-center">
                               <div class="flex items-center h-5">
                                 <input
                                   id="jstor"
                                   name="jstor"
                                   type="checkbox"
-                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                  class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                                 />
                               </div>
                               <div class="ml-3 text-sm leading-5">
@@ -239,13 +221,13 @@
                             </div>
                           </div>
                           <div class="mt-4">
-                            <div class="relative flex items-start">
+                            <div class="relative flex items-center">
                               <div class="flex items-center h-5">
                                 <input
                                   id="academia-edu"
                                   name="academia-edu"
                                   type="checkbox"
-                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                  class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                                 />
                               </div>
                               <div class="ml-3 text-sm leading-5">
@@ -254,13 +236,13 @@
                             </div>
                           </div>
                           <div class="mt-4">
-                            <div class="relative flex items-start">
+                            <div class="relative flex items-center">
                               <div class="flex items-center h-5">
                                 <input
                                   id="project-muse"
                                   type="checkbox"
                                   name="project-muse"
-                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                  class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                                 />
                               </div>
                               <div class="ml-3 text-sm leading-5">
@@ -279,40 +261,41 @@
                   <div role="group" aria-labelledby="label-email">
                     <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
                       <div>
-                        <div
-                          class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2"
-                          id="label-email"
-                        >
-                        Professor Lex Wisdom
+                        <div class="block text-lg font-medium text-gray-600 sm:mt-px sm:pt-2" id="label-email">
+                          Professor Lex Wisdom
                         </div>
                       </div>
                       <div class="mt-4 sm:mt-0 sm:col-span-2">
                         <div class="max-w-lg">
-                          <div class="relative flex items-start">
+                          <div class="relative flex items-center">
                             <div class="flex items-center h-5">
                               <input
                                 id="horrorLexSummary"
                                 name="horrorLexSummary"
                                 type="checkbox"
-                                class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                               />
                             </div>
                             <div class="ml-3 text-sm leading-5">
-                              <label for="horrorLexSummary" class="text-lg font-medium text-gray-500">Horror Lex Summary available</label>
+                              <label for="horrorLexSummary" class="text-lg font-medium text-gray-500"
+                                >Horror Lex Summary available</label
+                              >
                             </div>
                           </div>
                           <div class="mt-4">
-                            <div class="relative flex items-start">
+                            <div class="relative flex items-center">
                               <div class="flex items-center h-5">
                                 <input
                                   id="hlRecommended"
                                   name="hlRecommended"
                                   type="checkbox"
-                                  class="w-4 h-4 transition duration-150 ease-in-out text-primaryOrange form-checkbox"
+                                  class="w-4 h-4 border-gray-300 rounded text-primaryOrange focus:ring-primaryOrange"
                                 />
                               </div>
                               <div class="ml-3 text-sm leading-5">
-                                <label for="hlRecommended" class="text-lg font-medium text-gray-500">Horror Lex Recommended</label>
+                                <label for="hlRecommended" class="text-lg font-medium text-gray-500"
+                                  >Horror Lex Recommended</label
+                                >
                               </div>
                             </div>
                           </div>
@@ -329,11 +312,11 @@
               <span class="inline-flex rounded-md shadow-sm">
                 <a href="/search">
                   <button
-                  type="button"
-                  class="px-4 py-2 text-lg font-medium text-gray-600 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
-                >
-                  Reset
-                </button>
+                    type="button"
+                    class="px-4 py-2 text-lg font-medium text-gray-600 transition duration-150 ease-in-out border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
+                  >
+                    Reset
+                  </button>
                 </a>
               </span>
               <span class="inline-flex ml-3 rounded-md shadow-sm">
