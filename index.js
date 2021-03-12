@@ -2,15 +2,7 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const { MongoClient } = require('mongodb');
-const {
-  about,
-  search,
-  book,
-  browse,
-  contact,
-  home,
-  results,
-} = require('./routes');
+const { about, search, book, browse, contact, home, results } = require('./routes');
 // TODO apply schema when our data model is finalized
 // const schema = require('./models');
 const collections = require('./constants/collections');
@@ -19,11 +11,7 @@ const LocalAddress = require('./lib/LocalAddress');
 const registerHelpers = require('./views/helpers');
 const registerPartials = require('./views/partials');
 
-const {
-  DB_CONNECTION,
-  DB_NAME,
-  EXPRESS_PORT,
-} = process.env;
+const { DB_CONNECTION, DB_NAME, EXPRESS_PORT } = process.env;
 
 const app = express();
 const mongoClient = new MongoClient(`${DB_CONNECTION}`, { useUnifiedTopology: true });
@@ -51,8 +39,7 @@ mongoClient.connect(async (connectionError, client) => {
   try {
     const db = client.db(DB_NAME);
     collections.forEach(async (collection) => {
-      app.locals[collection] = db.collection(collection)
-      || await db.createCollection(collection);
+      app.locals[collection] = db.collection(collection) || (await db.createCollection(collection));
       // FIXME we may just have a single collection and more indexes
       app.locals[collection].createIndex({
         author: 'text',
