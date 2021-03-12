@@ -1,9 +1,9 @@
-const mongo = require('../models/mongo');
+const BaseController = require('./Base');
 
-class BookController {
+class BookController extends BaseController {
   constructor() {
-    this.mongo = mongo;
-    this.get = this.get.bind(this);
+    super();
+    this.template = 'book.hbs';
   }
 
   async get(req, res, next) {
@@ -11,7 +11,7 @@ class BookController {
       const { bookModel } = this.mongo;
       const { params: { slug } } = req;
       const result = await bookModel.findOne({ href: slug });
-      return result ? res.render('book', { result }) : res.sendStatus(404);
+      return result ? res.render(this.template, { result }) : res.sendStatus(404);
     } catch (error) {
       return next(error);
     }
