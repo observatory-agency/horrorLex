@@ -3,11 +3,13 @@ const BaseController = require('./Base');
 class ContactController extends BaseController {
   constructor() {
     super();
-    this.view = 'contact.hbs';
+    this.template = {
+      get: 'contact.hbs',
+    };
   }
 
-  get(req, res) {
-    return res.render(this.view);
+  get(_, res) {
+    return res.render(this.template.get);
   }
 }
 

@@ -1,9 +1,9 @@
-const { BOOKS } = require('../constants/collections');
+const Mongo = require('../lib/Mongo');
+const { books } = require('../constants/collections');
 
 class BookModel {
-  constructor(db) {
-    this.db = db;
-    this.collection = this.db.collection(BOOKS);
+  constructor() {
+    this.collection = Mongo.db.collection(books);
   }
 
   aggregate(query) {

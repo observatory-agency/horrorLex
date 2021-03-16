@@ -1,17 +1,22 @@
 const BaseController = require('./Base');
+const Search = require('../lib/Search');
 
 class BookController extends BaseController {
   constructor() {
     super();
-    this.template = 'book.hbs';
+    this.template = {
+      get: 'book.hbs',
+    };
   }
 
   async get(req, res, next) {
     try {
-      const { bookModel } = this.mongo;
       const { params: { slug } } = req;
-      const result = await bookModel.findOne({ href: slug });
-      return result ? res.render(this.template, { result }) : res.sendStatus(404);
+      const search = new Search(this.model.book);
+      const book = await search.one(slug);
+      return book
+        ? res.render(this.template.get, { book })
+        : res.sendStatus(404);
     } catch (error) {
       return next(error);
     }

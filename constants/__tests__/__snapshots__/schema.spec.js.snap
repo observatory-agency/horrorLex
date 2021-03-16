@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`schema should match the snapshot 1`] = `
+Object {
+  "book": Object {
+    "validator": Object {
+      "$jsonSchema": Object {
+        "additionalProperties": false,
+        "bsonType": "object",
+        "properties": Object {
+          "_id": Object {
+            "bsonType": "objectId",
+          },
+          "name": Object {
+            "bsonType": "string",
+            "description": "must be a string and is required",
+          },
+          "tags": Object {
+            "bsonType": "array",
+            "items": Object {
+              "bsonType": "string",
+              "description": "required and must be a string",
+            },
+            "minItems": 1,
+          },
+        },
+        "required": Array [
+          "name",
+          "tags",
+        ],
+      },
+    },
+  },
+}
+`;

@@ -3,11 +3,13 @@ const BaseController = require('./Base');
 class HomeController extends BaseController {
   constructor() {
     super();
-    this.view = 'home.hbs';
+    this.template = {
+      get: 'home.hbs',
+    };
   }
 
-  get(req, res) {
-    return res.render(this.view);
+  get(_, res) {
+    return res.render(this.template.get);
   }
 }
 

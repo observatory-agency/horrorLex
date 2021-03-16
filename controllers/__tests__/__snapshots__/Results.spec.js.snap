@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsController constructor should set its templates 1`] = `
+Object {
+  "get": "results.hbs",
+}
+`;

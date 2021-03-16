@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseController model should return the modelMap with instantiated models 1`] = `
+Object {
+  "book": BookModel {
+    "aggregate": [MockFunction],
+    "find": [MockFunction],
+    "findOne": [MockFunction],
+  },
+}
+`;

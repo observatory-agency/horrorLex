@@ -1,5 +1,5 @@
-const Search = require('../lib/Search');
 const BaseController = require('./Base');
+const Search = require('../lib/Search');
 
 class SearchController extends BaseController {
   constructor() {
@@ -10,18 +10,18 @@ class SearchController extends BaseController {
     };
   }
 
-  get(req, res) {
+  get(_, res) {
     res.render(this.template.get);
   }
 
   async post(req, res, next) {
     try {
       const { body } = req;
-      const search = new Search(this.bookModel);
-      const advanceSearch = await search.advanced(body);
-      return advanceSearch
-        ? res.render(this.template.post)
-        : res.render(400);
+      const search = new Search(this.model.book);
+      const results = await search.advanced(body);
+      return results
+        ? res.render(this.template.post, { results })
+        : res.sendStatus(400);
     } catch (error) {
       return next(error);
     }

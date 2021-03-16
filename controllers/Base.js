@@ -1,14 +1,15 @@
-const mongo = require('../models/mongo');
+const { BookModel } = require('../models');
 
 class BaseController {
   constructor() {
-    this.mongo = mongo;
+    this.modelMap = {};
     this.get = this.get ? this.get.bind(this) : null;
     this.post = this.post ? this.post.bind(this) : null;
   }
 
-  get bookModel() {
-    return this.mongo.bookModel;
+  get model() {
+    this.modelMap.book = new BookModel();
+    return this.modelMap;
   }
 }
 

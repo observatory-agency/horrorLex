@@ -5,7 +5,7 @@ const express = require('express');
 const routes = require('./routes');
 const Env = require('./lib/Env');
 const LocalAddress = require('./lib/LocalAddress');
-const mongo = require('./models/mongo');
+const Mongo = require('./lib/Mongo');
 const registerHelpers = require('./views/helpers');
 const registerPartials = require('./views/partials');
 
@@ -28,11 +28,15 @@ app.use('/', routes.book);
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
 app.listen(EXPRESS_PORT, async () => {
-  await mongo.connect();
-  if (Env.is('development')) {
-    // output something nice about our local IP address
-    console.log(`Mongo listening at: ${DB_CONNECTION}`);
-    console.log(`Express listening at: http://localhost:${EXPRESS_PORT}`);
-    console.log(`Local IP Address: http://${LocalAddress.ip()}`);
+  try {
+    await Mongo.connect();
+    if (Env.is('development')) {
+      // output something nice about our local IP address
+      console.log(`Mongo listening at: ${DB_CONNECTION}`);
+      console.log(`Express listening at: http://localhost:${EXPRESS_PORT}`);
+      console.log(`Local IP Address: http://${LocalAddress.ip()}`);
+    }
+  } catch (error) {
+    console.error(error);
   }
 });
