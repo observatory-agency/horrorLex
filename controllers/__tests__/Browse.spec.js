@@ -52,7 +52,7 @@ describe('BrowseController', () => {
       const reqMock = { body: { books: [] } };
       const nextMock = jest.fn();
       await browse.post(reqMock, resMock, nextMock);
-      expect(jsonMock).toHaveBeenCalledWith({ books: {} });
+      expect(jsonMock).toHaveBeenCalledWith({ results: {} });
     });
     it('should call "next" on errors', async () => {
       const error = new Error();

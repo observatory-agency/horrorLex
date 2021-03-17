@@ -1,122 +1,132 @@
-/** Static class provides functionality for the UI to interface with API backend */
 class Books {
-  /** Private method builds a URL for requesting results */
-  static getResultsUtil(params) {
-    const url = new URL(`${window.origin}${Books.results}`);
+  constructor() {
+    this.enums = {
+      browse: 'browse',
+      browseEndPoint: '/browse',
+      browseSelector: 'div[data-container="browse"]',
+      count: 10,
+      enterKey: 'Enter',
+      page: 1,
+      paramPage: 'page',
+      paramSearch: 'search',
+      paramTag: 'tag',
+      quickSearch: 'quickSearch',
+      results: '/results',
+      sort: 'sort',
+      tag: 'tag',
+    };
+  }
+
+  async browseHandler(event) {
+    const { dataset } = event.target;
+    const hasHandler = !!dataset.handler;
+    const isBrowse = dataset.handler === this.enums.browse
+    if (hasHandler && isBrowse) {
+      try {
+        const books = dataset.books.split(',');
+        const data = await this.fetchWrapper(books);
+        const { results } = await data.json();
+        this.destroyBrowseItem();
+        results.forEach(this.createBrowseItem.bind(this));
+      } catch (error) {
+        // TODO handle error in UI on failed "browse" attempts
+        console.error(error);
+      }
+    }
+  }
+
+  quickSearchHandler(event) {
+    this.event = event;
+    const { dataset, value } = event.target;
+    const hasHandler = !!dataset.handler;
+    const isEnterKey = event.key === this.enums.enterKey;
+    const isQuickSearch = dataset.handler === this.enums.quickSearch;
+    if (hasHandler && isEnterKey && isQuickSearch) {
+      window.location.href = this.getResults({
+        count: this.enums.count,
+        page: this.enums.page,
+        search: value,
+      });
+    }
+  }
+
+  sortHandler(event) {
+    const { dataset } = event.target;
+    const hasHandler = !!dataset.handler;
+    const isSort = dataset.handler === this.enums.sort;
+    if (hasHandler && isSort) {
+      const { value } = event.target;
+      const { search } = window.location;
+      const params = new URLSearchParams(search);
+      window.location.href = this.getResults({
+        count: this.enums.count,
+        page: params.get(this.enums.paramPage),
+        search: params.get(this.enums.paramSearch),
+        sort: value,
+        tag: params.get(this.enums.paramTag),
+      });
+    }
+  }
+
+  tagHandler(event) {
+    const { dataset } = event.target;
+    const hasHandler = !!dataset.handler;
+    const isTag = dataset.handler === this.enums.tag;
+    if (hasHandler && isTag) {
+      window.location.href = this.getResults({
+        count: this.enums.count,
+        page: this.enums.page,
+        tag: dataset.tag,
+      });
+    }
+  }
+
+  // private methods
+  createBrowseItem(browseItem) {
+    const child = {
+      title: document.createElement('p'),
+      tags: document.createElement('p'),
+      url: document.createElement('a'),
+    };
+    const parent = document.createElement('div');
+    const root = document.querySelector(this.enums.browseSelector);
+    child.title.innerText = `Title: ${browseItem.title}`;
+    child.tags.innerText = `Tags: ${browseItem.tags}`;
+    child.url.innerText = 'View Book';
+    child.url.href = `/${browseItem.href}`;
+    parent.append(child.title);
+    parent.append(child.tags);
+    parent.append(child.url);
+    root.append(parent);
+  }
+
+  destroyBrowseItem() {
+    const root = document.querySelector(this.enums.browseSelector);
+    while (root.firstChild) {
+      root.removeChild(root.firstChild);
+    }
+  }
+
+  async fetchWrapper(books) {
+    return fetch(this.enums.browseEndPoint, {
+      method: 'POST',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify({ books }),
+    });
+  }
+
+  getResults(params) {
+    const url = new URL(`${window.origin}${this.enums.results}`);
     const keys = Object.keys(params);
     keys.forEach((param) => (
       params[param] && url.searchParams.set(param, encodeURI(params[param]))
     ));
     return url.href;
   }
-
-  /** Private method creates DOM nodes with Mongo document data */
-  static createBrowseItemUtil(book) {
-    const root = document.querySelector(Books.browseSelector);
-    const browseItem = document.createElement('div');
-    // TODO - these are placeholders/proofs of concepts, clean this up a ton
-    const title = document.createElement('p');
-    const tags = document.createElement('p');
-    const url = document.createElement('a');
-    title.innerText = `Title: ${book.title}`;
-    tags.innerText = `Tags: ${book.tags}`;
-    url.innerText = 'View Book';
-    url.href = `/${book.href}`;
-    // TODO build out remaining elements with data
-    browseItem.append(title);
-    browseItem.append(tags);
-    browseItem.append(url);
-    root.append(browseItem);
-  }
-
-  /** Private method destroys DOM nodes */
-  static destroyBrowseItemUtil() {
-    const root = document.querySelector(Books.browseSelector);
-    while (root.firstChild) {
-      root.removeChild(root.firstChild);
-    }
-  }
-
-  /** Public method to handle browse requests for associated documents */
-  static async browseHandler(event) {
-    const { dataset } = event.target;
-    if (dataset.handler && dataset.handler === Books.browse) {
-      try {
-        const data = await fetch(Books.browseEndPoint, {
-          method: 'POST',
-          cache: 'no-cache',
-          credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json' },
-          redirect: 'follow',
-          referrerPolicy: 'no-referrer',
-          body: JSON.stringify({ books: dataset.books.split(',') }),
-        });
-        // FIXME, recieving 'books' as our document collection name can be a bit
-        // confusing given the name of this class, maybe change this
-        const { books } = await data.json();
-        Books.destroyBrowseItemUtil();
-        books.forEach(Books.createBrowseItemUtil);
-      } catch (error) {
-        // TODO handle error UI
-        console.error(error);
-      }
-    }
-  }
-
-  /** Public method handles quick searches */
-  static quickSearchHandler(event) {
-    const { dataset, value } = event.target;
-    const enterKeyDown = event.key === Books.enterKey;
-    if (enterKeyDown && dataset.handler && dataset.handler === Books.quickSearch) {
-      window.location.href = Books.getResultsUtil({
-        count: 10,
-        page: 1,
-        search: value,
-      });
-    }
-  }
-
-  /** Public method handles tag clicks */
-  static tagHandler(event) {
-    const { dataset } = event.target;
-    if (dataset.handler && dataset.handler === Books.tag) {
-      window.location.href = Books.getResultsUtil({
-        count: 10,
-        page: 1,
-        tag: dataset.tag,
-      });
-    }
-  }
-
-  /** Public method handles sorting results */
-  static sortHandler(event) {
-    const { dataset } = event.target;
-    if (dataset.handler && dataset.handler === Books.sort) {
-      const { value } = event.target;
-      const { search } = window.location;
-      const params = new URLSearchParams(search);
-      window.location.href = Books.getResultsUtil({
-        count: 10,
-        page: params.get(Books.paramPage),
-        search: params.get(Books.paramSearch),
-        sort: value,
-        tag: params.get(Books.paramTag),
-      });
-    }
-  }
 }
-
-// Books static class enumerables
-Books.browse = 'browse';
-Books.browseEndPoint = '/browse';
-Books.browseSelector = 'div[data-container="browse"]';
-Books.enterKey = 'Enter';
-Books.paramPage = 'page';
-Books.paramSearch = 'search';
-Books.paramTag = 'tag';
-Books.quickSearch = 'quickSearch';
-Books.results = '/results';
-Books.sort = 'sort';
-Books.tag = 'tag';
 
 export default Books;

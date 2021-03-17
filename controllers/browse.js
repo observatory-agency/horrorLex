@@ -26,7 +26,7 @@ class BrowseController extends BaseController {
       const { body: { books } } = req;
       const browse = new Browse(this.model.book);
       const results = await browse.relatedBooks(books);
-      return res.json({ books: results });
+      return res.json({ results });
     } catch (error) {
       return next(error);
     }

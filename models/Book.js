@@ -10,12 +10,12 @@ class BookModel {
     return this.collection.aggregate(query);
   }
 
-  findOne(query) {
-    return this.collection.findOne(query);
-  }
-
   find(query) {
     return this.collection.find(query);
+  }
+
+  findOne(query) {
+    return this.collection.findOne(query);
   }
 }
 
