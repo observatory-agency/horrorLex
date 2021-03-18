@@ -6,6 +6,7 @@ Object {
     "aggregate": [MockFunction],
     "find": [MockFunction],
     "findOne": [MockFunction],
+    "handleCollection": [MockFunction],
   },
 }
 `;

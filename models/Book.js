@@ -3,7 +3,8 @@ const { books } = require('../constants/collections');
 
 class BookModel {
   constructor() {
-    this.collection = Mongo.db.collection(books);
+    this.db = Mongo.db;
+    this.handleCollection(books);
   }
 
   aggregate(query) {
@@ -16,6 +17,12 @@ class BookModel {
 
   findOne(query) {
     return this.collection.findOne(query);
+  }
+
+  // private methods
+  async handleCollection(name) {
+    this.collection = this.db.collection(name)
+      || await this.db.createCollection(name);
   }
 }
 
