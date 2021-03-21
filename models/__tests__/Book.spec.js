@@ -37,16 +37,17 @@ describe('BookModel', () => {
       });
     });
     describe('non-existing collection', () => {
+      let collection;
+      beforeEach(() => {
+        collection = Mongo.db.collection;
+        Mongo.db.collection = jest.fn(() => null);
+      });
+      afterEach(() => {
+        Mongo.db.collection = collection;
+      });
       it('should call this.db.handleCollection', async () => {
-        // temporarily mock collection to return null
-        const { collection } = bookModel.db;
-        bookModel.db.collection = jest.fn(() => null);
-
         await bookModel.handleCollection(books);
         expect(Mongo.db.createCollection).toHaveBeenNthCalledWith(1, books);
-
-        // set collection back to its original mock
-        bookModel.db.collection = collection;
       });
     });
   });
