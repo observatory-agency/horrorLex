@@ -1,40 +1,16 @@
-require('dotenv').config();
-const { MongoClient } = require('mongodb');
-const collections = require('../constants/collections');
+const Mongo = require('../lib/Mongo');
+const BookModel = require('../models/Book');
 
-const {
-  DB_CONNECTION,
-  DB_NAME,
-} = process.env;
-
-const dropCollection = async (db, name) => {
+const init = async () => {
   try {
-    const collection = db.collection(name);
-    const success = await collection.drop();
-    return { name, success };
+    await Mongo.connect();
+    const bookModel = new BookModel();
+    await bookModel.drop();
+    console.log(`Dropped collection "${bookModel.name}"`);
   } catch (error) {
-    return console.error({ name, error });
+    console.error(error);
   }
+  Mongo.close();
 };
 
-const mongoClient = new MongoClient(`${DB_CONNECTION}`, {
-  useUnifiedTopology: true,
-});
-
-mongoClient.connect(async (connectionError, client) => {
-  if (connectionError) {
-    return console.error(connectionError);
-  }
-  try {
-    const db = client.db(DB_NAME);
-    const res = await Promise.all(collections.map(
-      (collection) => dropCollection(db, collection),
-    ));
-    res.forEach((item) => item && item.success && console.log(
-      `Dropped collection "${item.name}"`,
-    ));
-    return mongoClient.close();
-  } catch (error) {
-    return console.error(error);
-  }
-});
+init();
