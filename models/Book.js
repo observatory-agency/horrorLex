@@ -3,9 +3,10 @@ const { books } = require('../constants/collections');
 
 class BookModel {
   constructor() {
-    this.name = books;
+    this.name = books.name;
+    this.index = books.index;
     this.db = Mongo.db;
-    this.handleCollection(this.name);
+    this.initCollection(this.name);
   }
 
   aggregate(query) {
@@ -29,10 +30,10 @@ class BookModel {
   }
 
   // private methods
-  async handleCollection(name) {
+  async initCollection() {
     try {
-      this.collection = this.db.collection(name)
-      || await this.db.createCollection(name);
+      this.collection = this.db.collection(this.name);
+      await this.collection.createIndex(this.index);
     } catch (error) {
       console.error(`Unable to access collection: ${this.name}`);
     }
