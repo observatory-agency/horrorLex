@@ -1,7 +1,9 @@
 const express = require('express');
-const { getAll } = require('../controllers/books');
+const { HomeController } = require('../controllers');
 
 const router = express.Router();
-router.get('/', (req, res) => res.render('home.hbs'));
+const controller = new HomeController();
+
+router.get('/', controller.get);
 
 module.exports = router;

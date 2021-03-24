@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dataFilters should match the snapshot 1`] = `
+Object {
+  "propToArray": Object {
+    "Films Discussed": "
+",
+    "ISBN-13": "
+",
+    "Tags": ", ",
+  },
+}
+`;

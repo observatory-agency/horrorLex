@@ -5,14 +5,17 @@ import '../styles/main.css';
 import Books from './Books';
 
 document.addEventListener('change', (event) => {
-  Books.sortHandler(event);
+  const books = new Books();
+  books.sortHandler(event);
 });
 
 document.addEventListener('click', (event) => {
-  Books.browseHandler(event);
-  Books.tagHandler(event);
+  const books = new Books();
+  books.browseHandler(event);
+  books.tagHandler(event);
 });
 
 document.addEventListener('keydown', (event) => {
-  Books.quickSearchHandler(event);
+  const books = new Books();
+  books.quickSearchHandler(event);
 });

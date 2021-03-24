@@ -46,8 +46,20 @@
     "client:dev": "webpack serve --config webpack.dev.js --host 0.0.0.0",
     "client:prod": "webpack --config webpack.prod.js",
     "start": "export NODE_ENV=development && npm run server:dev & npm run client:dev",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest ",
+    "test:watch": "export NODE_ENV=development && jest --collect-coverage --watchAll"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "./constants/**/*.js",
+      "./controllers/**/*.js",
+      "./lib/**/*.js",
+      "./models/**/*.js",
+      "./src/**/*.js",
+      "./utils/**/*.js",
+      "!./**/index.js",
+      "!./utils/*.js"
+    ]
   },
   "author": "Observatory Agency",
   "license": "UNLICENSED"

@@ -1,4 +1,5 @@
-const articles = require('./articles');
-const books = require('./books');
+const BookModel = require('./Book');
 
-module.exports = { articles, books };
+module.exports = {
+  BookModel,
+};

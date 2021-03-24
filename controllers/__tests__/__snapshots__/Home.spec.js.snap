@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeController constructor should set its templates 1`] = `
+Object {
+  "get": "home.hbs",
+}
+`;
