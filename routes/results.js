@@ -1,7 +1,9 @@
 const express = require('express');
-const { quickSearch } = require('../controllers/books');
+const { ResultsController } = require('../controllers');
 
 const router = express.Router();
-router.get('/', quickSearch);
+const controller = new ResultsController();
+
+router.get('/', controller.get);
 
 module.exports = router;

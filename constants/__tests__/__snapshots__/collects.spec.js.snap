@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`collections should match the snapshot 1`] = `
+Object {
+  "books": Object {
+    "index": Object {
+      "author": "text",
+      "isbn13": "text",
+      "title": "text",
+      "year": "text",
+    },
+    "name": "books",
+  },
+}
+`;

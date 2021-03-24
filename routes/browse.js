@@ -1,8 +1,10 @@
 const express = require('express');
-const { browse, getMany } = require('../controllers/books');
+const { BrowseController } = require('../controllers');
 
 const router = express.Router();
-router.get('/:letter', browse);
-router.post('/', getMany);
+const controller = new BrowseController();
+
+router.get('/:char', controller.get);
+router.post('/', controller.post);
 
 module.exports = router;
