@@ -4,9 +4,11 @@ exports[`BaseController model should return the modelMap with instantiated model
 Object {
   "book": BookModel {
     "aggregate": [MockFunction],
+    "drop": [MockFunction],
     "find": [MockFunction],
     "findOne": [MockFunction],
-    "handleCollection": [MockFunction],
+    "initCollection": [MockFunction],
+    "insertMany": [MockFunction],
   },
 }
 `;

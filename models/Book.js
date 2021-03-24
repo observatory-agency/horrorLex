@@ -6,7 +6,7 @@ class BookModel {
     this.name = books.name;
     this.index = books.index;
     this.db = Mongo.db;
-    this.initCollection(this.name);
+    this.initCollection();
   }
 
   aggregate(query) {
