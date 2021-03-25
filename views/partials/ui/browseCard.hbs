@@ -4,7 +4,7 @@
     <p>Tags</p>
     <ul>
     {{#each this.tags }}
-      <li>{{ this}}</li>
+      <li data-handler="tag" data-tag="{{ this }}">{{ this }}</li>
     {{/each }}
     </ul>
     <a href="/{{ this.slug }}">View Book</a>

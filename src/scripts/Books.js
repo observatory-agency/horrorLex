@@ -27,6 +27,7 @@ class Books {
         const books = dataset.books.split(',');
         const data = await this.fetchWrapper(books);
         this.browseCard = await data.json();
+        this.browseRoot = document.querySelector(this.enums.browseSelector);
         this.destroyBrowseCard();
         this.insertBrowseCard();
       } catch (error) {
@@ -84,13 +85,11 @@ class Books {
 
   // private methods
   insertBrowseCard() {
-    const root = document.querySelector(this.enums.browseSelector);
-    root.innerHTML = this.browseCard;
+    this.browseRoot.innerHTML = this.browseCard;
   }
 
   destroyBrowseCard() {
-    const root = document.querySelector(this.enums.browseSelector);
-    root.removeChild(root.firstChild);
+    this.browseRoot.removeChild(this.browseRoot.firstChild);
   }
 
   async fetchWrapper(books) {
