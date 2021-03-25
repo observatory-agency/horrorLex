@@ -1,0 +1,12 @@
+<div data-handler="browseCard">
+  {{#each results }}
+    <p>{{ this.title }}</p>
+    <p>Tags</p>
+    <ul>
+    {{#each this.tags }}
+      <li data-handler="tag" data-tag="{{ this }}">{{ this }}</li>
+    {{/each }}
+    </ul>
+    <a href="/{{ this.slug }}">View Book</a>
+  {{/each }}
+</div>
