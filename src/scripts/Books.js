@@ -93,7 +93,7 @@ class Books {
     child.title.innerText = `Title: ${browseItem.title}`;
     child.tags.innerText = `Tags: ${browseItem.tags}`;
     child.url.innerText = 'View Book';
-    child.url.href = `/${browseItem.href}`;
+    child.url.href = `/${browseItem.slug}`;
     parent.append(child.title);
     parent.append(child.tags);
     parent.append(child.url);
