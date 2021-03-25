@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Horror Lex Web Application",
   "main": "index.js",
+  "engines": {
+    "node": ">=14.16.0"
+  },
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
@@ -42,9 +45,9 @@
     "db:drop": "node utils/drop",
     "db:seed": "node utils/seed",
     "server:dev": "nodemon index --ext js --ignore public --ignore src --ignore utils --ignore views",
-    "server:prod": "node index.js",
+    "server:prod": "export NODE_ENV=production && node index.js",
     "client:dev": "webpack serve --config webpack.dev.js --host 0.0.0.0",
-    "client:prod": "webpack --config webpack.prod.js",
+    "client:prod": "export NODE_ENV=production && webpack --config webpack.prod.js",
     "start": "export NODE_ENV=development && npm run server:dev & npm run client:dev",
     "test": "jest ",
     "test:watch": "export NODE_ENV=development && jest --collect-coverage --watchAll"

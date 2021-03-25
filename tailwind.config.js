@@ -1,3 +1,6 @@
+const tailwindsTypography = require('@tailwindcss/typography');
+const tailwindsForms = require('@tailwindcss/forms');
+
 // tailwind.config.js
 module.exports = {
   purge: {
@@ -46,5 +49,5 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+  plugins: [tailwindsTypography, tailwindsForms],
 };
