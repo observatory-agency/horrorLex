@@ -20,7 +20,7 @@ class Books {
   async browseHandler(event) {
     const { dataset } = event.target;
     const hasHandler = !!dataset.handler;
-    const isBrowse = dataset.handler === this.enums.browse
+    const isBrowse = dataset.handler === this.enums.browse;
     if (hasHandler && isBrowse) {
       try {
         const books = dataset.books.split(',');
