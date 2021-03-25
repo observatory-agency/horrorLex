@@ -28,8 +28,8 @@ class Books {
         const data = await this.fetchWrapper(books);
         this.browseCard = await data.json();
         this.browseRoot = document.querySelector(this.enums.browseSelector);
-        this.destroyBrowseCard();
-        this.insertBrowseCard();
+        this.browseCardDestroy();
+        this.browseCardInsert();
       } catch (error) {
         // TODO handle error in UI on failed "browse" attempts
         console.error(error);
@@ -84,12 +84,12 @@ class Books {
   }
 
   // private methods
-  insertBrowseCard() {
-    this.browseRoot.innerHTML = this.browseCard;
+  browseCardDestroy() {
+    this.browseRoot.removeChild(this.browseRoot.firstChild);
   }
 
-  destroyBrowseCard() {
-    this.browseRoot.removeChild(this.browseRoot.firstChild);
+  browseCardInsert() {
+    this.browseRoot.innerHTML = this.browseCard;
   }
 
   async fetchWrapper(books) {
