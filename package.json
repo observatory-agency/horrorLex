@@ -4,7 +4,7 @@
   "description": "Horror Lex Web Application",
   "main": "index.js",
   "engines": {
-    "node": ">=14.16.0"
+    "node": "14.16.0"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
