@@ -46,10 +46,10 @@
         <p class="mt-8 mb-2 text-sm text-gray-600">Showing 200 entries</p>
 
         <div class="grid grid-cols-2 gap-4">
-          <div class="p-6 rounded-lg bg-blackMedium">
+          <div class="h-screen p-6 overflow-y-auto rounded-lg bg-blackMedium">
             <ul class="space-y-2.5">
               {{#each results}}
-              <a href="#browse-result" class="block">
+              <a class="block">
                 <li
                   data-handler="browse"
                   data-books="{{ this.books }}"
