@@ -2,6 +2,7 @@ class Books {
   constructor() {
     this.enums = {
       browse: 'browse',
+      browseCard: 'browseCard',
       browseEndPoint: '/browse',
       browseSelector: 'div[data-container="browse"]',
       count: 10,
@@ -25,9 +26,9 @@ class Books {
       try {
         const books = dataset.books.split(',');
         const data = await this.fetchWrapper(books);
-        const { results } = await data.json();
-        this.destroyBrowseItem();
-        results.forEach(this.createBrowseItem.bind(this));
+        this.browseCard = await data.json();
+        this.destroyBrowseCard();
+        this.insertBrowseCard();
       } catch (error) {
         // TODO handle error in UI on failed "browse" attempts
         console.error(error);
@@ -82,29 +83,14 @@ class Books {
   }
 
   // private methods
-  createBrowseItem(browseItem) {
-    const child = {
-      title: document.createElement('p'),
-      tags: document.createElement('p'),
-      url: document.createElement('a'),
-    };
-    const parent = document.createElement('div');
+  insertBrowseCard() {
     const root = document.querySelector(this.enums.browseSelector);
-    child.title.innerText = `Title: ${browseItem.title}`;
-    child.tags.innerText = `Tags: ${browseItem.tags}`;
-    child.url.innerText = 'View Book';
-    child.url.href = `/${browseItem.href}`;
-    parent.append(child.title);
-    parent.append(child.tags);
-    parent.append(child.url);
-    root.append(parent);
+    root.innerHTML = this.browseCard;
   }
 
-  destroyBrowseItem() {
+  destroyBrowseCard() {
     const root = document.querySelector(this.enums.browseSelector);
-    while (root.firstChild) {
-      root.removeChild(root.firstChild);
-    }
+    root.removeChild(root.firstChild);
   }
 
   async fetchWrapper(books) {
