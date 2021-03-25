@@ -1,7 +1,7 @@
 const DataImport = require('./DataImport');
-const generateSeoSlug = require('./generateSeoSlug');
+const slugify = require('./slugify');
 
 module.exports = {
   DataImport,
-  generateSeoSlug,
+  slugify,
 };

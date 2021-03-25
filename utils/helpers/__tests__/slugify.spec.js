@@ -1,8 +1,8 @@
-const generateSeoSlug = require('../generateSeoSlug');
+const slugify = require('../slugify');
 
-describe('generateSeoSlug', () => {
+describe('slugify', () => {
   it('should match the snapshot', () => {
     const title = 'Encyclopedia of the Vampire: The Living Dead in Myth, Legend, and Popular Culture';
-    expect(generateSeoSlug(title)).toMatchSnapshot();
+    expect(slugify(title)).toMatchSnapshot();
   });
 });

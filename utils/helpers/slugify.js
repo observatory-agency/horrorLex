@@ -1,4 +1,4 @@
-/** Create SEO friendly URL */
+/** Create SEO friendly slug */
 // https://stackoverflow.com/questions/14107522/producing-seo-friendly-url-in-javascript
 module.exports = (title) => title
   .toString()

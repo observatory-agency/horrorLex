@@ -1,4 +1,4 @@
-const generateSeoUrl = require('../helpers/generateSeoSlug');
+const slugify = require('../helpers/slugify');
 
 module.exports = (book) => ({
   title: book.Title,
@@ -17,6 +17,7 @@ module.exports = (book) => ({
   horrorLexSummary: book['Horror Lex Summary'],
   filmsDiscussed: book['Films Discussed'].split('\n'),
   tags: book.Tags.split(', '),
+  recommended: book.Recommended,
   photo: book.Photo,
-  href: generateSeoUrl(book.Title),
+  slug: slugify(book.Title),
 });
