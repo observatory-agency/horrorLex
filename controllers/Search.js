@@ -21,7 +21,7 @@ class SearchController extends BaseController {
       const results = await search.advanced(body);
       return results
         ? res.render(this.template.post, { results })
-        : res.sendStatus(400);
+        : res.sendStatus(404);
     } catch (error) {
       return next(error);
     }

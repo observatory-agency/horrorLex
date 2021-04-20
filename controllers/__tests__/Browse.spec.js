@@ -46,13 +46,13 @@ describe('BrowseController', () => {
   });
 
   describe('post', () => {
-    it('should call res.json with with the results', async () => {
+    it('should call res.json with the results HTML string', async () => {
       const jsonMock = jest.fn();
       const resMock = { json: jsonMock };
       const reqMock = { body: { books: [] } };
       const nextMock = jest.fn();
       await browse.post(reqMock, resMock, nextMock);
-      expect(jsonMock).toHaveBeenCalledWith({ results: {} });
+      expect(jsonMock).toBeCalled();
     });
     it('should call "next" on errors', async () => {
       const error = new Error();

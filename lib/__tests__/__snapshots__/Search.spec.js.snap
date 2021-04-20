@@ -1,5 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Search advanced minimum amount of parameters should return an object representing the results 1`] = `
+Object {
+  "documents": Array [
+    Object {
+      "title": "book1",
+    },
+  ],
+  "page": Object {
+    "count": 10,
+    "curr": 1,
+    "next": 2,
+    "number": 1,
+    "pages": Array [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+    ],
+    "param": null,
+    "prev": 0,
+    "range": 1,
+    "skip": 0,
+    "sort": "title",
+    "total": 100,
+    "type": undefined,
+  },
+}
+`;
+
 exports[`Search quick no results should return "null" 1`] = `null`;
 
 exports[`Search quick search first page should return an object representing the results 1`] = `
@@ -100,7 +135,7 @@ Object {
     "prev": 0,
     "range": 1,
     "skip": 0,
-    "sort": undefined,
+    "sort": "title",
     "total": 100,
     "type": "search",
   },
@@ -205,7 +240,7 @@ Object {
     "prev": 0,
     "range": 1,
     "skip": 0,
-    "sort": undefined,
+    "sort": "title",
     "total": 100,
     "type": "tag",
   },
