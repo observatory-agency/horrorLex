@@ -42,7 +42,7 @@ describe('SearchController', () => {
     });
 
     describe('without a result', () => {
-      it('should call res.sendStatus with a "400"', async () => {
+      it('should call res.sendStatus with a "404"', async () => {
         const sendStatusMock = jest.fn();
         const resMock = { sendStatus: sendStatusMock };
         const reqMock = { body: '' };
@@ -51,7 +51,7 @@ describe('SearchController', () => {
           advanced: jest.fn(() => null),
         }));
         await search.post(reqMock, resMock, nextMock);
-        expect(sendStatusMock).toHaveBeenCalledWith(400);
+        expect(sendStatusMock).toHaveBeenCalledWith(404);
       });
     });
 
