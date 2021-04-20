@@ -6,9 +6,15 @@
     <main>
       <section class="px-4 mx-auto mt-16 max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-white">
-            Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results for "{{ results.page.param }}":
-          </h2>
+          {{#if results.page.param }}
+            <h2 class="text-2xl font-bold text-white">
+              Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results for "{{ results.page.param }}":
+            </h2>
+          {{else}}
+            <h2 class="text-2xl font-bold text-white">
+              Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results
+            </h2>
+          {{/if}}
           <div>
             <div class="flex">
               <div class="mr-4">
