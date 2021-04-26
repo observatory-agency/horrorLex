@@ -33,7 +33,7 @@ p, li, a, ol, small, dl, label, div {
     text-shadow: 1px 1px 2px rgba(150, 150, 150, 0.2);
 }
 .hasChillUnderline::after {
-    display: block;
+    display: none;
     content: "";
     position: absolute;
     bottom: 2px;
@@ -43,4 +43,10 @@ p, li, a, ol, small, dl, label, div {
     background-color: #950A10;
     opacity: .8;
     z-index: -1;
+}
+
+@media (min-width: 768px) {
+    .hasChillUnderline::after {
+        display:block;
+    }
 }
