@@ -3,5 +3,6 @@
 exports[`BrowseController constructor should set its templates 1`] = `
 Object {
   "get": "browse.hbs",
+  "post": "results.hbs",
 }
 `;

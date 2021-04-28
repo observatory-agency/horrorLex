@@ -11,7 +11,6 @@ document.addEventListener('change', (event) => {
 
 document.addEventListener('click', (event) => {
   const books = new Books();
-  books.browseHandler(event);
   books.tagHandler(event);
 });
 

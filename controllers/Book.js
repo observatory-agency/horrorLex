@@ -12,7 +12,9 @@ class BookController extends BaseController {
   async get(req, res, next) {
     try {
       const { params: { slug } } = req;
-      const search = new Search(this.model.book);
+      const { BookModel } = this.models;
+      const bookModel = new BookModel();
+      const search = new Search(bookModel);
       const book = await search.one(slug);
       return book
         ? res.render(this.template.get, { book })

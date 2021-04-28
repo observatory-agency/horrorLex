@@ -12,7 +12,9 @@ class ResultsController extends BaseController {
   async get(req, res, next) {
     try {
       const { query } = req;
-      const search = new Search(this.model.book);
+      const { BookModel } = this.models;
+      const bookModel = new BookModel();
+      const search = new Search(bookModel);
       const results = await search.quick(query);
       return results
         ? res.render(this.template.get, { results })
