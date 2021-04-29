@@ -11,5 +11,8 @@ Object {
     },
     "name": "books",
   },
+  "films": Object {
+    "name": "films",
+  },
 }
 `;

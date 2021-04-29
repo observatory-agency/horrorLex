@@ -17,7 +17,9 @@ class SearchController extends BaseController {
   async post(req, res, next) {
     try {
       const { body } = req;
-      const search = new Search(this.model.book);
+      const { BookModel } = this.models;
+      const bookModel = new BookModel();
+      const search = new Search(bookModel);
       const results = await search.advanced(body);
       return results
         ? res.render(this.template.post, { results })

@@ -9,4 +9,7 @@ module.exports = {
       year: 'text',
     },
   },
+  films: {
+    name: 'films',
+  },
 };

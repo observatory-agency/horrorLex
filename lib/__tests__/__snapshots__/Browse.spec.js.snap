@@ -3,12 +3,8 @@
 exports[`Browse byChar should return an object of formatted results 1`] = `
 Array [
   Object {
-    "books": Array [
-      Object {
-        "title": "book1",
-      },
-    ],
-    "title": 1,
+    "film": 1,
+    "urlEncodedFilm": "1",
   },
 ]
 `;

@@ -24,14 +24,19 @@ Object {
       9,
       10,
     ],
-    "param": null,
     "prev": 0,
+    "query": "undefined",
     "range": 1,
     "skip": 0,
     "sort": "title",
     "total": 100,
-    "type": undefined,
+    "type": "advanced",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -61,14 +66,19 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 0,
+    "query": "vampire",
     "range": 1,
     "skip": 0,
     "sort": "title",
     "total": 100,
-    "type": "search",
+    "type": "quick",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -96,14 +106,19 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 99,
+    "query": "vampire",
     "range": 991,
     "skip": 990,
     "sort": "title",
     "total": 100,
-    "type": "search",
+    "type": "quick",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -131,14 +146,19 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 0,
+    "query": "vampire",
     "range": 1,
     "skip": 0,
     "sort": "title",
     "total": 100,
-    "type": "search",
+    "type": "quick",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -166,14 +186,19 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 0,
+    "query": "vampire",
     "range": 1,
     "skip": 0,
     "sort": "title",
     "total": 100,
     "type": "tag",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -201,14 +226,19 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 99,
+    "query": "vampire",
     "range": 991,
     "skip": 990,
     "sort": "title",
     "total": 100,
     "type": "tag",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;
 
@@ -236,13 +266,18 @@ Object {
       9,
       10,
     ],
-    "param": "vampire",
     "prev": 0,
+    "query": "vampire",
     "range": 1,
     "skip": 0,
     "sort": "title",
     "total": 100,
     "type": "tag",
   },
+  "total": Array [
+    Object {
+      "count": 100,
+    },
+  ],
 }
 `;

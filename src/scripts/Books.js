@@ -1,40 +1,18 @@
 class Books {
   constructor() {
     this.enums = {
-      browse: 'browse',
-      browseCard: 'browseCard',
-      browseEndPoint: '/browse',
-      browseSelector: 'div[data-container="browse"]',
       count: 10,
       enterKey: 'Enter',
       page: 1,
-      paramPage: 'page',
-      paramSearch: 'search',
-      paramTag: 'tag',
+      paramPage: 'p',
+      paramQuery: 'q',
+      paramType: 't',
       quickSearch: 'quickSearch',
       results: '/results',
+      quick: 'quick',
       sort: 'sort',
       tag: 'tag',
     };
-  }
-
-  async browseHandler(event) {
-    const { dataset } = event.target;
-    const hasHandler = !!dataset.handler;
-    const isBrowse = dataset.handler === this.enums.browse;
-    if (hasHandler && isBrowse) {
-      try {
-        const books = dataset.books.split(',');
-        const data = await this.fetchWrapper(books);
-        this.browseCard = await data.json();
-        this.browseRoot = document.querySelector(this.enums.browseSelector);
-        this.browseCardDestroy();
-        this.browseCardInsert();
-      } catch (error) {
-        // TODO handle error in UI on failed "browse" attempts
-        console.error(error);
-      }
-    }
   }
 
   quickSearchHandler(event) {
@@ -45,9 +23,10 @@ class Books {
     const isQuickSearch = dataset.handler === this.enums.quickSearch;
     if (hasHandler && isEnterKey && isQuickSearch) {
       window.location.href = this.getResults({
-        count: this.enums.count,
-        page: this.enums.page,
-        search: value,
+        c: this.enums.count,
+        p: this.enums.page,
+        q: encodeURIComponent(value),
+        t: this.enums.quick,
       });
     }
   }
@@ -61,11 +40,11 @@ class Books {
       const { search } = window.location;
       const params = new URLSearchParams(search);
       window.location.href = this.getResults({
-        count: this.enums.count,
-        page: params.get(this.enums.paramPage),
-        search: params.get(this.enums.paramSearch),
-        sort: value,
-        tag: params.get(this.enums.paramTag),
+        c: this.enums.count,
+        p: params.get(this.enums.paramPage),
+        q: params.get(this.enums.paramQuery),
+        s: value,
+        t: params.get(this.enums.paramType),
       });
     }
   }
@@ -76,9 +55,10 @@ class Books {
     const isTag = dataset.handler === this.enums.tag;
     if (hasHandler && isTag) {
       window.location.href = this.getResults({
-        count: this.enums.count,
-        page: this.enums.page,
-        tag: dataset.tag,
+        c: this.enums.count,
+        p: this.enums.page,
+        q: dataset.tag,
+        t: this.enums.tag,
       });
     }
   }
@@ -92,24 +72,10 @@ class Books {
     this.browseRoot.innerHTML = this.browseCard;
   }
 
-  async fetchWrapper(books) {
-    return fetch(this.enums.browseEndPoint, {
-      method: 'POST',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json' },
-      redirect: 'follow',
-      referrerPolicy: 'no-referrer',
-      body: JSON.stringify({ books }),
-    });
-  }
-
   getResults(params) {
     const url = new URL(`${window.origin}${this.enums.results}`);
     const keys = Object.keys(params);
-    keys.forEach((param) => (
-      params[param] && url.searchParams.set(param, encodeURI(params[param]))
-    ));
+    keys.forEach((param) => params[param] && url.searchParams.set(param, params[param]));
     return url.href;
   }
 }

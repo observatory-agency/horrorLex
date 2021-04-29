@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HandlebarsHelpers pageNumberHelper when handling 1 page should a string with appropriate page numbers and skip characters 1`] = `"1"`;
+exports[`HandlebarsHelpers pageNumber when handling 1 page should a string with appropriate page numbers and skip characters 1`] = `"1"`;
 
-exports[`HandlebarsHelpers pageNumberHelper when handling 3 pages should a string with appropriate page numbers and skip characters 1`] = `"123"`;
+exports[`HandlebarsHelpers pageNumber when handling 3 pages should a string with appropriate page numbers and skip characters 1`] = `"123"`;
 
-exports[`HandlebarsHelpers pageNumberHelper when handling many pages should a string with appropriate page numbers and skip characters 1`] = `"1...34567...20"`;
+exports[`HandlebarsHelpers pageNumber when handling many pages should a string with appropriate page numbers and skip characters 1`] = `"1...34567...20"`;
 
-exports[`HandlebarsHelpers pageNumberHelper when the current page is the first page should a string with appropriate page numbers and skip characters 1`] = `"12345...20"`;
+exports[`HandlebarsHelpers pageNumber when the current page is the first page should a string with appropriate page numbers and skip characters 1`] = `"12345...20"`;
 
-exports[`HandlebarsHelpers pageNumberHelper when the current page is the last page should a string with appropriate page numbers and skip characters 1`] = `"1...1617181920"`;
+exports[`HandlebarsHelpers pageNumber when the current page is the last page should a string with appropriate page numbers and skip characters 1`] = `"1...1617181920"`;
