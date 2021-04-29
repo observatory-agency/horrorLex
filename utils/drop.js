@@ -1,16 +1,25 @@
+const readline = require('readline');
+const { handleCollection } = require('./helpers');
 const Mongo = require('../lib/Mongo');
-const BookModel = require('../models/Book');
 
-const init = async () => {
+const exec = async (name) => {
   try {
     await Mongo.connect();
-    const bookModel = new BookModel();
-    await bookModel.drop();
-    console.log(`Dropped collection "${bookModel.name}"`);
+    const collection = handleCollection(name);
+    await collection.model.drop();
+    console.log(`Dropped collection "${name}"`);
   } catch (error) {
     console.error(error);
   }
   Mongo.close();
 };
 
-init();
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question('Enter collection name to DROP: ', (filename) => {
+  exec(filename);
+  rl.close();
+});

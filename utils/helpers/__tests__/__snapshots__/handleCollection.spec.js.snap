@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handleCollection should return the appropriate transformer and model for a collection 1`] = `
+Object {
+  "model": BookModel {
+    "db": undefined,
+    "index": Object {
+      "author": "text",
+      "isbn13": "text",
+      "title": "text",
+      "year": "text",
+    },
+    "name": "books",
+  },
+  "transformer": [Function],
+}
+`;
+
+exports[`handleCollection should return the appropriate transformer and model for a collection 2`] = `
+Object {
+  "model": FilmModel {
+    "db": undefined,
+    "index": undefined,
+    "name": "films",
+  },
+  "transformer": [Function],
+}
+`;
