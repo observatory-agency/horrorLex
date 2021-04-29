@@ -2,33 +2,35 @@
 <html>
   {{> global/head }}
   <body>
+    {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
     <div class="wrapper">
       <!-- Hero -->
       <section class="mx-auto">
         <img src="/public/img/homepage-hero.jpg" alt="Professor Lupe Lex in his study chamber" />
       </section>
-      <main class="mt-12 space-y-32 lg:mt-16">
+      <main class="mt-12 space-y-20 lg:space-y-32 lg:mt-16">
         <!-- Intro -->
         <section class="max-w-6xl mx-auto">
-          <h1 class="text-5xl font-black text-gray-100">
+          <h1 class="text-2xl font-black text-gray-100 lg:text-5xl">
             Welcome to Horror Lex, <br />
             the Home of <span class="text-primaryRed">Academic Horror</span>
           </h1>
-          <div class="items-center grid-cols-2 gap-12 md:grid">
+          <div class="items-center grid-cols-2 gap-12 mt-8 md:grid lg:mt-0">
             <div class="col-span-1 prose-lg text-white">
               <p>
-                Horror Lex is a searchable database of academic and other serious writings about horror and
-                horror-adjacent cinema, compiled under the guidance of Professor Lupe Lex, PhD, S.L.W.
+                Horror Lex is a searchable database of academic and other serious writings about
+                horror and horror-adjacent cinema, compiled under the guidance of Professor Lupe
+                Lex, PhD, S.L.W.
               </p>
               <p>
-                Professor Lex has hand-picked nearly 10,000 books and articles spanning a century of horror film
-                scholarship, much of which is open access and peer-reviewed.
+                Professor Lex has hand-picked nearly 10,000 books and articles spanning a century of
+                horror film scholarship, much of which is open access and peer-reviewed.
               </p>
               <p>
-                While horror movie blogs are a dime a dozen, and library catalogs are hit or miss, Horror Lex has
-                curated a collection of quality writings on horror cinema suitable for serious scholars and the
-                intellectually curious.
+                While horror movie blogs are a dime a dozen, and library catalogs are hit or miss,
+                Horror Lex has curated a collection of quality writings on horror cinema suitable
+                for serious scholars and the intellectually curious.
               </p>
             </div>
             <div class="col-span-1 justify-self-center">
@@ -38,17 +40,17 @@
         </section>
         <!-- Search Database -->
         <section class="max-w-6xl mx-auto">
-          <div class="items-center grid-cols-2 gap-12 md:grid">
-            <div class="col-span-1 justify-self-center">
+          <div class="flex flex-col items-center grid-cols-2 gap-12 space-y-6 md:space-y-0 md:grid">
+            <div class="order-2 col-span-1 md:order-1 justify-self-center">
               <img src="/public/img/about.png" alt="Introducing Professor Lupe Lex" />
             </div>
-            <div class="col-span-1 prose-lg text-white">
+            <div class="order-1 col-span-1 prose-lg text-white md:order-2">
               <h2 class="font-bold hasChillUnderline">Search Our Robust Database</h2>
               <p>Use the Quick Search box for an instant view of what Horror Lex can show you.</p>
               {{> ui/ctaBtn link='#mainNav' text='Quick Search' }}
               <p>
-                Or, click on Advanced Search to filter based on publication title, journal title, author, keyword, date,
-                film, etc.
+                Or, click on Advanced Search to filter based on publication title, journal title,
+                author, keyword, date, film, etc.
               </p>
               {{> ui/ctaBtn link='/search' text='Advanced Search' }}
             </div>
@@ -56,12 +58,12 @@
         </section>
         <!-- Browse Collection -->
         <section class="max-w-6xl mx-auto">
-          <div class="items-center grid-cols-2 gap-12 md:grid">
+          <div class="items-center grid-cols-2 gap-12 space-y-6 md:space-y-0 md:grid">
             <div class="col-span-1 prose-lg text-white">
               <h2 class="font-bold hasChillUnderline">Browse the Collection</h2>
               <p>
-                Not sure where to start? Get inspiration by using the Browse button to peruse Horror Lex's 4,500 indexed
-                films or keywords.
+                Not sure where to start? Get inspiration by using the Browse button to peruse Horror
+                Lex's 4,500 indexed films or keywords.
               </p>
               {{> ui/ctaBtn link='/browse/a' text='Browse' }}
             </div>
@@ -72,13 +74,16 @@
         </section>
         <!-- Learn More -->
         <section class="max-w-6xl mx-auto">
-          <div class="items-center grid-cols-2 gap-12 md:grid">
-            <div class="col-span-1 justify-self-center">
+          <div class="flex flex-col items-center grid-cols-2 gap-12 space-y-6 md:space-y-0 md:grid">
+            <div class="order-2 col-span-1 md:order-1 justify-self-center">
               <img src="/public/img/learn-more.png" alt="Introducing Professor Lupe Lex" />
             </div>
-            <div class="col-span-1 prose-lg text-white">
+            <div class="order-1 col-span-1 prose-lg text-white md:order-2">
               <h2 class="font-bold hasChillUnderline">Learn More about Horror Lex</h2>
-              <p>Not sure how this all works, or have a question about Horror Lex's database? Click About.</p>
+              <p>
+                Not sure how this all works, or have a question about Horror Lex's database? Click
+                About.
+              </p>
               {{> ui/ctaBtn link='/about' text='About' }}
               <p>Want to ask Professor Lex a question? Click Contact.</p>
               {{> ui/ctaBtn link='/contact' text='Contact' }}
