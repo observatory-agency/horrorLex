@@ -1,25 +1,31 @@
-const { DataImport } = require('./helpers');
-const { bookTransformer } = require('./transformers');
+const readline = require('readline');
+const { DataImport, handleCollection } = require('./helpers');
 const Mongo = require('../lib/Mongo');
-const BookModel = require('../models/Book');
 
-const init = async () => {
+const exec = async (name) => {
   try {
     await Mongo.connect();
-
     const dataImport = new DataImport();
-    await dataImport.fromCsv('./data/books.csv');
+    await dataImport.fromCsv(`./data/${name}.csv`);
+    const collection = handleCollection(name);
 
-    dataImport.mutateEach(bookTransformer);
+    dataImport.mutateEach(collection.transformer);
 
     const { docs } = dataImport;
-    const bookModel = new BookModel();
-    const { result: { n } } = await bookModel.insertMany(docs);
-    console.log(`Inserted ${n} documents into collection "${bookModel.name}"`);
+    const { result: { n } } = await collection.model.insertMany(docs);
+    console.log(`Inserted ${n} documents into collection "${name}"`);
   } catch (error) {
     console.error(error);
   }
   Mongo.close();
 };
 
-init();
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.question('Enter collection name to INSERT_MANY: ', (filename) => {
+  exec(filename);
+  rl.close();
+});
