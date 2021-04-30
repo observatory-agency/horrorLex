@@ -1,34 +1,34 @@
-const BookController = require('../Book');
+const PublicationController = require('../Publication');
 const Search = require('../../lib/Search');
-const BookModel = require('../../models/Book');
+const PublicationModel = require('../../models/Publication');
 
 jest.mock('../../lib/Search');
-jest.mock('../../models/Book');
+jest.mock('../../models/Publication');
 
-describe('BookController', () => {
-  let book;
+describe('PublicationController', () => {
+  let publication;
+  const bookMock = { title: 'some title', type: 'book' };
   beforeEach(() => {
-    Search.mockImplementation(() => ({
-      one: jest.fn(() => ({})),
-    }));
-    book = new BookController();
+    Search.mockImplementation(() => ({ one: jest.fn(() => bookMock) }));
+    publication = new PublicationController();
   });
 
   describe('constructor', () => {
     it('should set its templates', () => {
-      expect(book.template).toMatchSnapshot();
+      expect(publication.template).toMatchSnapshot();
     });
   });
 
   describe('get', () => {
     describe('with a result', () => {
       it('should call res.render with "get" template and results', async () => {
+        const templateMock = 'book.hbs';
         const renderMock = jest.fn();
         const resMock = { render: renderMock };
         const reqMock = { params: { slug: 'a book' } };
         const nextMock = jest.fn();
-        await book.get(reqMock, resMock, nextMock);
-        expect(renderMock).toHaveBeenCalledWith(book.template.get, { book: {} });
+        await publication.get(reqMock, resMock, nextMock);
+        expect(renderMock).toHaveBeenCalledWith(templateMock, { book: bookMock });
       });
     });
 
@@ -41,7 +41,7 @@ describe('BookController', () => {
         Search.mockImplementation(() => ({
           one: jest.fn(() => null),
         }));
-        await book.get(reqMock, resMock, nextMock);
+        await publication.get(reqMock, resMock, nextMock);
         expect(sendStatusMock).toHaveBeenCalledWith(404);
       });
     });
@@ -54,7 +54,7 @@ describe('BookController', () => {
       Search.mockImplementation(() => ({
         one: jest.fn(() => { throw error; }),
       }));
-      await book.get(reqMock, resMock, nextMock);
+      await publication.get(reqMock, resMock, nextMock);
       expect(nextMock).toHaveBeenCalledWith(error);
     });
   });

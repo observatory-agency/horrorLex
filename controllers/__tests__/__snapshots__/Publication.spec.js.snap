@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PublicationController constructor should set its templates 1`] = `
+Object {
+  "get": Object {
+    "article": "article.hbs",
+    "book": "book.hbs",
+  },
+}
+`;

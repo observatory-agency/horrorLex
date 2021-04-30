@@ -1,0 +1,61 @@
+{
+  "mappings": {
+    "dynamic": true,
+    "fields": {
+      "author": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "horrorLexSummary": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "year": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "filmsDiscussed": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "isbn13": [
+        {
+          "type": "document",
+          "dynamic": true
+        },
+        {
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

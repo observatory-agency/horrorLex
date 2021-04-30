@@ -2,19 +2,19 @@
 import '../styles/base.css';
 import '../styles/main.css';
 
-import Books from './Books';
+import Publications from './Publications';
 
 document.addEventListener('change', (event) => {
-  const books = new Books();
-  books.sortHandler(event);
+  const publications = new Publications();
+  publications.sortHandler(event);
 });
 
 document.addEventListener('click', (event) => {
-  const books = new Books();
-  books.tagHandler(event);
+  const publications = new Publications();
+  publications.tagHandler(event);
 });
 
 document.addEventListener('keydown', (event) => {
-  const books = new Books();
-  books.quickSearchHandler(event);
+  const publications = new Publications();
+  publications.quickSearchHandler(event);
 });

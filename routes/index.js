@@ -1,5 +1,5 @@
 const about = require('./about');
-const book = require('./book');
+const publication = require('./publication');
 const browse = require('./browse');
 const contact = require('./contact');
 const home = require('./home');
@@ -8,10 +8,10 @@ const search = require('./search');
 
 module.exports = {
   about,
-  book,
   browse,
   contact,
   home,
+  publication,
   results,
   search,
 };

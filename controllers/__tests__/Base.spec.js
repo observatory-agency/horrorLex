@@ -1,7 +1,5 @@
 const BaseController = require('../Base');
 
-jest.mock('../../models/Book');
-
 describe('BaseController', () => {
   let base;
   beforeEach(() => {

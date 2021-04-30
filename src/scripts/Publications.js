@@ -1,4 +1,4 @@
-class Books {
+class Publications {
   constructor() {
     this.enums = {
       count: 10,
@@ -80,4 +80,4 @@ class Books {
   }
 }
 
-export default Books;
+export default Publications;

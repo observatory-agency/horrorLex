@@ -1,7 +1,4 @@
-const BookModel = require('./Book');
 const FilmModel = require('./Film');
+const PublicationModel = require('./Publication');
 
-module.exports = {
-  BookModel,
-  FilmModel,
-};
+module.exports = { FilmModel, PublicationModel };
