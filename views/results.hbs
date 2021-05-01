@@ -51,7 +51,7 @@
           {{#if results.page.prev }}
           <div class="flex flex-1 w-0">
             <a
-              href="/results/?c={{results.page.count}}&p={{results.page.prev}}&q={{results.page.query}}&s={{../../results.page.sort}}&t={{results.page.type}}"
+              href="/results/?{{results.page.params}}&p={{results.page.prev}}"
               class="inline-flex items-center pt-4 pr-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
             >
               <!-- Heroicon name: arrow-narrow-left -->
@@ -88,7 +88,7 @@
                 {{!-- pageActive determines if the page is the active page --}}
                 {{#pageActive ../this.page}}
                   <a
-                    href="/results/?c={{../../results.page.count}}&p={{../this.page}}&q={{../../results.page.query}}&s={{../../results.page.sort}}&t={{../../results.page.type}}"
+                    href="/results/?{{../../results.page.params}}&p={{../this.page}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 transition duration-150 ease-in-out border-t-2 border-primaryOrangeDark text-primaryOrange focus:outline-none focus:text-indigo-800 focus:border-indigo-700"
                   >
                     {{../this.page}}
@@ -96,7 +96,7 @@
                 {{ else }}
                   <a
 
-                    href="/results/?c={{../../results.page.count}}&p={{../this.page}}&q={{../../results.page.query}}&s={{../../results.page.sort}}&t={{../../results.page.type}}"
+                    href="/results/?{{../../results.page.params}}&p={{../this.page}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
                   >
                     {{../this.page}}
@@ -108,7 +108,7 @@
           {{#if results.page.next }}
           <div class="flex justify-end flex-1 w-0">
             <a
-              href="/results/?c={{results.page.count}}&p={{results.page.next}}&q={{results.page.query}}&s={{results.page.sort}}&t={{results.page.type}}"
+              href="/results/?{{results.page.params}}&p={{results.page.next}}"
               class="inline-flex items-center pt-4 pl-1 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
             >
               Next

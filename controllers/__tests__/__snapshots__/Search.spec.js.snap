@@ -3,6 +3,5 @@
 exports[`SearchController constructor should set its templates 1`] = `
 Object {
   "get": "search.hbs",
-  "post": "results.hbs",
 }
 `;

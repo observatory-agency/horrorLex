@@ -15,7 +15,7 @@ class ResultsController extends BaseController {
       const { PublicationModel } = this.models;
       const publicationModel = new PublicationModel();
       const search = new Search(publicationModel);
-      const results = await search.quick(query);
+      const results = await search.many(query);
       return results
         ? res.render(this.template.get, { results })
         : res.sendStatus(400);
