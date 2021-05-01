@@ -9,7 +9,7 @@ describe('ResultsController', () => {
   let results;
   beforeEach(() => {
     Search.mockImplementation(() => ({
-      quick: jest.fn(() => ([])),
+      many: jest.fn(() => ([])),
     }));
     results = new ResultsController();
   });
@@ -39,7 +39,7 @@ describe('ResultsController', () => {
         const reqMock = { query: '123' };
         const nextMock = jest.fn();
         Search.mockImplementation(() => ({
-          quick: jest.fn(() => null),
+          many: jest.fn(() => null),
         }));
         await results.get(reqMock, resMock, nextMock);
         expect(sendStatusMock).toHaveBeenCalledWith(400);
@@ -52,7 +52,7 @@ describe('ResultsController', () => {
       const reqMock = { query: '123' };
       const nextMock = jest.fn();
       Search.mockImplementation(() => ({
-        quick: jest.fn(() => { throw error; }),
+        many: jest.fn(() => { throw error; }),
       }));
       await results.get(reqMock, resMock, nextMock);
       expect(nextMock).toHaveBeenCalledWith(error);

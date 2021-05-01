@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Search advanced minimum amount of parameters should return an object representing the results 1`] = `
+exports[`Search many no results should return "null" 1`] = `null`;
+
+exports[`Search many search first page should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -24,48 +26,7 @@ Object {
       9,
       10,
     ],
-    "prev": 0,
-    "query": "undefined",
-    "range": 1,
-    "skip": 0,
-    "sort": "title",
-    "total": 100,
-    "type": "advanced",
-  },
-  "total": Array [
-    Object {
-      "count": 100,
-    },
-  ],
-}
-`;
-
-exports[`Search quick no results should return "null" 1`] = `null`;
-
-exports[`Search quick search first page should return an object representing the results 1`] = `
-Object {
-  "documents": Array [
-    Object {
-      "title": "book1",
-    },
-  ],
-  "page": Object {
-    "count": 10,
-    "curr": 1,
-    "next": 2,
-    "number": 1,
-    "pages": Array [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-    ],
+    "params": "c=10&q=vampire&s=title&t=quick",
     "prev": 0,
     "query": "vampire",
     "range": 1,
@@ -82,7 +43,7 @@ Object {
 }
 `;
 
-exports[`Search quick search last page should return an object representing the results 1`] = `
+exports[`Search many search last page should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -106,6 +67,7 @@ Object {
       9,
       10,
     ],
+    "params": "c=10&q=vampire&s=title&t=quick",
     "prev": 99,
     "query": "vampire",
     "range": 991,
@@ -122,7 +84,7 @@ Object {
 }
 `;
 
-exports[`Search quick search minimum amount of parameters should return an object representing the results 1`] = `
+exports[`Search many search minimum amount of parameters should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -146,6 +108,7 @@ Object {
       9,
       10,
     ],
+    "params": "q=vampire&t=quick&c=10&s=title",
     "prev": 0,
     "query": "vampire",
     "range": 1,
@@ -162,7 +125,7 @@ Object {
 }
 `;
 
-exports[`Search quick tag first page should return an object representing the results 1`] = `
+exports[`Search many tag first page should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -186,6 +149,7 @@ Object {
       9,
       10,
     ],
+    "params": "c=10&q=vampire&s=title&t=tag",
     "prev": 0,
     "query": "vampire",
     "range": 1,
@@ -202,7 +166,7 @@ Object {
 }
 `;
 
-exports[`Search quick tag last page should return an object representing the results 1`] = `
+exports[`Search many tag last page should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -226,6 +190,7 @@ Object {
       9,
       10,
     ],
+    "params": "c=10&q=vampire&s=title&t=tag",
     "prev": 99,
     "query": "vampire",
     "range": 991,
@@ -242,7 +207,7 @@ Object {
 }
 `;
 
-exports[`Search quick tag minimum amount of parameters should return an object representing the results 1`] = `
+exports[`Search many tag minimum amount of parameters should return an object representing the results 1`] = `
 Object {
   "documents": Array [
     Object {
@@ -266,6 +231,7 @@ Object {
       9,
       10,
     ],
+    "params": "q=vampire&t=tag&c=10&s=title",
     "prev": 0,
     "query": "vampire",
     "range": 1,

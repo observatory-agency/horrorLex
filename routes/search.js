@@ -5,6 +5,5 @@ const router = express.Router();
 const controller = new SearchController();
 
 router.get('/', controller.get);
-router.post('/', controller.post);
 
 module.exports = router;
