@@ -1,9 +1,9 @@
 const ResultsController = require('../Results');
 const Search = require('../../lib/Search');
-const BookModel = require('../../models/Book');
+const PublicationModel = require('../../models/Publication');
 
 jest.mock('../../lib/Search');
-jest.mock('../../models/Book');
+jest.mock('../../models/Publication');
 
 describe('ResultsController', () => {
   let results;

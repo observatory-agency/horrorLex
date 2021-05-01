@@ -20,4 +20,5 @@ module.exports = (book) => ({
   recommended: book.Recommended,
   photo: book.Photo,
   slug: slugify(book.Title),
+  type: 'book',
 });

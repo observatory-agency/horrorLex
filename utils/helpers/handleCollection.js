@@ -1,23 +1,36 @@
-const { bookTransformer, filmTransformer } = require('../transformers');
-const { BookModel, FilmModel } = require('../../models');
+const {
+  articleTransformer,
+  bookTransformer,
+  filmTransformer,
+} = require('../transformers');
+const { FilmModel, PublicationModel } = require('../../models');
 
 module.exports = (name) => {
   let model;
+  let modelName;
   let transformer;
   switch (name) {
+    case 'articles': {
+      model = new PublicationModel();
+      modelName = 'publications';
+      transformer = articleTransformer;
+      break;
+    }
     case 'books': {
+      model = new PublicationModel();
+      modelName = 'publications';
       transformer = bookTransformer;
-      model = new BookModel();
       break;
     }
     case 'films': {
-      transformer = filmTransformer;
       model = new FilmModel();
+      modelName = 'films';
+      transformer = filmTransformer;
       break;
     }
     default: {
       throw new Error();
     }
   }
-  return { model, transformer };
+  return { model, modelName, transformer };
 };

@@ -1,8 +1,8 @@
 const express = require('express');
-const { BookController } = require('../controllers');
+const { PublicationController } = require('../controllers');
 
 const router = express.Router();
-const controller = new BookController();
+const controller = new PublicationController();
 
 router.get('/:slug', controller.get);
 

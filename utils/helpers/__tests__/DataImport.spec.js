@@ -2,7 +2,7 @@ const csv = require('csvtojson');
 const DataImport = require('../DataImport');
 
 const mockBook1 = { title: 'werewolf book' };
-const mockBook2 = { title: 'vampure book' };
+const mockBook2 = { title: 'vampire book' };
 
 jest.mock('csvtojson', () => () => ({
   fromFile: jest.fn(() => [mockBook1]),

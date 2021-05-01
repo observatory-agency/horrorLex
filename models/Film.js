@@ -3,7 +3,7 @@ const { films } = require('../constants/collections');
 
 class FilmModel extends BaseModel {
   constructor() {
-    super(films.name, films.index);
+    super(films.name);
   }
 }
 

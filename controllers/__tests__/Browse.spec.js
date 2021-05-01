@@ -1,16 +1,14 @@
 const BrowseController = require('../Browse');
 const Browse = require('../../lib/Browse');
-// const BookModel = require('../../models/Book');
 
 jest.mock('../../lib/Browse');
-jest.mock('../../models/Book');
+jest.mock('../../models/Publication');
 
 describe('BrowseController', () => {
   let browse;
   beforeEach(() => {
     Browse.mockImplementation(() => ({
       byChar: jest.fn(() => []),
-      relatedBooks: jest.fn(() => ({})),
     }));
     browse = new BrowseController();
   });

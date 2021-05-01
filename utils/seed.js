@@ -13,7 +13,7 @@ const exec = async (name) => {
 
     const { docs } = dataImport;
     const { result: { n } } = await collection.model.insertMany(docs);
-    console.log(`Inserted ${n} documents into collection "${name}"`);
+    console.log(`Inserted ${n} documents into collection "${collection.modelName}"`);
   } catch (error) {
     console.error(error);
   }

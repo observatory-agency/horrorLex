@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`BookController constructor should set its templates 1`] = `
-Object {
-  "get": "book.hbs",
-}
-`;

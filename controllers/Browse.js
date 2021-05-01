@@ -13,10 +13,10 @@ class BrowseController extends BaseController {
   async get(req, res, next) {
     try {
       const { params: { char } } = req;
-      const { BookModel } = this.models;
-      const bookModel = new BookModel();
-      const regexChar = Browse.createRegexStr(char);
-      const browse = new Browse(bookModel);
+      const { FilmModel } = this.models;
+      const publicationModel = new FilmModel();
+      const regexChar = Browse.createRegexStr(char || 'a');
+      const browse = new Browse(publicationModel);
       const results = await browse.byChar(regexChar);
       return res.render(this.template.get, { results });
     } catch (error) {

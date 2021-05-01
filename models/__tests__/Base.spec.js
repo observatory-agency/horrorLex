@@ -16,10 +16,10 @@ jest.mock('../../lib/Mongo', () => ({
 
 describe('BaseModel', () => {
   let baseModel;
-  const mockCollection = { name: 'books', index: {} };
+  const mockCollection = { name: 'publications', index: {} };
   describe('constructor', () => {
     it('should return a Mongo db collection', () => {
-      baseModel = new BaseModel(mockCollection.name, mockCollection.index);
+      baseModel = new BaseModel(mockCollection.name);
       expect(baseModel).toBeDefined();
       expect(baseModel.aggregate).toBeDefined();
       expect(baseModel.createIndex).toBeDefined();
@@ -33,7 +33,7 @@ describe('BaseModel', () => {
       it('should call console.error', async () => {
         try {
           Mongo.db.collection = () => { throw new Error(); };
-          baseModel = new BaseModel(mockCollection.name, mockCollection.index);
+          baseModel = new BaseModel(mockCollection.name);
         } catch (error) {
           expect(console.error).toHaveBeenCalled();
         }
