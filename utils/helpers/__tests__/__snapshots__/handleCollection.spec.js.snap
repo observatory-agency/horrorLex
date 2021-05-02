@@ -2,10 +2,7 @@
 
 exports[`handleCollection should return the appropriate transformer and model for a collection 1`] = `
 Object {
-  "model": PublicationModel {
-    "db": undefined,
-    "name": "publications",
-  },
+  "model": Object {},
   "modelName": "publications",
   "transformer": [Function],
 }
@@ -13,10 +10,7 @@ Object {
 
 exports[`handleCollection should return the appropriate transformer and model for a collection 2`] = `
 Object {
-  "model": PublicationModel {
-    "db": undefined,
-    "name": "publications",
-  },
+  "model": Object {},
   "modelName": "publications",
   "transformer": [Function],
 }
@@ -24,10 +18,7 @@ Object {
 
 exports[`handleCollection should return the appropriate transformer and model for a collection 3`] = `
 Object {
-  "model": FilmModel {
-    "db": undefined,
-    "name": "films",
-  },
+  "model": Object {},
   "modelName": "films",
   "transformer": [Function],
 }

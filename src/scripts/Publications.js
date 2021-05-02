@@ -23,10 +23,10 @@ class Publications {
     const isQuickSearch = dataset.handler === this.enums.quickSearch;
     if (hasHandler && isEnterKey && isQuickSearch) {
       window.location.href = this.getResults({
-        c: this.enums.count,
-        p: this.enums.page,
-        q: encodeURIComponent(value),
-        t: this.enums.quick,
+        count: this.enums.count,
+        page: this.enums.page,
+        query: encodeURIComponent(value),
+        type: this.enums.quick,
       });
     }
   }
@@ -40,11 +40,11 @@ class Publications {
       const { search } = window.location;
       const params = new URLSearchParams(search);
       window.location.href = this.getResults({
-        c: this.enums.count,
-        p: params.get(this.enums.paramPage),
-        q: params.get(this.enums.paramQuery),
-        s: value,
-        t: params.get(this.enums.paramType),
+        count: this.enums.count,
+        page: params.get(this.enums.paramPage),
+        query: params.get(this.enums.paramQuery),
+        sort: value,
+        type: params.get(this.enums.paramType),
       });
     }
   }
@@ -55,23 +55,15 @@ class Publications {
     const isTag = dataset.handler === this.enums.tag;
     if (hasHandler && isTag) {
       window.location.href = this.getResults({
-        c: this.enums.count,
-        p: this.enums.page,
-        q: dataset.tag,
-        t: this.enums.tag,
+        count: this.enums.count,
+        page: this.enums.page,
+        query: dataset.tag,
+        type: this.enums.tag,
       });
     }
   }
 
   // private methods
-  browseCardDestroy() {
-    this.browseRoot.removeChild(this.browseRoot.firstChild);
-  }
-
-  browseCardInsert() {
-    this.browseRoot.innerHTML = this.browseCard;
-  }
-
   getResults(params) {
     const url = new URL(`${window.origin}${this.enums.results}`);
     const keys = Object.keys(params);

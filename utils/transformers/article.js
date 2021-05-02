@@ -9,6 +9,7 @@ module.exports = (article) => ({
   freeOnlineCopy: article['Free Online Copy'],
   mla8Citation: article['MLA 8 Citation'],
   reprintedIn: article['Reprinted In'],
+  muse: article.MUSE,
   jstor: article.JSTOR,
   horrorLexSummary: article['Horror Lex Summary'],
   filmsDiscussed: article.Films.split('\n'),

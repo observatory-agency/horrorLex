@@ -2,13 +2,11 @@ const hbs = require('hbs');
 const HandlebarsHelpers = require('../../lib/HandlebarsHelpers');
 
 const helpersToRegister = [
-  'case',
   'env',
   'isSelected',
   'pageActive',
   'pageNumber',
   'pageSkip',
-  'switch',
 ];
 
 const registerHelpers = () => {
