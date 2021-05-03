@@ -58,10 +58,10 @@
       "./controllers/**/*.js",
       "./lib/**/*.js",
       "./models/**/*.js",
-      "./src/**/*.js",
       "./utils/**/*.js",
       "!./**/index.js",
-      "!./utils/*.js"
+      "!./utils/*.js",
+      "!./src/**/*.js"
     ]
   },
   "author": "Observatory Agency",

@@ -2,7 +2,18 @@ const BrowseController = require('../Browse');
 const Browse = require('../../lib/Browse');
 
 jest.mock('../../lib/Browse');
-jest.mock('../../models/Publication');
+jest.mock('../../lib/Mongo', () => ({
+  db: {
+    collection: jest.fn(() => ({
+      aggregate: jest.fn(),
+      createIndex: jest.fn(),
+      drop: jest.fn(),
+      findOne: jest.fn(),
+      find: jest.fn(),
+      insertMany: jest.fn(),
+    })),
+  },
+}));
 
 describe('BrowseController', () => {
   let browse;
