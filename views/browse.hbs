@@ -8,40 +8,50 @@
       <section class="flex justify-between">
         <div class="flex items-center justify-between w-full">
           <h1 class="text-3xl font-bold text-white">Browse the Horror Lex Database</h1>
-          <a href="#" class="block text-lg text-primaryOrange"> Switch to category view </a>
+          {{#ifEqual view 'category' }}
+            <a href="/browse/film" class="block text-lg text-primaryOrange"> Switch to film view </a>
+          {{/ifEqual}}
+          {{#ifEqual view 'film' }}
+            <a href="/browse/category" class="block text-lg text-primaryOrange"> Switch to category view </a>
+          {{/ifEqual}}
         </div>
       </section>
       <section class="px-6 py-6 shadow-md rounded-xl bg-blackLight">
         <div>
-          <h2 class="text-xl font-bold text-white">Browse Films - Alphabetically</h2>
+          {{#ifEqual view 'category' }}
+            <h2 class="text-xl font-bold text-white">Browse Categories - Alphabetically</h2>
+          {{/ifEqual}}
+          {{#ifEqual view 'film' }}
+            <h2 class="text-xl font-bold text-white">Browse Films - Alphabetically</h2>
+          {{/ifEqual}}
           <div class="mt-4 space-x-2 text-white lg:space-x-4 xl:space-x-6">
-            <a href="/browse/num" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">#</a>
-            <a href="/browse/a" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">A</a>
-            <a href="/browse/b" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">B</a>
-            <a href="/browse/c" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">C</a>
-            <a href="/browse/d" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">D</a>
-            <a href="/browse/e" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">E</a>
-            <a href="/browse/f" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">F</a>
-            <a href="/browse/g" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">G</a>
-            <a href="/browse/h" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">H</a>
-            <a href="/browse/i" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">I</a>
-            <a href="/browse/j" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">J</a>
-            <a href="/browse/k" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">K</a>
-            <a href="/browse/l" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">L</a>
-            <a href="/browse/m" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">M</a>
-            <a href="/browse/n" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">N</a>
-            <a href="/browse/o" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">O</a>
-            <a href="/browse/p" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">P</a>
-            <a href="/browse/q" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Q</a>
-            <a href="/browse/r" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">R</a>
-            <a href="/browse/s" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">S</a>
-            <a href="/browse/t" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">T</a>
-            <a href="/browse/u" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">U</a>
-            <a href="/browse/v" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">V</a>
-            <a href="/browse/w" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">W</a>
-            <a href="/browse/x" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">X</a>
-            <a href="/browse/y" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Y</a>
-            <a href="/browse/z" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Z</a>
+            <a href="/browse/{{view}}/num" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">#</a>
+            <a href="/browse/{{view}}/a" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">A</a>
+            <a href="/browse/{{view}}/b" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">B</a>
+            <a href="/browse/{{view}}/c" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">C</a>
+            <a href="/browse/{{view}}/d" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">D</a>
+            <a href="/browse/{{view}}/e" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">E</a>
+            <a href="/browse/{{view}}/f" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">F</a>
+            <a href="/browse/{{view}}/g" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">G</a>
+            <a href="/browse/{{view}}/h" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">H</a>
+            <a href="/browse/{{view}}/i" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">I</a>
+            <a href="/browse/{{view}}/j" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">J</a>
+            <a href="/browse/{{view}}/k" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">K</a>
+            <a href="/browse/{{view}}/l" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">L</a>
+            <a href="/browse/{{view}}/m" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">M</a>
+            <a href="/browse/{{view}}/n" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">N</a>
+            <a href="/browse/{{view}}/o" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">O</a>
+            <a href="/browse/{{view}}/p" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">P</a>
+            <a href="/browse/{{view}}/q" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Q</a>
+            <a href="/browse/{{view}}/r" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">R</a>
+            <a href="/browse/{{view}}/s" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">S</a>
+            <a href="/browse/{{view}}/t" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">T</a>
+            <a href="/browse/{{view}}/u" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">U</a>
+            <a href="/browse/{{view}}/v" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">V</a>
+            <a href="/browse/{{view}}/w" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">W</a>
+            <a href="/browse/{{view}}/x" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">X</a>
+            <a href="/browse/{{view}}/y" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Y</a>
+            <a href="/browse/{{view}}/z" class="text-lg font-bold text-gray-500 hover:text-primaryOrangeDark">Z</a>
           </div>
         </div>
         <p class="mt-8 mb-2 text-sm text-gray-600">Showing {{results.length}} entries</p>
@@ -50,19 +60,24 @@
           <div class="h-screen p-6 overflow-y-auto rounded-lg bg-blackMedium">
             <ul class="space-y-2.5">
               {{#each results}}
-              <a href="/results?c=10&p=1&q={{this.urlEncodedFilm}}&s=title&t=film"class="block">
-                <li
-                  class="text-lg font-medium text-gray-500 cursor-pointer hover:text-primaryOrangeDark"
-                >
-                  {{ this.film }}
-                </li>
-              </a>
+                {{#ifEqual ../view 'category' }}
+                  <a href="/results?count=10&page=1&query={{this.uriEncoded.title}}&sort=title&tags={{this.uriEncoded.tags}}&type={{../view}}"class="block">
+                {{/ifEqual}}
+                {{#ifEqual ../view 'film' }}
+                  <a href="/results?count=10&page=1&query={{this.uriEncoded.title}}&sort=title&type={{../view}}"class="block">
+                {{/ifEqual}}
+                  <li
+                    class="text-lg font-medium text-gray-500 cursor-pointer hover:text-primaryOrangeDark"
+                  >
+                    {{ this.title }}
+                  </li>
+                </a>
               {{/each}}
             </ul>
           </div>
           <div id="browse-result" class="h-screen p-6 overflow-y-auto prose rounded-lg bg-blackMedium" data-container="browse">
             <h2 class="max-w-xs mx-auto text-3xl font-bold text-center text-gray-500">
-              Choose a film to see books &amp; articles that reference it
+              Choose a {{view}} to see books &amp; articles that reference it
             </h2>
           </div>
         </div>

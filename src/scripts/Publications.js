@@ -4,9 +4,11 @@ class Publications {
       count: 10,
       enterKey: 'Enter',
       page: 1,
-      paramPage: 'p',
-      paramQuery: 'q',
-      paramType: 't',
+      paramCategory: 'category',
+      paramPage: 'page',
+      paramQuery: 'query',
+      paramTags: 'tags',
+      paramType: 'type',
       quickSearch: 'quickSearch',
       results: '/results',
       quick: 'quick',
@@ -40,25 +42,13 @@ class Publications {
       const { search } = window.location;
       const params = new URLSearchParams(search);
       window.location.href = this.getResults({
+        category: params.get(this.enums.paramCategory),
         count: this.enums.count,
         page: params.get(this.enums.paramPage),
         query: params.get(this.enums.paramQuery),
         sort: value,
+        tags: params.get(this.enums.paramTags),
         type: params.get(this.enums.paramType),
-      });
-    }
-  }
-
-  tagHandler(event) {
-    const { dataset } = event.target;
-    const hasHandler = !!dataset.handler;
-    const isTag = dataset.handler === this.enums.tag;
-    if (hasHandler && isTag) {
-      window.location.href = this.getResults({
-        count: this.enums.count,
-        page: this.enums.page,
-        query: dataset.tag,
-        type: this.enums.tag,
       });
     }
   }

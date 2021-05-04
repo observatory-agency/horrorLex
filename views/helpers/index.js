@@ -3,6 +3,7 @@ const HandlebarsHelpers = require('../../lib/HandlebarsHelpers');
 
 const helpersToRegister = [
   'env',
+  'ifEqual',
   'isSelected',
   'pageActive',
   'pageNumber',

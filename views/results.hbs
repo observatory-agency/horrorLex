@@ -1,3 +1,8 @@
+{{! query string parameter values for URLs are provided by the Search class }}
+{{! as the 'results.page.param' key and are dynamically generated. Only the }} 
+{{! 'page' parameter is added here in the view, due to view having helpers }}
+{{! determining which area of the markup indicates pagination, etc. }}
+
 <!DOCTYPE html>
 <html>
   {{> global/head }}
@@ -95,7 +100,6 @@
                   </a>
                 {{ else }}
                   <a
-
                     href="/results/?{{../../results.page.params}}&page={{../this.page}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
                   >
