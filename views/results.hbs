@@ -1,5 +1,5 @@
 {{! query string parameter values for URLs are provided by the Search class }}
-{{! as the 'results.page.param' key and are dynamically generated. Only the }} 
+{{! as the 'results.page.param' key and are dynamically generated. Only the }}
 {{! 'page' parameter is added here in the view, due to view having helpers }}
 {{! determining which area of the markup indicates pagination, etc. }}
 
@@ -47,7 +47,12 @@
       <section class="px-4 pt-12 pb-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 gap-6">
           {{#each results.documents }}
-          {{> ui/resultCard this }}
+            {{#ifEqual this.type 'article'}}
+              {{> ui/resultCardArticle this}}
+            {{/ifEqual}}
+            {{#ifEqual this.type 'book'}}
+              {{> ui/resultCard this}}
+            {{/ifEqual}}
           {{/each}}
         </div>
       </section>
