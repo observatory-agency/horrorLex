@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`bookTransformer should match the snapshot 1`] = `
-Object {
-  "title": "4D Man (1959)",
-}
-`;

@@ -1,4 +1,4 @@
-const CategoryModel = require('../Category');
+const FilmModel = require('../Film');
 const Mongo = require('../../lib/Mongo');
 
 jest.mock('../../lib/Mongo', () => ({
@@ -14,14 +14,14 @@ jest.mock('../../lib/Mongo', () => ({
   },
 }));
 
-describe('CategoryModel', () => {
-  let categoryModel;
+describe('FilmModel', () => {
+  let filmModel;
   beforeEach(() => {
-    categoryModel = new CategoryModel();
+    filmModel = new FilmModel();
   });
   describe('constructor', () => {
     it('should return a Mongo db collection', () => {
-      expect(categoryModel).toBeDefined();
+      expect(filmModel).toBeDefined();
     });
   });
 });

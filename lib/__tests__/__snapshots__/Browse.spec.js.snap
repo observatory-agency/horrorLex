@@ -3,8 +3,11 @@
 exports[`Browse byChar should return an object of formatted results 1`] = `
 Array [
   Object {
-    "film": 1,
-    "urlEncodedFilm": "1",
+    "title": "book1",
+    "uriEncoded": Object {
+      "tags": "",
+      "title": "book1",
+    },
   },
 ]
 `;
@@ -12,11 +15,3 @@ Array [
 exports[`Browse createRegexStr "a-zA-Z" character should return a formatted regex expressions 1`] = `"^[Aa]"`;
 
 exports[`Browse createRegexStr numerical character should return a formatted regex expressions 1`] = `"^[0-9]"`;
-
-exports[`Browse relatedBooks should return an array of results 1`] = `
-Array [
-  Object {
-    "title": "book1",
-  },
-]
-`;

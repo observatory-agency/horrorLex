@@ -2,6 +2,9 @@
 
 exports[`collections should match the snapshot 1`] = `
 Object {
+  "categories": Object {
+    "name": "categories",
+  },
   "films": Object {
     "name": "films",
   },

@@ -5,7 +5,7 @@ const Mongo = require('../lib/Mongo');
 const exec = async (name) => {
   try {
     await Mongo.connect();
-    const collection = handleCollection(name);
+    const { collection } = await handleCollection(name);
     await collection.model.drop();
     console.log(`Dropped collection "${name}"`);
   } catch (error) {

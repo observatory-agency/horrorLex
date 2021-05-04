@@ -58,9 +58,8 @@
       "./controllers/**/*.js",
       "./lib/**/*.js",
       "./models/**/*.js",
-      "./utils/**/*.js",
       "!./**/index.js",
-      "!./utils/*.js",
+      "!./utils/**/*.js",
       "!./src/**/*.js"
     ]
   },
