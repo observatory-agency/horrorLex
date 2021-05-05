@@ -1,38 +1,13 @@
 {
+  "analyzer": "lucene.english",
+  "searchAnalyzer": "lucene.english",
   "mappings": {
     "dynamic": true,
     "fields": {
       "author": [
         {
-          "type": "document",
-          "dynamic": true
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "title": [
-        {
-          "type": "document",
-          "dynamic": true
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "horrorLexSummary": [
-        {
-          "type": "document",
-          "dynamic": true
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "year": [
-        {
-          "type": "document",
-          "dynamic": true
+          "dynamic": true,
+          "type": "document"
         },
         {
           "type": "string"
@@ -40,8 +15,17 @@
       ],
       "filmsDiscussed": [
         {
-          "type": "document",
-          "dynamic": true
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "horrorLexSummary": [
+        {
+          "dynamic": true,
+          "type": "document"
         },
         {
           "type": "string"
@@ -49,8 +33,26 @@
       ],
       "isbn13": [
         {
-          "type": "document",
-          "dynamic": true
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": [
+        {
+          "dynamic": true,
+          "type": "document"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "year": [
+        {
+          "dynamic": true,
+          "type": "document"
         },
         {
           "type": "string"
