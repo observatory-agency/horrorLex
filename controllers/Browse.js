@@ -12,6 +12,7 @@ class BrowseController extends BaseController {
       },
     };
     this.template = {
+      error: 'error.hbs',
       get: 'browse.hbs',
       post: 'results.hbs',
     };
@@ -31,7 +32,7 @@ class BrowseController extends BaseController {
       const results = await browse.byChar(regexChar);
       return this.validViews.includes(view)
         ? res.render(this.template.get, { results, view })
-        : res.sendStatus(404);
+        : res.status(404).render(this.template.error, { status: 404 });
     } catch (error) {
       return next(error);
     }

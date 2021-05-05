@@ -2,6 +2,7 @@
 
 exports[`ResultsController constructor should set its templates 1`] = `
 Object {
+  "error": "error.hbs",
   "get": "results.hbs",
 }
 `;

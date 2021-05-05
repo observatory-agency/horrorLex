@@ -26,6 +26,8 @@ app.use('/contact', routes.contact);
 app.use('/results', routes.results);
 app.use('/', routes.publication);
 app.use('/public', express.static(path.join(__dirname, '/public')));
+app.use((req, res) => res.status(404).render('error.hbs', { status: 404 }));
+app.use((error, req, res, next) => res.status(500).render('error.hbs', { status: 500 }));
 
 app.listen(EXPRESS_PORT, async () => {
   try {

@@ -5,7 +5,19 @@ Array [
   Object {
     "title": "book1",
     "uriEncoded": Object {
-      "tags": "",
+      "tags": null,
+      "title": "book1",
+    },
+  },
+]
+`;
+
+exports[`Browse byChar when there are tags included with the results should return an object of formatted results 1`] = `
+Array [
+  Object {
+    "title": "book1",
+    "uriEncoded": Object {
+      "tags": "tag1%2Ctag2",
       "title": "book1",
     },
   },

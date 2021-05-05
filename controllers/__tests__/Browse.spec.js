@@ -57,12 +57,13 @@ describe('BrowseController', () => {
     });
     describe('with an invalid view param', () => {
       it('should call res.renderStatus with 404', async () => {
-        const sendStatusMock = jest.fn();
-        const resMock = { sendStatus: sendStatusMock };
+        const statusMock = jest.fn();
+        const resMock = {};
         const reqMock = { params: { char: 'a', view: 'articles' } };
         const nextMock = jest.fn();
+        resMock.status = statusMock;
         await browse.get(reqMock, resMock, nextMock);
-        expect(sendStatusMock).toHaveBeenCalledWith(404);
+        expect(statusMock).toHaveBeenCalledWith(404);
       });
     });
     describe('other errors', () => {

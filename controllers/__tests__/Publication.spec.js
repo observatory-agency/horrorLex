@@ -34,15 +34,16 @@ describe('PublicationController', () => {
 
     describe('without a result', () => {
       it('should call res.sendStatus with a "404"', async () => {
-        const sendStatusMock = jest.fn();
-        const resMock = { sendStatus: sendStatusMock };
+        const statusMock = jest.fn();
+        const resMock = {};
         const reqMock = { params: { slug: 'a book' } };
         const nextMock = jest.fn();
+        resMock.status = statusMock;
         Search.mockImplementation(() => ({
           one: jest.fn(() => null),
         }));
         await publication.get(reqMock, resMock, nextMock);
-        expect(sendStatusMock).toHaveBeenCalledWith(404);
+        expect(statusMock).toHaveBeenCalledWith(404);
       });
     });
 
