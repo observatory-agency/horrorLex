@@ -1,0 +1,4 @@
+<h1>{{status}} Error</h1>
+{{#ifEqual status 400 }}<p>Bad Request</p>{{/ifEqual}}
+{{#ifEqual status 404 }}<p>Not Found</p>{{/ifEqual}}
+{{#ifEqual status 500 }}<p>Internal Error</p>{{/ifEqual}}

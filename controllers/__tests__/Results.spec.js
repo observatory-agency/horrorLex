@@ -33,16 +33,17 @@ describe('ResultsController', () => {
     });
 
     describe('without a result', () => {
-      it('should call res.sendStatus with a "400"', async () => {
-        const sendStatusMock = jest.fn();
-        const resMock = { sendStatus: sendStatusMock };
+      it('should call res.status with a "400"', async () => {
+        const statusMock = jest.fn();
+        const resMock = {};
         const reqMock = { query: '123' };
         const nextMock = jest.fn();
+        resMock.status = statusMock;
         Search.mockImplementation(() => ({
           many: jest.fn(() => null),
         }));
         await results.get(reqMock, resMock, nextMock);
-        expect(sendStatusMock).toHaveBeenCalledWith(400);
+        expect(statusMock).toHaveBeenCalledWith(400);
       });
     });
 
