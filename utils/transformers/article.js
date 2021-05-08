@@ -17,5 +17,5 @@ module.exports = (article) => ({
   recommended: article.Rec,
   photo: article.Photo,
   slug: slugify(article.Title),
-  type: 'article',
+  isArticle: true,
 });
