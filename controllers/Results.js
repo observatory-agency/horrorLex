@@ -19,7 +19,7 @@ class ResultsController extends BaseController {
       const results = await search.many(query);
       return results
         ? res.render(this.template.get, { results })
-        : res.status(400).render(this.template.error, { status: 400 });
+        : res.status(404).render(this.template.error, { status: 404 });
     } catch (error) {
       return next(error);
     }
