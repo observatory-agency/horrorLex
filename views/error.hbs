@@ -1,4 +1,27 @@
-<h1>{{status}} Error</h1>
-{{#ifEqual status 400 }}<p>Bad Request</p>{{/ifEqual}}
-{{#ifEqual status 404 }}<p>Not Found</p>{{/ifEqual}}
-{{#ifEqual status 500 }}<p>Internal Error</p>{{/ifEqual}}
+<!DOCTYPE html>
+<html>
+  {{> global/head }}
+  <body>
+    {{> global/mainNavigation }}
+
+    <main class="mt-4 lg:mt-10">
+        {{#ifEqual status 400 }}
+            <section>
+                <h1>{{status}} Error</h1>
+                <p>Bad Request</p>{{/ifEqual}}
+            </section>
+        {{#ifEqual status 404 }}
+            <section class="space-y-4 text-center">
+                <h2 class="text-3xl text-white">We couldn't find any results for your query!</h2>
+                <p class="text-lg text-gray-100">Please try another in the quick search bar above, or give our <a href="/search" class="text-primaryOrange hover:text-primaryOrangeDark">advanced search</a> feature a try.</p>
+            </section>
+        {{/ifEqual}}
+        {{#ifEqual status 500 }}
+            <section>
+                <p>Internal Error</p>
+            </section>
+        {{/ifEqual}}
+    </main>
+    {{> global/scripts }}
+  </body>
+</html>

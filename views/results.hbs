@@ -47,12 +47,12 @@
       <section class="px-4 pt-12 pb-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 gap-6">
           {{#each results.documents }}
-            {{#ifEqual this.type 'article'}}
+            {{#if this.isArticle}}
               {{> ui/resultCardArticle this}}
-            {{/ifEqual}}
-            {{#ifEqual this.type 'book'}}
+            {{/if}}
+            {{#if this.isBook}}
               {{> ui/resultCard this}}
-            {{/ifEqual}}
+            {{/if}}
           {{/each}}
         </div>
       </section>
