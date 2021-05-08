@@ -6,6 +6,7 @@
     {{> global/mainNavigation }}
 
     <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+      <h2 class="text-2xl text-white">HI I'm An Article</h2>
       <section class="grid grid-cols-12 gap-8">
         <div class="flex flex-col col-span-9 space-y-2">
           <h1 class="text-3xl italic font-bold text-white">{{ article.title }}</h1>
@@ -59,7 +60,13 @@
               <div class="space-y-1">
                 {{> ui/resultKey text='Free Online Copy' }}
                 {{#if article.freeOnlineCopy }}
-                  <p class="text-lg font-medium text-gray-300">{{ article.freeOnlineCopy }}</p>
+                  <a
+                    href="{{ article.freeOnlineCopy }}"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
+                    >Online copy available here
+                </a>
                 {{else}}
                   <p class="text-lg font-medium text-gray-800">Not available</p>
                 {{/if}}
@@ -68,7 +75,7 @@
           </div>
           <div class="col-span-3">
             <img
-              src="https://horror-lex.nyc3.cdn.digitaloceanspaces.com/books/{{ article.photo }}.jpg"
+              src="https://horror-lex.nyc3.cdn.digitaloceanspaces.com/articles/{{ article.photo }}.jpg"
               alt="{{ article.title }}"
               class="mx-auto"
             />

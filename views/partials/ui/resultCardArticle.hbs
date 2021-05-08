@@ -1,10 +1,11 @@
 <a href="/{{this.slug}}">
     <aside class="relative p-6 rounded-md shadow bg-blackLight">
         <div class="absolute top-0 right-0 flex flex-col items-center px-3 py-1 space-y-1 text-gray-200 bg-blackMedium rounded-tr-md">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 5.523v15a2.25 2.25 0 002.25 2.25 2.207 2.207 0 00.392-.039l9.406-1.682a3.584 3.584 0 002.952-3.528v-10.5a1.256 1.256 0 00-1.476-1.236L7.147 7.738a2.25 2.25 0 11-.794-4.429l11.619-2.082M16.37 1.514l2.142 4.283" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 16 16" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.086 15.5H1.5c-.26522 0-.51957-.1054-.707107-.2929C.605357 15.0196.5 14.7652.5 14.5v-13c0-.26522.105357-.51957.292893-.707107C.98043.605357 1.23478.5 1.5.5h13c.2652 0 .5196.105357.7071.292893.1875.187537.2929.441887.2929.707107v7.586c-.0001.26503-.1053.5192-.2927.70667L9.79267 15.2073c-.18747.1874-.44164.2926-.70667.2927v0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.5 15.41V10.5c0-.2652.10536-.51957.29289-.70711C9.98043 9.60536 10.2348 9.5 10.5 9.5h4.91M4.5 4.5h8M4.5 7.5H8" />
             </svg>
-            <p class="text-xs">Book</p>
+            <p class="text-xs">Article</p>
         </div>
         <h3 class="max-w-md text-lg font-bold text-gray-100">{{this.title}}</h3>
         <p class="font-medium text-gray-400">{{this.author}}</p>
@@ -14,8 +15,10 @@
                 <p class="text-lg text-gray-300">{{this.year}}</p>
             </div>
             <div class="flex flex-col items-start col-span-6">
-                <p class="text-base font-medium text-gray-600">Original Publisher</p>
-                <p class="text-lg text-gray-300">{{this.originalPublisher}}</p>
+                <p class="text-base font-medium text-gray-600">Free Online Copy</p>
+                {{#if this.freeOnlineCopy}}
+                    <p class="text-lg text-gray-300">Available</p>
+                {{/if}}
             </div>
             <div class="flex flex-col items-start col-span-4">
                 <p class="text-base font-medium text-gray-600">Updated Edition</p>
