@@ -10,21 +10,21 @@
     {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
     <main>
-      <section class="px-4 mx-auto mt-16 max-w-7xl sm:px-6 lg:px-8">
+      <section class="px-4 mx-auto mt-8 lg:mt-16 wrapper">
         <div class="flex items-center justify-between">
           <div class="flex flex-col justify-start space-y-2">
             {{#if results.page.query }}
-            <h2 class="text-2xl font-bold text-white">
+            <h2 class="text-xl font-bold text-white lg:text-2xl">
               Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results for "{{ results.page.query }}":
             </h2>
             {{else}}
-            <h2 class="text-2xl font-bold text-white">
+            <h2 class="text-xl font-bold text-white lg:text-2xl">
               Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results:
             </h2>
             {{/if}}
             <p class="text-gray-100">Click a card below to read the full details</p>
           </div>
-          <div>
+          <div class="hidden lg:block">
             <div class="flex">
               <div class="mr-4">
                 <label for="sort-results" class="sr-only">Sort By</label>
@@ -44,8 +44,8 @@
           </div>
         </div>
       </section>
-      <section class="px-4 pt-12 pb-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-6">
+      <section class="px-4 pt-12 pb-8 mx-auto wrapper">
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {{#each results.documents }}
             {{#if this.isArticle}}
               {{> ui/resultCardArticle this}}
@@ -56,7 +56,7 @@
           {{/each}}
         </div>
       </section>
-      <section class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <section class="px-4 mx-auto wrapper">
         <nav class="flex items-center justify-between px-4 border-t border-gray-800 sm:px-0">
           {{#if results.page.prev }}
           <div class="flex flex-1 w-0">

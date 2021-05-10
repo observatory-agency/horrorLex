@@ -1,11 +1,15 @@
-<nav id="mainNav" class="flex-shrink-0 bg-transparent wrapper">
+<nav id="mainNav" class="flex-shrink-0 bg-transparent wrapper" x-data="{ open: false }">
   <div class="max-w-full py-2 mx-auto">
     <div class="relative flex items-center justify-between h-16 space-x-2">
       <!-- Logo section -->
       <div class="flex items-center xl:w-48">
         <div class="flex-shrink-0">
           <a href="/">
-            <img class="w-auto h-10" src="/public/img/logo/logo-horizontal.png" alt="Horror Lex logo" />
+            <img
+              class="w-auto h-10"
+              src="/public/img/logo/logo-horizontal.png"
+              alt="Horror Lex logo"
+            />
           </a>
         </div>
       </div>
@@ -20,7 +24,7 @@
                   fill-rule="evenodd"
                   d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                   clip-rule="evenodd"
-                />
+                ></path>
               </svg>
             </div>
             <input
@@ -38,13 +42,8 @@
           class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-white hover:bg-gray-600 focus:outline-none focus:bg-gray-600 focus:text-white"
           aria-label="Main menu"
           aria-expanded="false"
+          @click="open = true"
         >
-          <!-- Icon when menu is closed. -->
-          <!--
-              Heroicon name: menu-alt-1
-
-              Menu open: "hidden", Menu closed: "block"
-            -->
           <svg
             class="block w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -52,14 +51,14 @@
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            ></path>
           </svg>
-          <!-- Icon when menu is open. -->
-          <!--
-              Heroicon name: x
 
-              Menu open: "block", Menu closed: "hidden"
-            -->
           <svg
             class="hidden w-6 h-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +66,12 @@
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
           </svg>
         </button>
       </div>
@@ -87,54 +91,48 @@
             <a
               href="/browse/film"
               class="py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out hover:text-primaryOrangeDark focus:outline-none focus:text-white focus:border-primaryOrangeDark"
-              >Browse</a
-            >
+            >Browse</a>
             <a
               href="/about"
               class="py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out hover:text-primaryOrangeDark focus:outline-none focus:text-white focus:border-primaryOrangeDark"
-              >About</a
-            >
+            >About</a>
             <a
               href="/contact"
               class="py-2 text-base font-medium leading-5 text-gray-100 transition duration-150 ease-in-out hover:text-primaryOrangeDark focus:outline-none focus:text-white focus:border-primaryOrangeDark"
-              >Contact</a
-            >
+            >Contact</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="hidden lg:hidden">
+  <div
+    class="absolute inset-x-0 z-10 transform bg-gray-900 rounded-md shadow-lg top-full"
+    x-show="open"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 -translate-y-1"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-150"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-1"
+    @click.away="open = false"
+  >
     <div class="px-2 pt-2 pb-3">
       <a
-        href="#"
-        class="block py-2 text-base font-medium text-white transition duration-150 ease-in-out bg-gray-800 rounded-md focus:outline-none focus:text-gray-100 focus:bg-gray-600"
-        >Browse</a
-      >
+        href="/search"
+        class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+      >Advanced Search</a>
       <a
-        href="#"
-        class="block py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
-        >About</a
-      >
-    </div>
-    <div class="pt-4 pb-3 border-t border-gray-800">
-      <div class="px-2">
-        <a
-          href="#"
-          class="block py-2 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
-          >Your Profile</a
-        >
-        <a
-          href="#"
-          class="block py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
-          >Settings</a
-        >
-        <a
-          href="#"
-          class="block py-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
-          >Sign out</a
-        >
-      </div>
+        href="/browse/film"
+        class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+      >Browse</a>
+      <a
+        href="/about"
+        class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+      >About</a>
+      <a
+        href="/contact"
+        class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+      >Contact</a>
     </div>
   </div>
 </nav>

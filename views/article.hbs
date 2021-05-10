@@ -5,7 +5,7 @@
     {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
 
-    <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+    <main class="px-4 mx-auto mt-24 space-y-6 wrapper">
       <h1 class="text-2xl text-gray-100">{{article.recommended}}</h1>
       <section class="grid grid-cols-12 gap-8">
         <div class="flex flex-col col-span-9 space-y-2">
@@ -45,17 +45,17 @@
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='Free Online Copy' }}
-                {{#if article.freeOnlineCopy }}
-                  <a
-                    href="{{ article.freeOnlineCopy }}"
-                    target="_blank"
-                    rel="noopener"
-                    class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
-                    >Online copy available here
-                </a>
-                {{else}}
+                {{#ifEqual article.freeOnlineCopy 'Not Available' }}
                   <p class="text-lg font-medium text-gray-800">Not available</p>
-                {{/if}}
+                    {{else}}
+                    <a
+                        href="{{ article.freeOnlineCopy }}"
+                        target="_blank"
+                        rel="noopener"
+                        class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
+                        >Online copy available here
+                    </a>
+                {{/ifEqual}}
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='Reprinted In' }}
@@ -75,12 +75,20 @@
           <div class="space-y-2">
             {{> ui/resultKey text='For More Information' }}
             <div class="flex justify-start space-x-8">
-              <a href="{{ article.muse }}" target="_blank" rel="noopener" class="inline-block">
-                <img src="/public/img/logo/muse.png" alt="Muse Logo" class="w-48" />
-              </a>
-              <a href="{{ article.jstor }}" target="_blank" rel="noopener" class="inline-block">
-                <img src="/public/img/logo/jstor.png" alt="JSTOR Logo" class="w-48" />
-              </a>
+                {{#ifEqual article.muse 'No' }}
+                <p class="text-lg font-medium text-gray-800">Muse - Not available</p>
+                    {{else}}
+                    <a href="{{ article.muse }}" target="_blank" rel="noopener" class="inline-block">
+                        <img src="/public/img/logo/muse.png" alt="Muse Logo" class="w-48" />
+                    </a>
+                {{/ifEqual}}
+                {{#ifEqual article.jstor 'No' }}
+                <p class="text-lg font-medium text-gray-800">JSTOR - Not available</p>
+                    {{else}}
+                    <a href="{{ article.jstor }}" target="_blank" rel="noopener" class="inline-block">
+                        <img src="/public/img/logo/jstor.png" alt="JSTOR Logo" class="w-48" />
+                    </a>
+                {{/ifEqual}}
             </div>
           </div>
         </div>

@@ -5,13 +5,13 @@
     {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
 
-    <main class="px-4 mx-auto mt-24 space-y-6 max-w-7xl sm:px-6 lg:px-8">
+    <main class="px-4 mx-auto mt-8 space-y-6 lg:mt-24 wrapper">
       <section class="grid grid-cols-12 gap-8">
-        <div class="flex flex-col col-span-9 space-y-2">
-          <h1 class="text-3xl italic font-bold text-white">{{ book.title }}</h1>
-          <p class="text-lg font-medium text-gray-400">{{ book.author }}</p>
+        <div class="flex flex-col col-span-12 space-y-2 lg:col-span-9">
+          <h1 class="text-xl italic font-bold text-white lg:text-3xl">{{ book.title }}</h1>
+          <p class="font-medium text-gray-400 lg:text-lg">{{ book.author }}</p>
         </div>
-        <div class="col-span-3 justify-self-end">
+        <div class="col-span-12 lg:col-span-3 lg:justify-self-end">
           {{> ui/ctaBtn link='/search' text='Revise Search' }}
         </div>
       </section>
@@ -19,7 +19,7 @@
         <!-- Top Half-->
         <div class="grid grid-cols-12 gap-9">
           <div class="grid grid-flow-row col-span-8 space-y-6 auto-rows-auto">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
               <div class="space-y-1">
                 {{> ui/resultKey text='ISBN-13' }}
                 {{#each book.isbn13 }}
@@ -59,21 +59,21 @@
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='Free Online Copy' }}
-                {{#if book.freeOnlineCopy }}
-                  <a
-                    href="{{ book.freeOnlineCopy }}"
-                    target="_blank"
-                    rel="noopener"
-                    class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
-                    >Online copy available here
-                </a>
-                {{else}}
+                {{#ifEqual book.freeOnlineCopy 'Not Available' }}
                   <p class="text-lg font-medium text-gray-800">Not available</p>
-                {{/if}}
+                    {{else}}
+                    <a
+                        href="{{ book.freeOnlineCopy }}"
+                        target="_blank"
+                        rel="noopener"
+                        class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
+                        >Online copy available here
+                    </a>
+                {{/ifEqual}}
               </div>
             </div>
           </div>
-          <div class="col-span-3">
+          <div class="hidden col-span-3 lg:block">
             <img
               src="https://horror-lex.nyc3.cdn.digitaloceanspaces.com/books/{{ book.photo }}.jpg"
               alt="{{ book.title }}"
@@ -84,7 +84,7 @@
         <div class="mt-6">
           <div class="space-y-2">
             {{> ui/resultKey text='For More Information' }}
-            <div class="flex justify-start space-x-8">
+            <div class="flex flex-col justify-start mt-2 space-y-4 lg:mt-0 lg:space-x-8 lg:space-y-0 lg:flex-row">
               <a
                 href="{{ book.googleBooks }}"
                 target="_blank"
@@ -109,8 +109,8 @@
             {{> ui/resultKey text='Horror Lex Summary' }}
             <p class="text-lg text-gray-300">{{ book.horrorLexSummary }}</p>
           </div>
-          <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-5 space-y-2">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
+            <div class="col-span-1 space-y-2 lg:col-span-5">
               {{> ui/resultKey text='Films Discussed' }}
               {{#each book.filmsDiscussed}}
               <p class="text-base font-normal text-gray-400">{{ this }}</p>
@@ -118,7 +118,7 @@
               <p class="text-lg font-medium text-gray-800">Not available</p>
               {{/each}}
             </div>
-            <div class="col-span-7 space-y-2">
+            <div class="col-span-1 space-y-2 lg:col-span-7">
               {{> ui/resultKey text='Tags' }}
               {{#each book.tags}}
               <a
