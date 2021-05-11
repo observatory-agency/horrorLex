@@ -9,11 +9,6 @@ document.addEventListener('change', (event) => {
   publications.sortHandler(event);
 });
 
-document.addEventListener('click', (event) => {
-  const publications = new Publications();
-  publications.tagHandler(event);
-});
-
 document.addEventListener('keydown', (event) => {
   const publications = new Publications();
   publications.quickSearchHandler(event);
