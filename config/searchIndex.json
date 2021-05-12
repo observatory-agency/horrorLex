@@ -13,7 +13,7 @@
           "type": "string"
         }
       ],
-      "filmsDiscussed": [
+      "films": [
         {
           "dynamic": true,
           "type": "document"
@@ -22,7 +22,7 @@
           "type": "string"
         }
       ],
-      "horrorLexSummary": [
+      "summary": [
         {
           "dynamic": true,
           "type": "document"
@@ -31,6 +31,12 @@
           "type": "string"
         }
       ],
+      "isArticle": {
+        "type": "boolean"
+      },
+      "isBook": {
+        "type": "boolean"
+      },
       "isbn13": [
         {
           "dynamic": true,

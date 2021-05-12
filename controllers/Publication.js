@@ -6,6 +6,7 @@ class PublicationController extends BaseController {
     super();
     this.enums = { article: 'article', book: 'book' };
     this.template = {
+      error: 'error.hbs',
       get: { article: 'article.hbs', book: 'book.hbs' },
     };
   }
@@ -23,7 +24,7 @@ class PublicationController extends BaseController {
         ? res.render(this.template.get[article || book], {
           [article || book]: publication,
         })
-        : res.sendStatus(404);
+        : res.status(404).render(this.template.error, { status: 404 });
     } catch (error) {
       return next(error);
     }
