@@ -33,7 +33,7 @@ describe('ResultsController', () => {
     });
 
     describe('without a result', () => {
-      it('should call res.status with a "400"', async () => {
+      it('should call res.status with a "404"', async () => {
         const statusMock = jest.fn();
         const resMock = {};
         const reqMock = { query: '123' };
@@ -43,7 +43,7 @@ describe('ResultsController', () => {
           many: jest.fn(() => null),
         }));
         await results.get(reqMock, resMock, nextMock);
-        expect(statusMock).toHaveBeenCalledWith(400);
+        expect(statusMock).toHaveBeenCalledWith(404);
       });
     });
 
