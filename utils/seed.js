@@ -19,7 +19,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-rl.question('Enter collection name to INSERT_MANY: ', (filename) => {
+rl.question('Enter the CSV file\'s collection name to INSERT_MANY (e.g., "books"): ', (filename) => {
   exec(filename);
   rl.close();
 });

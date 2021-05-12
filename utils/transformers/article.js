@@ -16,7 +16,7 @@ module.exports = (article) => ({
     : undefined,
   films: article.Films.split('\n'),
   tags: article.Tags.split(', '),
-  recommended: article.Rec,
+  recommended: article.Rec === 'Y',
   photo: article.Photo,
   slug: slugify(article.Title),
   isArticle: true,
