@@ -22,7 +22,13 @@
           "type": "string"
         }
       ],
-      "summary": [
+      "isArticle": {
+        "type": "boolean"
+      },
+      "isBook": {
+        "type": "boolean"
+      },
+      "isbn13": [
         {
           "dynamic": true,
           "type": "document"
@@ -31,13 +37,7 @@
           "type": "string"
         }
       ],
-      "isArticle": {
-        "type": "boolean"
-      },
-      "isBook": {
-        "type": "boolean"
-      },
-      "isbn13": [
+      "summary": [
         {
           "dynamic": true,
           "type": "document"
