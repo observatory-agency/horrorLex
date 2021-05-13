@@ -29,7 +29,7 @@ module.exports = (article) => {
     tags: article.Tags.split(', '),
     recommended: article.Rec
       && article.Rec === 'Y'
-      ? article.Rec
+      ? true
       : undefined,
     photo: article.Photo,
     slug: slugify(article.Title),

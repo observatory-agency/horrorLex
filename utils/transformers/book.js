@@ -26,7 +26,7 @@ module.exports = (book) => {
     tags: book.Tags.split(', '),
     recommended: book.Recommended
       && book.Recommended === 'Yes'
-      ? book.Recommended
+      ? true
       : undefined,
     photo: book.Photo,
     slug: slugify(book.Title),
