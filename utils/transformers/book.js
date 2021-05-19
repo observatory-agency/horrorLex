@@ -12,7 +12,7 @@ module.exports = (book) => {
     mla8Citation: book['MLA 8 Citation'],
     freeOnlineCopy: book['Free Online Copy']
       && book['Free Online Copy'] !== 'Not Available'
-      ? book['Free Online Copy']
+      ? book['Free Online Copy'].split('\n')
       : undefined,
     buy: book.Buy,
     googleBooks: book['Google Books'],
