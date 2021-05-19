@@ -4,6 +4,7 @@ const HandlebarsHelpers = require('../../lib/HandlebarsHelpers');
 const helpersToRegister = [
   'env',
   'ifEqual',
+  'isFreeOnlineCopyUrl',
   'isSelected',
   'pageActive',
   'pageNumber',

@@ -9,7 +9,7 @@ module.exports = (article) => {
     doiStableUrl: article['DOI/Stable URL'],
     freeOnlineCopy: article['Free Online Copy']
       && article['Free Online Copy'] !== 'Not Available'
-      ? article['Free Online Copy']
+      ? article['Free Online Copy'].split('\n')
       : undefined,
     mla8Citation: article['MLA 8 Citation'],
     reprintedIn: article['Reprinted In'],

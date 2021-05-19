@@ -62,13 +62,23 @@
               <div class="space-y-1">
                 {{> ui/resultKey text='Free Online Copy' }}
                 {{#if article.freeOnlineCopy }}
-                <a
-                  href="{{ article.freeOnlineCopy }}"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
-                  >Online copy available here
-                </a>
+                <ul>
+                  {{#each article.freeOnlineCopy }}
+                  <li>
+                    {{#isFreeOnlineCopyUrl this }}
+                    <a
+                      href="{{this}}"
+                      target="_blank"
+                      rel="noopener"
+                      class="text-lg font-medium underline text-primaryOrange hover:text-primaryOrangeDark"
+                      >Online copy available here
+                    </a>
+                    {{else}}
+                    <p class="text-lg font-medium text-gray-800">{{this}}</p>
+                    {{/isFreeOnlineCopyUrl}}
+                  </li>
+                  {{/each}}
+                </ul>
                 {{else}}
                 <p class="text-lg font-medium text-gray-800">Not available</p>
                 {{/if}}
