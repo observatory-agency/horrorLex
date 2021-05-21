@@ -9,10 +9,10 @@
         <div class="flex flex-col w-full space-y-2 lg:justify-between lg:items-center lg:flex-row lg:space-y-0">
           <h1 class="text-xl font-bold text-white lg:text-3xl">Browse the Horror Lex Database</h1>
           {{#ifEqual view 'category' }}
-            <a href="/browse/film" class="block text-lg text-primaryOrange"> Switch to film view </a>
+            <a href="/browse/film" class="block text-lg text-primaryOrange"> Browse by Film </a>
           {{/ifEqual}}
           {{#ifEqual view 'film' }}
-            <a href="/browse/category" class="block text-lg text-primaryOrange"> Switch to category view </a>
+            <a href="/browse/category" class="block text-lg text-primaryOrange"> Browse by Keyword </a>
           {{/ifEqual}}
         </div>
       </section>

@@ -10,7 +10,7 @@
     {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
     <main>
-      <section class="px-4 mx-auto mt-8 lg:mt-16 wrapper">
+      <section class="mx-auto mt-8 lg:mt-16 wrapper">
         <div class="flex items-center justify-between">
           <div class="flex flex-col justify-start space-y-2">
             {{#if results.page.query }}
@@ -44,7 +44,7 @@
           </div>
         </div>
       </section>
-      <section class="px-4 pt-12 pb-8 mx-auto wrapper">
+      <section class="pt-12 pb-8 mx-auto wrapper">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {{#each results.documents }}
             {{#if this.isArticle}}

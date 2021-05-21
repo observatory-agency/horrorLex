@@ -5,7 +5,7 @@
     {{> ui/betaModeBanner }}
     {{> global/mainNavigation }}
 
-    <main class="px-4 mx-auto mt-8 space-y-6 lg:mt-24 wrapper">
+    <main class="mx-auto mt-8 space-y-6 lg:mt-24 wrapper">
       <section class="grid grid-cols-12 gap-8">
         <div class="flex flex-col col-span-12 space-y-2 lg:col-span-9">
           <h1 class="text-xl italic font-bold text-white lg:text-3xl">{{ article.title }}</h1>
@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <div class="col-span-3">
+          <div class="hidden col-span-3 lg:block">
             <img
               src="https://horror-lex.nyc3.cdn.digitaloceanspaces.com/articles/{{ article.photo }}.jpg"
               alt="{{ article.title }}"
@@ -103,14 +103,14 @@
             <div class="flex items-center justify-start space-x-8">
               {{#if article.muse }}
               <a href="{{ article.muse }}" target="_blank" rel="noopener" class="inline-block">
-                <img src="/public/img/logo/muse.png" alt="Muse Logo" class="w-48" />
+                <img src="/public/img/logo/muse.png" alt="Muse Logo" class="w-40" />
               </a>
               {{else}}
               <p class="text-lg font-medium text-gray-800">Muse - Not available</p>
               {{/if}}
               {{#if article.jstor }}
               <a href="{{ article.jstor }}" target="_blank" rel="noopener" class="inline-block">
-                <img src="/public/img/logo/jstor.png" alt="JSTOR Logo" class="w-48" />
+                <img src="/public/img/logo/jstor.png" alt="JSTOR Logo" class="w-40" />
               </a>
               {{else}}
               <p class="text-lg font-medium text-gray-800">JSTOR - Not available</p>
@@ -125,7 +125,7 @@
             {{> ui/resultKey text='Horror Lex Summary' }}
             <p class="text-lg text-gray-300">{{ article.summary }}</p>
           </div>
-          <div class="grid grid-cols-12 gap-4">
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-12">
             <div class="col-span-5 space-y-2">
               {{> ui/resultKey text='Films Discussed' }}
               {{#each article.films}}

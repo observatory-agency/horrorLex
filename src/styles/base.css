@@ -18,8 +18,8 @@ p, li, a, ol, small, dl, label, div {
 }
 
 .wrapper {
-    width: 90vw;
-    width: clamp(16rem, 90vw, 92rem);
+    width: 94vw;
+    width: clamp(16rem, 94vw, 92rem);
     margin-left: auto;
     margin-right: auto;
     padding-left: .5rem;
