@@ -32,8 +32,11 @@ module.exports = {
         primaryOrange: '#A0410D',
         primaryOrangeDark: '#772C03',
       },
+      maxWidth: {
+          xxs: '16rem'
+      },
       typography: {
-        DEFAULT: {
+        default: {
           css: {
             color: '#B1B1B1',
             h3: {
