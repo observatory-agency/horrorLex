@@ -5,7 +5,6 @@ Array [
   Object {
     "title": "book1",
     "uriEncoded": Object {
-      "tags": null,
       "title": "book1",
     },
   },
@@ -17,7 +16,6 @@ Array [
   Object {
     "title": "book1",
     "uriEncoded": Object {
-      "tags": "tag1%2Ctag2",
       "title": "book1",
     },
   },
