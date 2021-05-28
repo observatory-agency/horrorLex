@@ -36,7 +36,7 @@ module.exports = {
           xxs: '16rem'
       },
       typography: {
-        default: {
+        DEFAULT: {
           css: {
             color: '#B1B1B1',
             h3: {
