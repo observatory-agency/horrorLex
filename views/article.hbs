@@ -138,7 +138,7 @@
               {{> ui/resultKey text='Tags' }}
               {{#each article.tags}}
                 <a
-                  href="/results?count=10&page=1&query={{this}}&type=tag"
+                  href="/results?count=10&page=1&query={{this}}&sort=title&type=tag"
                   class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium leading-5 bg-gray-100 text-gray-800"
                 >
                   {{ this }}
