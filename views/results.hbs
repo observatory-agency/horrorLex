@@ -1,25 +1,25 @@
-{{! query string parameter values for URLs are provided by the Search class }}
-{{! as the 'results.page.param' key and are dynamically generated. Only the }}
-{{! 'page' parameter is added here in the view, due to view having helpers }}
-{{! determining which area of the markup indicates pagination, etc. }}
+{{! query string parameter values for URLs are provided by the Search class}}
+{{! as the 'results.page.param' key and are dynamically generated. Only the}}
+{{! 'page' parameter is added here in the view, due to view having helpers}}
+{{! determining which area of the markup indicates pagination, etc.}}
 
 <!DOCTYPE html>
 <html>
-  {{> global/head }}
+  {{> global/head}}
   <body>
-    {{> ui/betaModeBanner }}
-    {{> global/mainNavigation }}
+    {{> ui/betaModeBanner}}
+    {{> global/mainNavigation}}
     <main>
       <section class="mx-auto mt-8 lg:mt-16 wrapper">
         <div class="flex items-center justify-between">
           <div class="flex flex-col justify-start space-y-2">
-            {{#if results.page.query }}
+            {{#if results.page.query}}
             <h2 class="text-xl font-bold text-white lg:text-2xl">
-              Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results for "{{ results.page.query }}":
+              Displaying <span class="text-primaryRed">{{results.page.range}} of {{results.page.total}}</span> Search Results for "{{results.page.query}}":
             </h2>
             {{else}}
             <h2 class="text-xl font-bold text-white lg:text-2xl">
-              Displaying <span class="text-primaryRed">{{ results.page.range }} of {{ results.page.total }}</span> Search Results:
+              Displaying <span class="text-primaryRed">{{results.page.range}} of {{results.page.total}}</span> Search Results:
             </h2>
             {{/if}}
             <p class="text-gray-100">Click a card below to read the full details</p>
@@ -33,21 +33,21 @@
                   name="sort-results"
                   class="block w-full py-2 pl-3 pr-10 text-base leading-6 border-gray-300 form-select focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
                 >
-                  <option {{ isSelected 'sortBy' }} disabled>Sort by</option>
-                  <option {{ isSelected 'bestMatch' }} value="bestMatch">Best Match</option>
-                  <option {{ isSelected 'title' }} value="title">Title</option>
-                  <option {{ isSelected 'year' }} value="year">Year</option>
-                  <option {{ isSelected 'author' }} value="author">Author</option>
+                  <option {{isSelected 'sortBy'}} disabled>Sort by</option>
+                  <option {{isSelected 'bestMatch'}} value="bestMatch">Best Match</option>
+                  <option {{isSelected 'title'}} value="title">Title</option>
+                  <option {{isSelected 'year'}} value="year">Year</option>
+                  <option {{isSelected 'author'}} value="author">Author</option>
                 </select>
               </div>
-              {{> ui/ctaBtn link='/search' text='Revise Search' }}
+              {{> ui/ctaBtn link='/search' text='Revise Search'}}
             </div>
           </div>
         </div>
       </section>
       <section class="pt-12 pb-8 mx-auto wrapper">
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          {{#each results.documents }}
+          {{#each results.documents}}
             {{#if this.isArticle}}
               {{> ui/resultCardArticle this}}
             {{/if}}
@@ -59,7 +59,7 @@
       </section>
       <section class="px-4 mx-auto wrapper">
         <nav class="flex items-center justify-between px-4 border-t border-gray-800 sm:px-0">
-          {{#if results.page.prev }}
+          {{#if results.page.prev}}
           <div class="flex flex-1 w-0">
             <a
               href="/results/?{{results.page.params}}&page={{results.page.prev}}"
@@ -95,7 +95,7 @@
                 >
                   ...
                 </span>
-              {{ else }}
+              {{else}}
                 {{!-- pageActive determines if the page is the active page --}}
                 {{#pageActive ../this.page}}
                   <a
@@ -104,7 +104,7 @@
                   >
                     {{../this.page}}
                   </a>
-                {{ else }}
+                {{else}}
                   <a
                     href="/results/?{{../../results.page.params}}&page={{../this.page}}"
                     class="inline-flex items-center px-4 pt-4 -mt-px text-sm font-medium leading-5 text-gray-500 transition duration-150 ease-in-out border-t-2 border-transparent hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-400"
@@ -115,7 +115,7 @@
               {{/pageSkip}}
             {{/pageNumber}}
           </div>
-          {{#if results.page.next }}
+          {{#if results.page.next}}
           <div class="flex justify-end flex-1 w-0">
             <a
               href="/results/?{{results.page.params}}&page={{results.page.next}}"
@@ -146,7 +146,7 @@
         </nav>
       </section>
     </main>
-    {{> global/mainFooter }}
-    {{> global/scripts }}
+    {{> global/mainFooter}}
+    {{> global/scripts}}
   </body>
 </html>
