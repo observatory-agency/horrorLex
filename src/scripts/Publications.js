@@ -2,6 +2,7 @@ class Publications {
   constructor() {
     this.enums = {
       count: 10,
+      bestMatch: 'bestMatch',
       enterKey: 'Enter',
       page: 1,
       paramCategory: 'category',
@@ -28,6 +29,7 @@ class Publications {
         count: this.enums.count,
         page: this.enums.page,
         query: encodeURIComponent(value),
+        sort: this.enums.bestMatch,
         type: this.enums.quick,
       });
     }
