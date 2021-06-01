@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-  {{> global/head }}
+  {{> global/head}}
   <body>
-    {{> global/mainNavigation }}
+    {{> global/mainNavigation}}
 
     <main class="mt-4 lg:mt-10">
-        {{#ifEqual status 400 }}
+        {{#ifEqual status 400}}
             <section class="space-y-4 text-center">
                 <h2 class="text-3xl text-white">Bad Request Error</h2>
                 <p class="text-lg text-gray-100">This link has been eaten by zombies.</p>
@@ -14,7 +14,7 @@
             </section>
         {{/ifEqual}}
 
-        {{#ifEqual status 404 }}
+        {{#ifEqual status 404}}
             <section class="space-y-4 text-center">
                 <h2 class="text-3xl text-white">Page Not Found</h2>
                 <p class="text-lg text-gray-100">This link has been eaten by zombies.</p>
@@ -23,7 +23,7 @@
             </section>
         {{/ifEqual}}
 
-        {{#ifEqual status 500 }}
+        {{#ifEqual status 500}}
             <section class="space-y-4 text-center">
                 <h2 class="text-3xl text-white">Internal Server Error</h2>
                 <p class="text-lg text-gray-100">This link has been eaten by zombies.</p>
@@ -32,6 +32,6 @@
             </section>
         {{/ifEqual}}
     </main>
-    {{> global/scripts }}
+    {{> global/scripts}}
   </body>
 </html>

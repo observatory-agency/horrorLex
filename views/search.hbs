@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-  {{> global/head }}
+  {{> global/head}}
   <body>
-    {{> ui/betaModeBanner }}
-    {{> global/mainNavigation }}
+    {{> ui/betaModeBanner}}
+    {{> global/mainNavigation}}
     <main class="mx-auto mt-8 space-y-6 lg:mt-16 wrapper">
       <section class="flex justify-between max-w-5xl mx-auto">
         <div class="flex flex-col">
@@ -307,11 +307,11 @@
                 </div>
               </div>
             </div>
-            {{! Default advanced search to sort by bestMatch via a hidden input. }}
-            {{! Since we're using the native form submit functionality, we cannot add }}
-            {{! this as a query parameter to the form action URL. This is because the }} 
-            {{! browser replaces all query parameters upon submit with key/values from }}
-            {{! the form's inputs. }}
+            {{! Default advanced search to sort by bestMatch via a hidden input.}}
+            {{! Since we're using the native form submit functionality, we cannot add}}
+            {{! this as a query parameter to the form action URL. This is because the}} 
+            {{! browser replaces all query parameters upon submit with key/values from}}
+            {{! the form's inputs.}}
             <input id="sort" name="sort" type="hidden" value="bestMatch" />
           </div>
           <div class="pt-5 mt-8">
@@ -339,7 +339,7 @@
         </form>
       </section>
     </main>
-    {{> global/mainFooter }}
-    {{> global/scripts }}
+    {{> global/mainFooter}}
+    {{> global/scripts}}
   </body>
 </html>
