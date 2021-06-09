@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`HandlebarsHelpers italicizeMLA8 should return a string with HTML markup 1`] = `"This is my citation with a <i>Title</i>"`;
+
 exports[`HandlebarsHelpers pageNumber when handling 1 page should a string with appropriate page numbers and skip characters 1`] = `"1"`;
 
 exports[`HandlebarsHelpers pageNumber when handling 3 pages should a string with appropriate page numbers and skip characters 1`] = `"123"`;

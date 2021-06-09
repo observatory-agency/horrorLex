@@ -47,7 +47,11 @@
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='MLA 8 Citation'}}
-                <p class="text-lg font-medium text-gray-300">{{article.mla8Citation}}</p>
+                <p class="text-lg font-medium text-gray-300">{{{
+                  italicizeMLA8
+                  article.mla8Citation
+                  article.publication}}}
+                </p>
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='DOI/Stable URL'}}
