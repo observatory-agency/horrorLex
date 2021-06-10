@@ -60,7 +60,11 @@
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='MLA 8 Citation'}}
-                <p class="text-lg font-medium text-gray-300">{{book.mla8Citation}}</p>
+                <p class="text-lg font-medium text-gray-300">{{{
+                  italicizeMLA8
+                  book.mla8Citation
+                  book.title}}}
+                </p>
               </div>
               <div class="space-y-1">
                 {{> ui/resultKey text='Publisher/Stable URL'}}
