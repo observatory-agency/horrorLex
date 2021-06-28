@@ -33,7 +33,7 @@ module.exports = {
         primaryOrangeDark: '#772C03',
       },
       maxWidth: {
-          xxs: '16rem'
+        xxs: '16rem',
       },
       typography: {
         DEFAULT: {
@@ -47,6 +47,9 @@ module.exports = {
             },
           },
         },
+      },
+      backgroundImage: {
+        'blood-bg': "url('https://res.cloudinary.com/observatory-agency/image/upload/o_55,q_96/v1624901379/clients/horror-lex/smear_gh8eg4.png')",
       },
     },
   },

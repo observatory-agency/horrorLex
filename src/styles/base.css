@@ -50,3 +50,8 @@ p, li, a, ol, small, dl, label, div {
         display:block;
     }
 }
+
+/* .blood-bg {
+    background-image: url("../../public/img/blood-bg.png") no-repeat center center;
+    background-size: cover;
+} */
