@@ -61,10 +61,10 @@
             <ul class="space-y-2.5">
               {{#each results}}
                 {{#ifEqual ../view 'category'}}
-                  <a href="/results?count=10&page=1&query={{this.uriEncoded.title}}&sort=title&type=tag"class="block">
+                  <a href="/results?count=10&page=1&query={{uriEncode this.title}}&sort=title&type=tag"class="block">
                 {{/ifEqual}}
                 {{#ifEqual ../view 'film'}}
-                  <a href="/results?count=10&page=1&query={{this.uriEncoded.title}}&sort=title&type={{../view}}"class="block">
+                  <a href="/results?count=10&page=1&query={{uriEncode this.title}}&sort=title&type=film"class="block">
                 {{/ifEqual}}
                   <li
                     class="text-lg font-medium text-gray-500 cursor-pointer hover:text-primaryOrangeDark"

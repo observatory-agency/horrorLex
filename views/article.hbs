@@ -138,7 +138,11 @@
             <div class="col-span-5 space-y-2">
               {{> ui/resultKey text='Films Discussed'}}
               {{#each article.films}}
-                <p class="text-base font-normal text-gray-400">{{this}}</p>
+                <p class="text-base font-normal text-gray-400">
+                  <a href="/results?count=10&page=1&query={{uriEncode this}}&sort=title&type=film"class="block">
+                    {{this}}
+                  </a>
+                </p>
               {{else}}
                 <p class="text-lg font-medium text-gray-800">Not available</p>
               {{/each}}

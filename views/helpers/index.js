@@ -10,6 +10,7 @@ const helpersToRegister = [
   'pageActive',
   'pageNumber',
   'pageSkip',
+  'uriEncode',
 ];
 
 const registerHelpers = () => {
