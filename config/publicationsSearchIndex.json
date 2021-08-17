@@ -1,4 +1,6 @@
 {
+  "collectionName": "publications_test",
+  "database": "horrorLex",
   "analyzer": "lucene.english",
   "searchAnalyzer": "lucene.english",
   "mappings": {

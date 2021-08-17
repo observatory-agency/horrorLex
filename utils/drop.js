@@ -7,7 +7,7 @@ const exec = async (name) => {
     await Mongo.connect();
     const { collection } = await handleCollection(name);
     await collection.model.drop();
-    console.log(`Dropped collection "${name}"`);
+    console.log(`Dropped collection "${collection.modelAttributes.name}"`);
   } catch (error) {
     console.error(error);
   }
