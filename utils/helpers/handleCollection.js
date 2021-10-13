@@ -37,7 +37,7 @@ module.exports = async (name) => {
     case 'categories': {
       model = new CategoryModel();
       modelName = 'categories';
-      dataImport.buildMap(categoryTransformer.mapper, categoryTransformer.transformer);
+      dataImport.mutateEach(categoryTransformer);
       docs = dataImport.docs;
       break;
     }
