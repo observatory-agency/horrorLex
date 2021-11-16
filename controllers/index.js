@@ -5,6 +5,7 @@ const HomeController = require('./Home');
 const PublicationController = require('./Publication');
 const ResultsController = require('./Results');
 const SearchController = require('./Search');
+const StoryBlokController = require('./StoryBlok');
 
 module.exports = {
   AboutController,
@@ -14,4 +15,5 @@ module.exports = {
   PublicationController,
   ResultsController,
   SearchController,
+  StoryBlokController
 };

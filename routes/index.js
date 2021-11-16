@@ -5,6 +5,7 @@ const contact = require('./contact');
 const home = require('./home');
 const results = require('./results');
 const search = require('./search');
+const storyblok = require('./storyblok');
 
 module.exports = {
   about,
@@ -14,4 +15,5 @@ module.exports = {
   publication,
   results,
   search,
+  storyblok
 };

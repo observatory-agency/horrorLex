@@ -24,6 +24,7 @@ app.use('/search', routes.search);
 app.use('/browse', routes.browse);
 app.use('/contact', routes.contact);
 app.use('/results', routes.results);
+app.use('/storyblok', routes.storyblok);
 app.use('/', routes.publication);
 app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use((req, res) => res.status(404).render('error.hbs', { status: 404 }));
