@@ -23,6 +23,8 @@ app.use('/about', routes.about);
 app.use('/search', routes.search);
 app.use('/browse', routes.browse);
 app.use('/contact', routes.contact);
+app.use('/blog', routes.blog);
+app.use('/blog-post', routes.blogPost);
 app.use('/results', routes.results);
 app.use('/storyblok', routes.storyblok);
 app.use('/', routes.publication);

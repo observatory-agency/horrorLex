@@ -35,6 +35,9 @@ module.exports = {
       maxWidth: {
         xxs: '16rem',
       },
+      width: {
+        bigAss: '27rem',
+      },
       typography: {
         DEFAULT: {
           css: {
