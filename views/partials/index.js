@@ -7,4 +7,4 @@ const registerPartials = () => {
   hbsutils.registerWatchedPartials('./views/partials');
 };
 
-module.exports = registerPartials;
+module.exports = { hbs, registerPartials };

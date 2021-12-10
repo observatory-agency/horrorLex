@@ -19,4 +19,4 @@ const registerHelpers = () => {
   });
 };
 
-module.exports = registerHelpers;
+module.exports = { hbs, registerHelpers };
