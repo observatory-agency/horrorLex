@@ -9,11 +9,11 @@
         <div class="mx-auto text-lg max-w-prose">
             <span class="block text-base tracking-wide text-center text-gray-500">{{ date }}</span>
             <h1>
-                <span class="block mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-100 sm:text-4xl sm:leading-10">{{ title }}</span>
+                <span class="block mt-2 mb-8 text-2xl font-extrabold leading-8 tracking-tight text-center text-gray-100 sm:text-4xl sm:leading-10">{{ title }}</span>
             </h1>
         </div>
         <div>
-            <div class="relative grid grid-cols-12 gap-6 py-16 overflow-hidden">
+            <div class="relative flex flex-col items-center py-6 overflow-hidden sm:py-16 sm:grid sm:gap-6 sm:grid-cols-12">
                 <div class="col-span-8">
                     <div class="relative px-4 sm:px-6 lg:px-8">
                         <div class="mx-auto mt-6 prose prose-lg text-gray-300">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4 space-y-8">
+                <div class="self-center col-span-4 space-y-8 sm:self-start">
                     <div class="flex items-center mt-6">
                         <div class="flex items-center space-x-2">
                             <a href="#">
@@ -54,8 +54,8 @@
                                 />
                               </svg>
                             </a>
-                            <a href="#" class="p-2 rounded-full text-primaryOrange hover:text-primaryOrangeDark bg-primaryOrange" target="_blank" rel="noopener">
-                              <span class="sr-only">This article title</span>
+                            <a id="copyToClipboard" class="p-2 rounded-full cursor-pointer text-primaryOrange hover:text-primaryOrangeDark bg-primaryOrange">
+                              <span class="sr-only">{{title}}</span>
                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="w-6 h-6">
                                 <path stroke="#110803" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.1723 13.828c.7501.7499 1.7674 1.1712 2.828 1.1712 1.0607 0 2.0779-.4213 2.828-1.1712l4-3.99999c.7287-.75441 1.1318-1.76482 1.1227-2.8136-.0091-1.04879-.4298-2.05204-1.1714-2.79367-.7416-.74164-1.7449-1.16231-2.7937-1.17142-1.0488-.00912-2.0592.39406-2.8136 1.12269l-1.1 1.1m.756 4.89999c-.7501-.74987-1.7673-1.17113-2.828-1.17113-1.06063 0-2.07786.42126-2.82798 1.17113l-4 4c-.38204.369-.68676.8104-.8964 1.2984-.20964.488-.31998 1.0129-.3246 1.544-.00461.5311.09659 1.0578.29772 1.5494.20112.4916.49813.9382.8737 1.3138.37558.3756.82218.6726 1.31377.8737.49158.2011 1.0183.3023 1.54942.2977.53112-.0046 1.056-.1149 1.54401-.3246.48802-.2096.9294-.5143 1.29838-.8964l1.10198-1.101 2.898-8.555Z"/>
                               </svg>
@@ -69,5 +69,20 @@
     </main>
     {{> global/mainFooter}}
     {{> global/scripts}}
+    <script>
+        document.getElementById('copyToClipboard').addEventListener('click', async () => {
+            let slug = window.location.href
+            if (!navigator.clipboard) {
+                // Clipboard API not available
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(slug);
+                alert('Copied to clipboard!');
+            } catch (err) {
+                console.error('Failed to copy!', err);
+            }
+        });
+    </script>
   </body>
 </html>
