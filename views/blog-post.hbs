@@ -2,7 +2,6 @@
 <html>
   {{> global/head}}
   <body>
-    {{> ui/betaModeBanner}}
     {{> global/mainNavigation}}
     <main class="divide-y divide-gray-600">
       <section class="max-w-6xl px-4 mx-auto mt-8 divide-y divide-gray-600 lg:mt-16 lg:px-8">
@@ -21,11 +20,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="self-center col-span-4 space-y-8 sm:self-start">
+                <hr class="w-11/12 mt-6 border-t border-gray-200 sm:hidden">
+                <div class="self-start col-span-4 px-4 space-y-8 sm:px-0">
                     <div class="flex items-center mt-6">
                         <div class="flex items-center space-x-2">
                             <a href="#">
-                                <span class="sr-only">Paul York</span>
+                                <span class="sr-only">Professor Lex</span>
                                 <img class="w-12 h-12 rounded-full" src="/public/img/lex-avatar.png" alt="">
                             </a>
                             <h4 class="text-lg font-medium text-gray-50">
@@ -36,7 +36,7 @@
                     <div class="flex flex-col">
                         <div class="">
                             <h4 class="text-lg font-medium text-gray-50">
-                                Share this post... <span class="text-primaryRed">if you dare</span>
+                                Share this post
                             </h4>
                         </div>
                         <div class="flex mt-8 space-x-6">

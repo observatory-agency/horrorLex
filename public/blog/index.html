@@ -38,21 +38,6 @@
   
   </head>
   <body>
-    <div class="relative mb-2 bg-primaryOrange">
-      <div class="px-3 py-3 mx-auto wrapper">
-        <div class="pr-16 sm:text-center sm:px-16">
-          <p class="font-medium text-white">
-            <span class="md:hidden"> Welcome to the Horror Lex Beta! </span>
-            <span class="hidden md:inline"> Welcome to the Horror Lex Beta! </span>
-            <span class="block sm:ml-2 sm:inline-block">
-              <a href="/about" class="font-bold text-white underline">
-                Learn more
-                <span aria-hidden="true">&rarr;</span></a>
-            </span>
-          </p>
-        </div>
-      </div>
-    </div>
     <nav id="mainNav" class="flex-shrink-0 bg-transparent wrapper" x-data="{ open: false }">
       <div class="max-w-full py-2 mx-auto">
         <div class="relative flex items-center justify-between h-16 space-x-2">
@@ -192,20 +177,20 @@
             href="/contact"
             class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
           >Contact</a>
+          <a
+            href="/blog"
+            class="block p-2 mt-1 text-base font-medium text-gray-200 transition duration-150 ease-in-out rounded-md hover:text-gray-100 hover:bg-gray-600 focus:outline-none focus:text-white focus:bg-gray-600"
+          >Blog</a>
         </div>
       </div>
     </nav>
     <main class="flex flex-col h-full px-4 lg:px-8">
-      <section class="flex-initial pb-8 mx-auto mt-8 border-b border-gray-600 lg:mt-16 max-w-7xl">
-        <div>
-            <h1 class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-gray-100 sm:text-4xl sm:leading-10">
+      <section class="w-full pb-8 mx-auto mt-8 border-b border-gray-600 lg:mt-16 max-w-7xl">
+        <div class="justify-between lg:items-center">
+            <h1 class="text-3xl font-extrabold text-gray-100 sm:text-4xl sm:leading-10">
                 The Horror Lex Blog
             </h1>
-            <div class="mt-3 sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
-            <p class="text-xl text-gray-500">
-                Chainsaw dread full moon, pushed at alley bruises, children is knife. Willow trees undead wind, unknown ripped needles. Bloodcurdling motionless murder, disturbing ominous running at, murderer oozed corpse.
-            </p>
-            <form action="https://formspree.io/f/xdobolyk" method="POST" class="flex flex-col mt-6 sm:flex-row lg:mt-0 lg:justify-end">
+            <!-- <form action="https://formspree.io/f/xdobolyk" method="POST" class="flex flex-col mt-6 sm:flex-row lg:mt-0 lg:justify-end">
                 <div>
                 <label for="email-address" class="sr-only">Email address</label>
                 <input id="email-address" name="email-address" type="email" autocomplete="email" required class="block w-full py-2 pr-3 leading-5 text-gray-300 placeholder-gray-300 transition duration-150 ease-in-out bg-gray-400 bg-opacity-25 border border-transparent rounded-md focus:outline-none focus:bg-white focus:text-gray-900 sm:text-sm focus:ring-primaryOrange focus:border-primaryOrange" placeholder="Enter your email">
@@ -215,12 +200,47 @@
                     Keep me posted
                 </button>
                 </div>
-            </form>
-            </div>
+            </form> -->
         </div>
       </section>
-      <section class="flex-1 mx-auto mt-8 lg:mt-16 max-w-7xl">
+      <section class="flex-1 mx-auto mt-8 lg:mt-8 max-w-7xl">
         <div class="grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+            <div>
+                <p class="text-sm text-gray-500">
+                    <time datetime="2021-10-31">December 19, 2021</time>
+                </p>
+                <a href="/blog/2021-12-19_it-s-beginning-to-look-a-lot-like-a-f-ed-up-christmas.html" class="block mt-2">
+                    <h4 class="text-xl font-semibold text-white">
+                        It’s Beginning to Look A Lot Like a F***ed-Up Christmas
+                    </h4>
+                    <p class="mt-3 text-base text-gray-300">
+                        Christmas is less than a week away. Let&#x27;s dig into a hefty read about freaky holiday classics!
+                    </p>
+                </a>
+                <div class="mt-3">
+                    <a href="/blog/2021-12-19_it-s-beginning-to-look-a-lot-like-a-f-ed-up-christmas.html" class="text-base font-semibold text-primaryOrange hover:text-primaryOrangeDark">
+                        Read full post
+                    </a>
+                </div>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500">
+                    <time datetime="2021-10-31">December 12, 2021</time>
+                </p>
+                <a href="/blog/2021-12-12_3-great-pieces-on-black-christmas-1974.html" class="block mt-2">
+                    <h4 class="text-xl font-semibold text-white">
+                        3 Great Pieces on: Black Christmas (1974)
+                    </h4>
+                    <p class="mt-3 text-base text-gray-300">
+                        Professor Lex isn’t the only one among you whose most treasured Christmas chestnut is Bob Clark’s 1974 film Black Christmas.
+                    </p>
+                </a>
+                <div class="mt-3">
+                    <a href="/blog/2021-12-12_3-great-pieces-on-black-christmas-1974.html" class="text-base font-semibold text-primaryOrange hover:text-primaryOrangeDark">
+                        Read full post
+                    </a>
+                </div>
+            </div>
             <div>
                 <p class="text-sm text-gray-500">
                     <time datetime="2021-10-31">November 25, 2021</time>
@@ -230,7 +250,7 @@
                         Food Horror on Your Thanksgiving Table
                     </h4>
                     <p class="mt-3 text-base text-gray-300">
-                        It’s Thanksgiving here in the States, when we’ll all gather around a roast turkey and trimmings for our annual feast of gratitude.
+                        Is the saw family, or is it grandma&#x27;s turkey?
                     </p>
                 </a>
                 <div class="mt-3">
@@ -275,24 +295,6 @@
                     </a>
                 </div>
             </div>
-            <div>
-                <p class="text-sm text-gray-500">
-                    <time datetime="2021-10-31">November 15, 2021</time>
-                </p>
-                <a href="/blog/2021-11-15_test-blog.html" class="block mt-2">
-                    <h4 class="text-xl font-semibold text-white">
-                        Death bruises moon torture demons
-                    </h4>
-                    <p class="mt-3 text-base text-gray-300">
-                        Mutilation possession obsession at fanatic. Falling are graveyard graves est. In horrifying, fear is gnarled murder, ominous eerie Serial killer sinister, with sick chilling.
-                    </p>
-                </a>
-                <div class="mt-3">
-                    <a href="/blog/2021-11-15_test-blog.html" class="text-base font-semibold text-primaryOrange hover:text-primaryOrangeDark">
-                        Read full post
-                    </a>
-                </div>
-            </div>
         </div>
       </section>
       <section class="flex justify-between flex-none w-full pt-32 mx-auto max-w-7xl">
@@ -318,7 +320,7 @@
           </div>
         </nav>
         <div class="flex justify-center mt-8 space-x-6">
-          <a href="https://www.facebook.com/Horror-Lex-103568085265045" class="text-gray-400 hover:text-gray-500" target="_blank" rel="noopener">
+          <a href="https://www.facebook.com/HorrorLex" class="text-gray-400 hover:text-gray-500" target="_blank" rel="noopener">
             <span class="sr-only">Facebook</span>
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
               <path
@@ -333,6 +335,13 @@
             <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+              />
+            </svg>
+          </a>
+          <a href="https://instagram.com/professorlupelex/" class="text-gray-400 hover:text-gray-500" target="_blank" rel="noopener">
+            <span class="sr-only">Instagram</span>
+            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M127.999746 23.06353c34.177639 0 38.225647.1300727 51.72273.7458861 12.479874.5695765 19.257377 2.6548057 23.76826 4.4072316 5.974202 2.3220024 10.238659 5.0962109 14.717532 9.5750842 4.478873 4.4788733 7.253082 8.7433298 9.574576 14.7175319 1.752934 4.5108834 3.838163 11.2883866 4.40774 23.7677522.615813 13.4975915.745886 17.5455987.745886 51.723238 0 34.177639-.130073 38.225647-.745886 51.72273-.569577 12.479874-2.654806 19.257377-4.40774 23.76826-2.321494 5.974202-5.095703 10.238659-9.574576 14.717532s-8.74333 7.253082-14.717532 9.574576c-4.510883 1.752934-11.288386 3.838164-23.76826 4.40774-13.495051.615813-17.543058.745886-51.72273.745886-34.1796718 0-38.227679-.130073-51.72273-.745886-12.4798736-.569576-19.2573769-2.654806-23.7677522-4.40774-5.9747102-2.321494-10.2391667-5.095703-14.71804-9.574576s-7.2530818-8.74333-9.5745761-14.717532c-1.7529339-4.510883-3.8381632-11.288386-4.4077397-23.767752-.6158134-13.497591-.7458861-17.545599-.7458861-51.723238 0-34.1776393.1300727-38.2256465.7458861-51.7227299.5695765-12.4798737 2.6548058-19.2573769 4.4077397-23.7682603 2.3214943-5.9742021 5.0957028-10.2386586 9.5745761-14.7175319 4.4788733-4.4788733 8.7433298-7.2530818 14.71804-9.5750842 4.5103753-1.7524259 11.2878786-3.8376551 23.7672441-4.4072316 13.4975915-.6158134 17.5455987-.7458861 51.7232381-.7458861m0-23.06353C93.2367791 0 88.8783247.14734807 75.2257637.77027475 61.601148 1.39218523 52.2968794 3.5556614 44.1546281 6.72008828 35.7374966 9.99121548 28.5992446 14.3679613 21.4833489 21.483857 14.3674532 28.5997527 9.99070739 35.7380046 6.71958019 44.1551362 3.55515331 52.2973875 1.39167714 61.6016561.76976665 75.2262718.14683998 88.8783247 0 93.2372872 0 128.000254c0 34.762967.14683998 39.121929.76976665 52.773982.62191049 13.624616 2.78538666 22.928885 5.94981354 31.071136 3.2711272 8.416623 7.64787301 15.555383 14.76376871 22.671279 7.1158957 7.115896 14.2541477 11.492642 22.6712792 14.763769 8.1422513 3.164427 17.4465199 5.327903 31.0711356 5.949813C88.8783247 255.85316 93.2367791 256 127.999746 256c34.762967 0 39.121929-.14684 52.773982-.769767 13.624616-.62191 22.928885-2.785386 31.071136-5.949813 8.417131-3.271127 15.555383-7.647873 22.671279-14.763769 7.115896-7.115896 11.492642-14.254148 14.763769-22.671279 3.164427-8.142251 5.327903-17.44652 5.949813-31.071136.622927-13.652053.770275-18.011015.770275-52.773982 0-34.7629668-.147348-39.1219293-.770275-52.7739822-.62191-13.6246157-2.785386-22.9288843-5.949813-31.0711356-3.271127-8.4171316-7.647873-15.5553835-14.763769-22.6712792-7.115896-7.1158957-14.254148-11.49264152-22.671279-14.76376872-8.142251-3.16442687-17.44652-5.32790305-31.071136-5.94981353C167.121675.14734807 162.762713 0 127.999746 0Zm0 62.2703115c-36.301484 0-65.7299426 29.4284585-65.7299426 65.7299425s29.4284586 65.729943 65.7299426 65.729943 65.729943-29.428459 65.729943-65.729943-29.428459-65.7299425-65.729943-65.7299425Zm0 108.3968635c-23.564005 0-42.6669208-19.102916-42.6669208-42.666921s19.1029158-42.6669207 42.6669208-42.6669207c23.564005 0 42.666921 19.1029157 42.666921 42.6669207 0 23.564005-19.102916 42.666921-42.666921 42.666921Zm83.686592-110.9937463c0 8.4831842-6.876583 15.3602744-15.359767 15.3602744s-15.360274-6.8770902-15.360274-15.3602744 6.87709-15.3597663 15.360274-15.3597663c8.483184 0 15.359767 6.8765821 15.359767 15.3597663Z"
               />
             </svg>
           </a>
