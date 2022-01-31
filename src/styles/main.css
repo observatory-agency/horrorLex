@@ -7,3 +7,5 @@
 .prose h1 {
     color: #f7f7f7;
 }
+
+[x-cloak] { display: none !important; }
