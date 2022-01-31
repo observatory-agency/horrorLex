@@ -3,3 +3,7 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.prose h1 {
+    color: #f7f7f7;
+}
